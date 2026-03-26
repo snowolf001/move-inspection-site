@@ -6,12 +6,16 @@
 
   <title>Move Inspection – Rental Report</title>
 
-  <!-- SEO -->
-  <meta name="description" content="Create professional move-in and move-out inspection reports with photos and PDF export." />
-  <meta name="keywords" content="move inspection, rental inspection, tenant checklist, landlord report, property inspection app" />
+  <meta
+    name="description"
+    content="Create professional move-in and move-out inspection reports with photos and PDF export."
+  />
+  <meta
+    name="keywords"
+    content="move inspection, rental inspection, tenant checklist, landlord report, property inspection app"
+  />
 
-  <!-- Favicon -->
-  <link rel="icon" href="move_inspection_1024.png" />
+  <link rel="icon" href="./icon.png" />
 
   <style>
     body {
@@ -25,12 +29,16 @@
     .container {
       max-width: 1000px;
       margin: auto;
-      padding: 40px 20px;
+      padding: 40px 20px 60px;
     }
 
     .logo {
       width: 90px;
-      margin-bottom: 20px;
+      height: 90px;
+      object-fit: contain;
+      border-radius: 20px;
+      margin: 0 auto 20px;
+      display: block;
     }
 
     h1 {
@@ -45,6 +53,12 @@
 
     .desc {
       color: #cbd5e1;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .trust {
+      color: #94a3b8;
       margin-bottom: 30px;
     }
 
@@ -78,6 +92,7 @@
     .card img {
       width: 100%;
       border-radius: 16px;
+      display: block;
     }
 
     .section {
@@ -104,43 +119,42 @@
 
 <body>
   <div class="container">
+    <img src="./icon.png" class="logo" alt="Move Inspection app icon" />
 
-    <!-- Logo -->
-    <img src="move_inspection_1024.png" class="logo" />
-
-    <!-- Title -->
     <h1>Move Inspection</h1>
     <p class="subtitle">Avoid deposit disputes.</p>
     <p class="desc">
       Document property condition with photos and generate professional reports in minutes.
     </p>
 
-    <!-- Trust line -->
-    <p style="color:#94a3b8;">
+    <p class="trust">
       Used by landlords & tenants to protect security deposits.
     </p>
 
-    <!-- Buttons -->
     <div class="buttons">
-      <a class="btn" href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection">
+      <a
+        class="btn"
+        href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection"
+      >
         Download on Google Play
       </a>
 
-      <a class="btn secondary" href="https://apps.apple.com/us/app/move-inspection-rental-report/id6760746173">
+      <a
+        class="btn secondary"
+        href="https://apps.apple.com/us/app/move-inspection-rental-report/id6760746173"
+      >
         Download on App Store
       </a>
     </div>
 
-    <!-- Screenshots -->
     <div class="grid">
-      <div class="card"><img src="1_propertylist.png" /></div>
-      <div class="card"><img src="2_roomlist.png" /></div>
-      <div class="card"><img src="3_inspectionTracking.png" /></div>
-      <div class="card"><img src="4_additem.png" /></div>
-      <div class="card"><img src="5_exportReport.png" /></div>
+      <div class="card"><img src="./1_propertylist.png" alt="Property list screen" /></div>
+      <div class="card"><img src="./2_roomlist.png" alt="Room list screen" /></div>
+      <div class="card"><img src="./3_inspectionTracking.png" alt="Inspection details screen" /></div>
+      <div class="card"><img src="./4_additem.png" alt="Add notes and photos screen" /></div>
+      <div class="card"><img src="./5_exportReport.png" alt="Export PDF report screen" /></div>
     </div>
 
-    <!-- Features -->
     <div class="section">
       <h2>Why people use it</h2>
       <ul>
@@ -151,14 +165,11 @@
       </ul>
     </div>
 
-    <!-- Footer -->
-    <footer>
-      © 2026 Clean Utility Apps
-    </footer>
-
+    <footer>© 2026 Clean Utility Apps</footer>
   </div>
 
-  <!-- Auto redirect (after 1s) -->
+  <script defer src="/_vercel/insights/script.js"></script>
+
   <script>
     const isAndroid = /Android/i.test(navigator.userAgent);
     const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -175,6 +186,5 @@
       }
     }, 1000);
   </script>
-  <script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
