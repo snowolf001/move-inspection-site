@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
   <title>Move Inspection</title>
+
+  <!-- 🔥 favicon -->
+  <link rel="icon" href="./icon.png" />
 
   <style>
     body {
@@ -20,6 +24,12 @@
       padding: 20px;
     }
 
+    .icon {
+      width: 90px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+
     h1 {
       font-size: 48px;
       margin-bottom: 10px;
@@ -32,20 +42,34 @@
       line-height: 1.6;
     }
 
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
     .btn {
-      display: inline-block;
       padding: 14px 28px;
       background: #2563eb;
       color: white;
       text-decoration: none;
       border-radius: 10px;
       font-weight: 600;
-      margin-bottom: 40px;
       transition: 0.2s;
     }
 
     .btn:hover {
       background: #1d4ed8;
+    }
+
+    .ios {
+      background: #111827;
+    }
+
+    .ios:hover {
+      background: #000;
     }
 
     .screenshots {
@@ -77,28 +101,36 @@
       font-size: 14px;
       color: #94a3b8;
     }
-
   </style>
 </head>
 
 <body>
   <div class="container">
 
+    <!-- 🔥 ICON -->
+    <img class="icon" src="./icon.png" alt="Move Inspection App Icon" />
+
     <!-- 标题 -->
     <h1>Move Inspection</h1>
 
-    <!-- 副标题（优化过） -->
+    <!-- 副标题 -->
     <p class="subtitle">
-      Avoid deposit disputes.  
+      Avoid deposit disputes.<br/>
       Document property condition with photos and generate professional reports in minutes.
     </p>
 
-    <!-- 下载按钮（已替换你的包名） -->
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection">
-      Download on Google Play
-    </a>
+    <!-- 🔥 下载按钮 -->
+    <div class="buttons">
+      <a class="btn" href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection">
+        Download on Google Play
+      </a>
 
-    <!-- 截图 -->
+      <a class="btn ios" href="https://apps.apple.com/us/app/move-inspection-rental-report/id6760746173">
+        Download on App Store
+      </a>
+    </div>
+
+    <!-- 🔥 截图 -->
     <div class="screenshots">
       <img class="screenshot" src="./1_propertylist.png" />
       <img class="screenshot" src="./2_roomlist.png" />
@@ -107,7 +139,7 @@
       <img class="screenshot" src="./5_exportReport.png" />
     </div>
 
-    <!-- 功能区 -->
+    <!-- 功能 -->
     <div class="section">
       <h2>Why people use it</h2>
 
