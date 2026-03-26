@@ -325,24 +325,24 @@
 
       <div class="buttons">
         <a
-          id="google-play-btn"
-          class="btn"
-          href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Download on Google Play
-        </a>
-
-        <a
-          id="app-store-btn"
-          class="btn secondary"
-          href="https://apps.apple.com/us/app/move-inspection-rental-report/id6760746173"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Download on App Store
-        </a>
+        id="google-play-btn"
+        class="btn"
+        href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.moveinspection"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download on Google Play
+      </a>
+      
+      <a
+        id="app-store-btn"
+        class="btn secondary"
+        href="https://apps.apple.com/us/app/move-inspection-rental-report/id6760746173"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Download on App Store
+      </a>
       </div>
     </section>
 
@@ -468,20 +468,32 @@
       }
     }
 
-    googlePlayBtn.addEventListener("click", function () {
+    googlePlayBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+    
       trackEvent("store_click", {
         store_name: "google_play",
         platform_detected: isAndroid ? "android" : isIOS ? "ios" : "desktop",
         destination: PLAY_URL
       });
+    
+      setTimeout(() => {
+        window.open(PLAY_URL, "_blank", "noopener");
+      }, 200);
     });
-
-    appStoreBtn.addEventListener("click", function () {
+    
+    appStoreBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+    
       trackEvent("store_click", {
         store_name: "app_store",
         platform_detected: isAndroid ? "android" : isIOS ? "ios" : "desktop",
         destination: APPLE_URL
-      });
+        });
+    
+      setTimeout(() => {
+        window.open(APPLE_URL, "_blank", "noopener");
+      }, 200);
     });
 
     document.querySelectorAll(".card img").forEach((img) => {
