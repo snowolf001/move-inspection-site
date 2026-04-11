@@ -297,10 +297,43 @@
         line-height: 1.7;
       }
 
+      .topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 0 18px;
+        font-size: 13px;
+        color: #94a3b8;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        margin-bottom: 20px;
+      }
+
+      .topbar a {
+        color: #94a3b8;
+        text-decoration: none;
+      }
+
+      .topbar a:hover {
+        color: #dbeafe;
+      }
+
+      .topbar-links {
+        display: flex;
+        gap: 18px;
+      }
+
       footer {
         margin-top: 70px;
         font-size: 12px;
         color: #64748b;
+      }
+
+      footer a {
+        color: #64748b;
+      }
+
+      footer a:hover {
+        color: #94a3b8;
       }
 
       @media (max-width: 640px) {
@@ -321,6 +354,13 @@
 
   <body>
     <div class="container">
+      <div class="topbar">
+        <a href="/">← Clean Utility Apps</a>
+        <div class="topbar-links">
+          <a href="/passeo/">Passeo</a>
+        </div>
+      </div>
+
       <section class="hero">
         <img
           src="/assets/images/move-inspection/icon.png"
@@ -500,7 +540,10 @@
           and landlord are protected.
         </p>
       </section>
-      <footer>© 2026 Clean Utility Apps</footer>
+      <footer>
+        © 2026 Clean Utility Apps &nbsp;·&nbsp;
+        <a href="/">Home</a> &nbsp;·&nbsp; <a href="/passeo/">Passeo</a>
+      </footer>
     </div>
 
     <!-- Vercel Analytics -->

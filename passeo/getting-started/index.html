@@ -115,6 +115,20 @@
         border-color: rgba(59, 130, 246, 0.3);
       }
 
+      .sidebar-back {
+        display: block;
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--border);
+        font-size: 13px;
+        color: #94a3b8;
+        text-decoration: none;
+      }
+
+      .sidebar-back:hover {
+        color: #dbeafe;
+      }
+
       .content { min-width: 0; display: grid; gap: 20px; }
 
       .card {
@@ -254,6 +268,7 @@
     <div class="page">
       <div class="layout">
         <aside class="sidebar">
+          <a class="sidebar-back" href="/">u{2190} All apps</a>
           <h2>Passeo</h2>
           <nav class="nav">
             <a href="/passeo/">Overview</a>
