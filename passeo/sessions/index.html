@@ -24,40 +24,9 @@
       gtag('config', 'G-LBCQ8VL0TB');
     </script>
 
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
     <style>
-      :root {
-        --bg-top: #0b1c3a;
-        --bg-bottom: #08142b;
-        --card: rgba(255, 255, 255, 0.06);
-        --card-inner: rgba(255, 255, 255, 0.04);
-        --border: rgba(255, 255, 255, 0.08);
-        --text: #ffffff;
-        --soft: #cbd5e1;
-        --muted: #94a3b8;
-        --blue: #2563eb;
-        --blue-hover: #1d4ed8;
-        --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        --max-width: 1180px;
-        --sidebar-width: 250px;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
-        color: var(--text);
-        line-height: 1.65;
-        min-height: 100vh;
-      }
-
       a {
         color: #dbeafe;
         text-decoration: none;
@@ -67,21 +36,21 @@
       }
 
       .page {
-        max-width: var(--max-width);
+        max-width: 1120px;
         margin: 0 auto;
-        padding: 28px 20px 72px;
+        padding: 24px 20px 72px;
       }
 
       .layout {
         display: grid;
-        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        grid-template-columns: 250px minmax(0, 1fr);
         gap: 24px;
         align-items: start;
       }
 
       .sidebar {
         position: sticky;
-        top: 20px;
+        top: 80px;
         background: var(--card);
         border: 1px solid var(--border);
         border-radius: 20px;
@@ -112,54 +81,6 @@
       .nav a.active {
         background: rgba(37, 99, 235, 0.2);
         border-color: rgba(59, 130, 246, 0.3);
-      }
-
-      .breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        margin-bottom: 16px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-        flex-wrap: wrap;
-      }
-
-      .breadcrumb-sep {
-        color: rgba(255, 255, 255, 0.18);
-        font-size: 13px;
-        padding: 0 2px;
-        user-select: none;
-      }
-
-      .breadcrumb a {
-        display: inline-flex;
-        align-items: center;
-        padding: 5px 10px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        color: #94a3b8;
-        text-decoration: none;
-        border: 1px solid transparent;
-        margin-bottom: 0;
-        background: transparent;
-      }
-
-      .breadcrumb a:hover {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: var(--border);
-        color: #dbeafe;
-        text-decoration: none;
-      }
-
-      .breadcrumb a.bc-passeo {
-        color: #dbeafe;
-        font-weight: 600;
-      }
-
-      .breadcrumb a.bc-passeo:hover {
-        background: rgba(37, 99, 235, 0.12);
-        border-color: rgba(59, 130, 246, 0.25);
       }
 
       .content {
@@ -288,16 +209,35 @@
   </head>
 
   <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+      </div>
+    </header>
+
     <div class="page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/passeo/">Passeo</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Sessions</span>
+      </nav>
       <div class="layout">
         <aside class="sidebar">
-          <nav class="breadcrumb" aria-label="Site navigation">
-            <a href="/move-inspection/">Move Inspection</a>
-            <span class="breadcrumb-sep">/</span>
-            <a class="bc-passeo" href="/passeo/">Passeo</a>
-          </nav>
           <h2>Passeo</h2>
-          <nav class="nav">
+          <nav class="nav" aria-label="Passeo documentation">
             <a href="/passeo/">Overview</a>
             <a href="/passeo/getting-started/">Getting Started</a>
             <a href="/passeo/roles/">Roles</a>
@@ -477,7 +417,14 @@
             </p>
           </section>
 
-          <footer class="footer">© 2026 Clean Utility Apps</footer>
+          <footer class="site-footer">
+            <div class="site-footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/privacy/">Privacy</a>
+            </div>
+            © 2026 Clean Utility Apps
+          </footer>
         </main>
       </div>
     </div>

@@ -43,197 +43,309 @@
       gtag('config', 'G-LBCQ8VL0TB');
     </script>
 
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
     <style>
-      :root {
-        --bg-top: #0b1c3a;
-        --bg-bottom: #08142b;
-        --card: rgba(255, 255, 255, 0.06);
-        --border: rgba(255, 255, 255, 0.08);
-        --text: #ffffff;
-        --soft: #cbd5e1;
-        --blue: #2563eb;
-        --blue-hover: #1d4ed8;
-        --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        --max-width: 1180px;
-        --sidebar-width: 250px;
-      }
-
+      /* ── Landing page styles ── */
       body {
-        margin: 0;
-        font-family:
-          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-        background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
-        color: var(--text);
+        text-align: center;
       }
 
-      .page {
+      a {
+        color: inherit;
+      }
+
+      .container {
         max-width: var(--max-width);
         margin: 0 auto;
-        padding: 28px 20px 72px;
+        padding: 48px 20px 72px;
       }
 
-      .layout {
-        display: grid;
-        grid-template-columns: var(--sidebar-width) 1fr;
-        gap: 24px;
+      .hero {
+        padding-top: 8px;
       }
 
-      .sidebar {
-        position: sticky;
-        top: 20px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 20px;
-      }
-
-      .nav a {
+      .app-icon {
+        width: 96px;
+        height: 96px;
+        object-fit: contain;
+        border-radius: 24px;
+        margin: 0 auto 22px;
         display: block;
-        padding: 10px;
-        border-radius: 10px;
-        text-decoration: none;
-        color: #dbeafe;
-        margin-bottom: 6px;
-      }
-
-      .nav a.active {
-        background: rgba(37, 99, 235, 0.2);
-      }
-
-      .breadcrumb {
-        display: flex;
-        align-items: center;
-        gap: 2px;
-        margin-bottom: 16px;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--border);
-        flex-wrap: wrap;
-      }
-
-      .breadcrumb-sep {
-        color: rgba(255, 255, 255, 0.18);
-        font-size: 13px;
-        padding: 0 2px;
-        user-select: none;
-      }
-
-      .breadcrumb a {
-        display: inline-flex;
-        align-items: center;
-        padding: 5px 10px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        color: #94a3b8;
-        text-decoration: none;
-        border: 1px solid transparent;
-        margin-bottom: 0;
-        background: transparent;
-      }
-
-      .breadcrumb a:hover {
-        background: rgba(255, 255, 255, 0.06);
-        border-color: var(--border);
-        color: #dbeafe;
-        text-decoration: none;
-      }
-
-      .breadcrumb a.bc-passeo {
-        color: #dbeafe;
-        font-weight: 600;
-      }
-
-      .breadcrumb a.bc-passeo:hover {
-        background: rgba(37, 99, 235, 0.12);
-        border-color: rgba(59, 130, 246, 0.25);
-      }
-
-      .content {
-        min-width: 0;
-      }
-
-      .card {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 24px;
-        margin-bottom: 20px;
+        box-shadow: var(--shadow);
       }
 
       h1 {
-        margin: 0 0 12px;
-        font-size: 40px;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.08;
+        margin: 0 0 14px;
+        letter-spacing: -0.02em;
       }
 
-      p {
+      .tagline {
+        font-size: 19px;
+        color: #bfdbfe;
+        font-weight: 600;
+        margin: 0 0 14px;
+      }
+
+      .desc {
+        max-width: 680px;
+        margin: 0 auto 28px;
         color: var(--soft);
-        line-height: 1.7;
+        line-height: 1.75;
+        font-size: 17px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-bottom: 60px;
       }
 
       .btn {
-        display: inline-block;
-        margin-top: 16px;
-        padding: 12px 16px;
-        border-radius: 10px;
-        background: var(--blue);
-        color: white;
-        text-decoration: none;
-        font-weight: 600;
+        min-width: 200px;
+        padding: 14px 22px;
       }
 
-      .btn:hover {
-        background: var(--blue-hover);
+      /* ── Sections ── */
+      .section {
+        margin-top: 68px;
+      }
+
+      .section > h2 {
+        font-size: 28px;
+        margin: 0 0 12px;
+        letter-spacing: -0.01em;
+      }
+
+      .section-intro {
+        max-width: 680px;
+        margin: 0 auto 28px;
+        color: var(--muted);
+        font-size: 16px;
+        line-height: 1.7;
+      }
+
+      /* ── Feature cards ── */
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+        text-align: left;
+        margin-top: 24px;
+      }
+
+      .feature {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 20px;
+      }
+
+      .feature-icon {
+        font-size: 22px;
+        margin-bottom: 10px;
+        line-height: 1;
+      }
+
+      .feature h3 {
+        margin: 0 0 8px;
+        font-size: 16px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--soft);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      /* ── Docs cards ── */
+      .docs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 14px;
+        text-align: left;
+        margin-top: 24px;
+      }
+
+      .doc-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px 20px;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+        display: block;
+      }
+
+      .doc-card:hover {
+        background: rgba(255, 255, 255, 0.09);
+        border-color: rgba(59, 130, 246, 0.3);
+        text-decoration: none;
+      }
+
+      .doc-card h3 {
+        margin: 0 0 6px;
+        font-size: 15px;
+        color: var(--blue-light);
+      }
+
+      .doc-card p {
+        margin: 0;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          padding: 36px 16px 60px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .hero-buttons {
+          gap: 12px;
+        }
+      }
+
+      /* ── Unused (remove :root was here) ── */
+      .unused-placeholder-x {
+        /* old :root vars removed — defined in site.css */
       }
     </style>
   </head>
 
   <body>
-    <div class="page">
-      <div class="layout">
-        <!-- Sidebar -->
-        <aside class="sidebar">
-          <nav class="breadcrumb" aria-label="Site navigation">
-            <a href="/move-inspection/">Move Inspection</a>
-            <span class="breadcrumb-sep">/</span>
-            <a class="bc-passeo" href="/passeo/">Passeo</a>
-          </nav>
-          <h2>Passeo</h2>
-
-          <nav class="nav">
-            <a class="active" href="/passeo/">Overview</a>
-            <a href="/passeo/getting-started/">Getting Started</a>
-            <a href="/passeo/roles/">Roles</a>
-            <a href="/passeo/sessions/">Sessions</a>
-            <a href="/passeo/faq/">FAQ</a>
-            <a href="/passeo/privacy/">Privacy</a>
-          </nav>
-        </aside>
-
-        <!-- Content -->
-        <main class="content">
-          <section class="card">
-            <h1>Passeo</h1>
-
-            <p>
-              Passeo is a club management and attendance app designed to help
-              organize members, sessions, and participation workflows in a clear
-              and structured way.
-            </p>
-
-            <a class="btn" href="/passeo/getting-started/">Get Started</a>
-          </section>
-
-          <section class="card">
-            <h2>What Passeo helps you do</h2>
-
-            <p>
-              Manage club operations without spreadsheets or scattered messages.
-              Passeo keeps sessions, attendance, and member workflows organized
-              in one place.
-            </p>
-          </section>
-        </main>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" aria-label="Site navigation">
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
       </div>
+    </header>
+
+    <div class="container">
+      <section class="hero">
+        <img
+          class="app-icon"
+          src="/assets/images/passeo/passeo.png"
+          alt="Passeo app icon"
+        />
+        <h1>Passeo</h1>
+        <p class="tagline">Club management and attendance — simplified.</p>
+        <p class="desc">
+          Passeo is designed for clubs, study groups, and recurring
+          organizations that need clear session management, attendance tracking,
+          and organized member workflows. Keep your club running without
+          spreadsheets or scattered messages.
+        </p>
+        <div class="hero-buttons">
+          <a class="btn" href="/passeo/getting-started/">Get Started</a>
+          <a class="btn secondary" href="/passeo/faq/">FAQ</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>What Passeo helps you do</h2>
+        <p class="section-intro">
+          Everything a club needs to stay organized — sessions, attendance,
+          roles, and participation — in one place.
+        </p>
+        <div class="features">
+          <div class="feature">
+            <div class="feature-icon">📅</div>
+            <h3>Session management</h3>
+            <p>
+              Create sessions, set capacity, and give members a clear view of
+              upcoming activities.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">✅</div>
+            <h3>Attendance tracking</h3>
+            <p>
+              Members join and check in. Organizers get reliable records without
+              manual counting.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">👥</div>
+            <h3>Role-based access</h3>
+            <p>
+              Owner, Admin, and Member roles define who manages sessions and who
+              participates.
+            </p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">📊</div>
+            <h3>Participation history</h3>
+            <p>
+              Keep records of past sessions so organizers can review and report
+              over time.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Guides &amp; documentation</h2>
+        <p class="section-intro">
+          Everything you need to set up and run your club with Passeo.
+        </p>
+        <div class="docs-grid">
+          <a class="doc-card" href="/passeo/getting-started/">
+            <h3>Getting Started</h3>
+            <p>
+              Set up your club, invite members, and create your first session.
+            </p>
+          </a>
+          <a class="doc-card" href="/passeo/roles/">
+            <h3>Roles</h3>
+            <p>Understand Owner, Admin, and Member permissions.</p>
+          </a>
+          <a class="doc-card" href="/passeo/sessions/">
+            <h3>Sessions</h3>
+            <p>How sessions, check-ins, capacity, and attendance work.</p>
+          </a>
+          <a class="doc-card" href="/passeo/faq/">
+            <h3>FAQ</h3>
+            <p>Common questions about clubs, sessions, and member access.</p>
+          </a>
+          <a class="doc-card" href="/passeo/privacy/">
+            <h3>Privacy</h3>
+            <p>Privacy policy for Passeo.</p>
+          </a>
+        </div>
+      </section>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/passeo/privacy/">Privacy</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
     </div>
 
     <!-- Vercel Analytics -->
