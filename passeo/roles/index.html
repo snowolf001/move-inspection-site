@@ -1,0 +1,665 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roles | Passeo</title>
+    <meta
+      name="description"
+      content="Learn how owner, admin, and member roles work in Passeo and what each role can do."
+    />
+    <link rel="canonical" href="https://cleanutilityapps.com/passeo/roles/" />
+    <meta name="theme-color" content="#0f62fe" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
+
+    <style>
+      :root {
+        --bg: #f5f8fc;
+        --surface: #ffffff;
+        --surface-soft: #eef4ff;
+        --text: #162033;
+        --muted: #5c6b82;
+        --line: #dbe5f0;
+        --primary: #0f62fe;
+        --primary-dark: #0b4fd1;
+        --success: #178a4b;
+        --shadow: 0 10px 30px rgba(17, 34, 68, 0.08);
+        --radius-xl: 24px;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --max: 1160px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(
+            circle at top right,
+            rgba(15, 98, 254, 0.08),
+            transparent 26%
+          ),
+          linear-gradient(180deg, #f8fbff 0%, var(--bg) 100%);
+        line-height: 1.6;
+      }
+
+      a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        width: min(calc(100% - 32px), var(--max));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        backdrop-filter: blur(12px);
+        background: rgba(248, 251, 255, 0.88);
+        border-bottom: 1px solid rgba(219, 229, 240, 0.8);
+      }
+
+      .site-header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 76px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .brand img {
+        width: 44px;
+        height: 44px;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 8px 20px rgba(15, 98, 254, 0.18);
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .nav a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 0 14px;
+        border-radius: 999px;
+        color: var(--muted);
+        background: transparent;
+        border: 1px solid transparent;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .nav a:hover {
+        color: var(--text);
+        background: #fff;
+        border-color: var(--line);
+        text-decoration: none;
+      }
+
+      .nav a.active {
+        color: #fff;
+        background: var(--primary);
+        border-color: var(--primary);
+        box-shadow: 0 8px 20px rgba(15, 98, 254, 0.2);
+      }
+
+      .hero {
+        padding: 48px 0 24px;
+      }
+
+      .hero-card {
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 24px;
+        background: linear-gradient(135deg, #0f62fe 0%, #2f7cff 100%);
+        color: #fff;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-content {
+        padding: 40px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 34px;
+        padding: 0 12px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.01em;
+      }
+
+      h1 {
+        margin: 16px 0 14px;
+        font-size: clamp(2rem, 4vw, 3.2rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0;
+        font-size: 1.08rem;
+        max-width: 62ch;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .hero-side {
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.08);
+        border-left: 1px solid rgba(255, 255, 255, 0.12);
+        display: flex;
+        align-items: stretch;
+      }
+
+      .hero-panel {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        padding: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      .hero-panel h2 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+      }
+
+      .hero-panel ul {
+        margin: 0;
+        padding-left: 18px;
+        color: rgba(255, 255, 255, 0.92);
+      }
+
+      .section {
+        padding: 24px 0 16px;
+      }
+
+      .section h2 {
+        margin: 0 0 10px;
+        font-size: clamp(1.5rem, 2.4vw, 2rem);
+        letter-spacing: -0.02em;
+      }
+
+      .section-intro {
+        margin: 0 0 22px;
+        color: var(--muted);
+        max-width: 72ch;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+        padding: 24px;
+      }
+
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 1.16rem;
+        letter-spacing: -0.02em;
+      }
+
+      .role-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        margin-bottom: 14px;
+        border-radius: 999px;
+        background: var(--surface-soft);
+        color: var(--primary);
+        font-size: 0.88rem;
+        font-weight: 800;
+      }
+
+      .card p {
+        margin: 0 0 12px;
+        color: var(--muted);
+      }
+
+      .card ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
+      .table-wrap {
+        overflow-x: auto;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 760px;
+      }
+
+      th,
+      td {
+        padding: 14px 16px;
+        text-align: left;
+        vertical-align: top;
+        border-bottom: 1px solid var(--line);
+      }
+
+      th {
+        background: #f8fbff;
+        color: var(--text);
+        font-size: 0.95rem;
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .yes {
+        color: var(--success);
+        font-weight: 700;
+      }
+
+      .maybe {
+        color: #9a6b00;
+        font-weight: 700;
+      }
+
+      .note-box {
+        background: linear-gradient(180deg, #f7fbff 0%, #eef5ff 100%);
+        border: 1px solid #d8e7ff;
+        border-radius: var(--radius-lg);
+        padding: 22px;
+      }
+
+      .note-box strong {
+        color: var(--primary-dark);
+      }
+
+      .cta {
+        padding: 28px 0 60px;
+      }
+
+      .cta-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow);
+        padding: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 18px;
+        border-radius: 999px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+        box-shadow: 0 10px 22px rgba(15, 98, 254, 0.2);
+      }
+
+      .button:hover {
+        background: var(--primary-dark);
+        text-decoration: none;
+      }
+
+      .site-footer {
+        padding: 18px 0 40px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .site-footer a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      @media (max-width: 900px) {
+        .hero-card,
+        .grid-3 {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-side {
+          border-left: none;
+          border-top: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .site-header-inner {
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 14px 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container site-header-inner">
+        <a class="brand" href="/passeo/">
+          <img src="/assets/images/club-app/passeo.png" alt="Passeo icon" />
+          <span>Passeo</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="/passeo/">Overview</a>
+          <a class="active" href="/passeo/roles/">Roles</a>
+          <a href="/passeo/sessions/">Sessions</a>
+          <a href="/passeo/faq/">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-card">
+            <div class="hero-content">
+              <div class="eyebrow">Passeo guide</div>
+              <h1>Roles and permissions</h1>
+              <p>
+                Passeo is designed for clubs and recurring groups. Clear roles
+                help everyone understand who manages the club, who helps operate
+                it, and what regular members can do inside the app.
+              </p>
+            </div>
+
+            <div class="hero-side">
+              <div class="hero-panel">
+                <h2>At a glance</h2>
+                <ul>
+                  <li>
+                    <strong>Owner</strong> controls club setup and high-level
+                    management.
+                  </li>
+                  <li><strong>Admin</strong> helps run the club day to day.</li>
+                  <li>
+                    <strong>Member</strong> joins, checks in, and participates.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Role overview</h2>
+          <p class="section-intro">
+            These are the three main roles in Passeo. Depending on how your club
+            is configured, owners and admins may handle operations together
+            while members focus on joining sessions and tracking participation.
+          </p>
+
+          <div class="grid grid-3">
+            <article class="card">
+              <div class="role-badge">Owner</div>
+              <h3>Club leadership</h3>
+              <p>
+                The owner is the main club manager and typically created the
+                club or is responsible for overall control.
+              </p>
+              <ul>
+                <li>Manage club settings</li>
+                <li>Create and manage sessions</li>
+                <li>Manage members and roles</li>
+                <li>Review activity and reports</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="role-badge">Admin</div>
+              <h3>Operational support</h3>
+              <p>
+                Admins help run the club. They usually handle member management,
+                check-in support, and session operations.
+              </p>
+              <ul>
+                <li>Help manage members</li>
+                <li>Help operate sessions</li>
+                <li>Support attendance workflows</li>
+                <li>Reduce owner workload</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="role-badge">Member</div>
+              <h3>Everyday participation</h3>
+              <p>
+                Members join the club, participate in sessions, and interact
+                with the experience that matters most on a daily basis.
+              </p>
+              <ul>
+                <li>Join with a code</li>
+                <li>View available sessions</li>
+                <li>Check in when eligible</li>
+                <li>Track participation history</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Permission matrix</h2>
+          <p class="section-intro">
+            Exact behavior may evolve over time, but this table reflects the
+            intended role model for the Passeo documentation site.
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Action</th>
+                  <th>Owner</th>
+                  <th>Admin</th>
+                  <th>Member</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Create club</td>
+                  <td class="yes">Yes</td>
+                  <td>—</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Edit club settings</td>
+                  <td class="yes">Yes</td>
+                  <td class="maybe">Usually</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Create sessions</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Manage members</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Adjust participation or credits</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>View available sessions</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                  <td>Join club with a code</td>
+                  <td>—</td>
+                  <td>—</td>
+                  <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                  <td>Check in to a session</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                  <td>View own participation history</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                </tr>
+                <tr>
+                  <td>Export reports</td>
+                  <td class="yes">Yes</td>
+                  <td class="yes">Yes</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Practical guidance</h2>
+          <div class="note-box">
+            <p>
+              <strong>Best practice:</strong> keep the number of admins limited
+              and assign the role only to trusted organizers. Members should
+              have a simple, low-friction experience: join the club, see
+              sessions, and check in without confusion.
+            </p>
+            <p>
+              If your club has only one organizer, the owner role may cover
+              almost everything. If your club is larger, admins can help with
+              day-to-day operations while the owner keeps overall control.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <h2>Next: sessions</h2>
+              <p style="margin: 8px 0 0; color: var(--muted)">
+                See how available sessions, limits, and check-ins work in
+                Passeo.
+              </p>
+            </div>
+            <a class="button" href="/passeo/sessions/">Read sessions guide</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <a href="/passeo/">Passeo documentation</a>
+      </div>
+    </footer>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          const href = link.getAttribute('href') || '';
+          const label = (link.textContent || '').trim();
+
+          trackEvent('homepage_link_click', {
+            link_text: label,
+            destination: href,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Passeo Getting Started | Clean Utility Apps</title>
+
+    <meta
+      name="description"
+      content="Get started with Passeo by setting up your club, inviting members, and preparing your first session."
+    />
+    <meta
+      name="keywords"
+      content="Passeo getting started, club setup, club management app, attendance app, session setup"
+    />
+    <meta name="theme-color" content="#08142b" />
+
+    <meta
+      property="og:title"
+      content="Passeo Getting Started | Clean Utility Apps"
+    />
+    <meta
+      property="og:description"
+      content="Learn how to set up your club, invite members, and prepare your first session with Passeo."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/images/club-app/passeo.png" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Passeo Getting Started | Clean Utility Apps"
+    />
+    <meta
+      name="twitter:description"
+      content="Set up your club, invite members, and prepare your first session with Passeo."
+    />
+    <meta name="twitter:image" content="/assets/images/club-app/passeo.png" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/club-app/passeo.png"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
+
+    <style>
+      :root {
+        --bg-top: #0b1c3a;
+        --bg-bottom: #08142b;
+        --card: rgba(255, 255, 255, 0.06);
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #ffffff;
+        --muted: #94a3b8;
+        --soft: #cbd5e1;
+        --blue: #2563eb;
+        --blue-hover: #1d4ed8;
+        --blue-outline: #3b82f6;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        --max-width: 1180px;
+        --sidebar-width: 250px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+        color: var(--text);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 28px 20px 72px;
+      }
+
+      .topbar {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 26px;
+        color: #dbeafe;
+        font-weight: 600;
+        font-size: 15px;
+      }
+
+      .topbar a {
+        text-decoration: none;
+      }
+
+      .topbar-logo {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 20px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      .sidebar-label {
+        display: inline-block;
+        margin-bottom: 12px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.14);
+        color: #dbeafe;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+      }
+
+      .sidebar-title {
+        margin: 0 0 14px;
+        font-size: 24px;
+      }
+
+      .sidebar-desc {
+        margin: 0 0 18px;
+        color: var(--soft);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .nav {
+        display: grid;
+        gap: 8px;
+      }
+
+      .nav a {
+        display: block;
+        padding: 12px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: transparent;
+        border: 1px solid transparent;
+        font-weight: 600;
+        transition:
+          background 0.18s ease,
+          border-color 0.18s ease,
+          transform 0.18s ease;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+        transform: translateY(-1px);
+      }
+
+      .nav a.active {
+        background: rgba(37, 99, 235, 0.16);
+        border-color: rgba(59, 130, 246, 0.35);
+      }
+
+      .content {
+        min-width: 0;
+      }
+
+      .hero-card,
+      .section-card,
+      .step-card,
+      .tip-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(8px);
+      }
+
+      .hero-card {
+        border-radius: 26px;
+        padding: 28px;
+        margin-bottom: 22px;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-bottom: 16px;
+        color: #dbeafe;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 16px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 14px;
+      }
+
+      h1 {
+        margin: 0 0 14px;
+        font-size: clamp(34px, 5vw, 52px);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+      }
+
+      .hero-text {
+        margin: 0;
+        max-width: 820px;
+        color: var(--soft);
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .section-card {
+        border-radius: 22px;
+        padding: 24px;
+        margin-bottom: 20px;
+      }
+
+      .section-card h2 {
+        margin: 0 0 12px;
+        font-size: 28px;
+      }
+
+      .section-card > p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.75;
+      }
+
+      .steps-grid,
+      .tips-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        margin-top: 18px;
+      }
+
+      .step-card,
+      .tip-card {
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.22);
+        color: #dbeafe;
+        font-weight: 800;
+        margin-bottom: 12px;
+      }
+
+      .step-card h3,
+      .tip-card h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+      }
+
+      .step-card p,
+      .tip-card p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .bullet-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 18px;
+      }
+
+      .bullet {
+        color: var(--soft);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .cta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 22px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 180px;
+        padding: 13px 18px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 700;
+        background: var(--blue);
+        color: #fff;
+        transition:
+          background 0.18s ease,
+          transform 0.18s ease,
+          box-shadow 0.18s ease;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.25);
+      }
+
+      .btn:hover {
+        background: var(--blue-hover);
+        transform: translateY(-1px);
+      }
+
+      .btn.secondary {
+        background: transparent;
+        border: 1px solid var(--blue-outline);
+        color: #dbeafe;
+        box-shadow: none;
+      }
+
+      .btn.secondary:hover {
+        background: rgba(37, 99, 235, 0.12);
+      }
+
+      .footer {
+        margin-top: 44px;
+        padding-top: 22px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: #64748b;
+        font-size: 13px;
+      }
+
+      .footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        margin-bottom: 12px;
+      }
+
+      .footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: #dbeafe;
+      }
+
+      @media (max-width: 900px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .page {
+          padding: 24px 16px 56px;
+        }
+
+        .hero-card,
+        .section-card,
+        .step-card,
+        .tip-card,
+        .sidebar {
+          padding: 18px;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .cta-row {
+          gap: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <a href="/">
+          <img
+            src="/assets/images/club-app/passeo.png"
+            alt="Passeo logo"
+            class="topbar-logo"
+          />
+        </a>
+        <a href="/">Clean Utility Apps</a>
+      </div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="sidebar-label">Documentation</div>
+          <h2 class="sidebar-title">Passeo</h2>
+          <p class="sidebar-desc">
+            Learn how Passeo helps organize clubs, sessions, attendance, and
+            member workflows.
+          </p>
+
+          <nav class="nav">
+            <a href="/passeo/">Overview</a>
+            <a class="active" href="/passeo/getting-started/"
+              >Getting Started</a
+            >
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a href="/passeo/faq/">FAQ</a>
+          </nav>
+        </aside>
+
+        <main class="content">
+          <section class="hero-card">
+            <a class="back-link" href="/passeo/">← Back to Passeo</a>
+
+            <div class="eyebrow">Start with the basics</div>
+
+            <h1>Getting Started</h1>
+
+            <p class="hero-text">
+              Start by setting up your club, inviting members, and preparing
+              your first session. Passeo is designed to keep the setup simple so
+              you can begin using it quickly and add more structure over time.
+            </p>
+
+            <div class="cta-row">
+              <a class="btn" href="/passeo/roles/">View Roles</a>
+              <a class="btn secondary" href="/passeo/sessions/"
+                >View Sessions</a
+              >
+            </div>
+          </section>
+
+          <section class="section-card">
+            <h2>Basic setup flow</h2>
+            <p>
+              A simple setup path helps clubs get started without unnecessary
+              complexity.
+            </p>
+
+            <div class="steps-grid">
+              <article class="step-card">
+                <div class="step-number">1</div>
+                <h3>Create your club</h3>
+                <p>
+                  Set up the club with a name and the basic structure you want
+                  members to use.
+                </p>
+              </article>
+
+              <article class="step-card">
+                <div class="step-number">2</div>
+                <h3>Invite members</h3>
+                <p>
+                  Add members directly or share a join method so people can join
+                  the club more easily.
+                </p>
+              </article>
+
+              <article class="step-card">
+                <div class="step-number">3</div>
+                <h3>Assign roles</h3>
+                <p>
+                  Decide who should be owner, admin, host, or member based on
+                  how your club operates.
+                </p>
+              </article>
+
+              <article class="step-card">
+                <div class="step-number">4</div>
+                <h3>Create your first session</h3>
+                <p>
+                  Add a session so members can join, check in, and begin using
+                  the app in a real workflow.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <section class="section-card">
+            <h2>What to set up first</h2>
+            <p>
+              Focus on the essentials first, then refine your process after your
+              club begins using the app.
+            </p>
+
+            <div class="bullet-list">
+              <div class="bullet">• Club name and basic club identity</div>
+              <div class="bullet">• Member join method or join code flow</div>
+              <div class="bullet">• Role assignments for organizers</div>
+              <div class="bullet">• Session creation workflow</div>
+              <div class="bullet">• Attendance and participation habits</div>
+            </div>
+          </section>
+
+          <section class="section-card">
+            <h2>Helpful tips</h2>
+
+            <div class="tips-grid">
+              <article class="tip-card">
+                <h3>Keep the first setup simple</h3>
+                <p>
+                  Do not try to define every rule at the beginning. Start with
+                  the essentials and improve the workflow after real use.
+                </p>
+              </article>
+
+              <article class="tip-card">
+                <h3>Use roles clearly</h3>
+                <p>
+                  Clear role boundaries make it easier to manage sessions,
+                  attendance, and member actions without confusion.
+                </p>
+              </article>
+
+              <article class="tip-card">
+                <h3>Test one real session</h3>
+                <p>
+                  Running one real or trial session is often the fastest way to
+                  confirm that your setup works for your club.
+                </p>
+              </article>
+            </div>
+          </section>
+
+          <footer class="footer">
+            <div class="footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/roles/">Roles</a>
+              <a href="/passeo/sessions/">Sessions</a>
+              <a href="/passeo/faq/">FAQ</a>
+            </div>
+            <div>© 2026 Clean Utility Apps</div>
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          const href = link.getAttribute('href') || '';
+          const label = (link.textContent || '').trim();
+
+          trackEvent('passeo_link_click', {
+            link_text: label,
+            destination: href,
+            page: window.location.pathname,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

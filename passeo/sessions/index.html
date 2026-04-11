@@ -1,0 +1,651 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sessions · Passeo</title>
+    <meta
+      name="description"
+      content="Learn how sessions work in Passeo, including joining, check-in, attendance, participation tracking, and session management."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/club-app/passeo.png"
+    />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
+
+    <style>
+      :root {
+        --bg: #f7fbff;
+        --surface: #ffffff;
+        --surface-soft: #eef6ff;
+        --text: #153047;
+        --text-soft: #4e6b84;
+        --line: #d9e8f5;
+        --primary: #2a7fff;
+        --primary-dark: #1767dc;
+        --shadow: 0 10px 30px rgba(35, 94, 168, 0.08);
+        --radius-xl: 24px;
+        --radius-lg: 18px;
+        --radius-md: 14px;
+        --max: 1120px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(42, 127, 255, 0.1),
+            transparent 28%
+          ),
+          linear-gradient(180deg, #f8fbff 0%, #f4f9ff 100%);
+        color: var(--text);
+        line-height: 1.65;
+      }
+
+      a {
+        color: var(--primary-dark);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .container {
+        width: min(var(--max), calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(12px);
+        background: rgba(247, 251, 255, 0.85);
+        border-bottom: 1px solid rgba(217, 232, 245, 0.9);
+      }
+
+      .header-inner {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.05rem;
+      }
+
+      .brand img {
+        width: 40px;
+        height: 40px;
+        display: block;
+        border-radius: 10px;
+        object-fit: cover;
+        box-shadow: var(--shadow);
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .nav a {
+        padding: 10px 14px;
+        border-radius: 999px;
+        color: var(--text-soft);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .nav a.active,
+      .nav a:hover {
+        background: var(--surface-soft);
+        color: var(--primary-dark);
+      }
+
+      .hero {
+        padding: 56px 0 26px;
+      }
+
+      .hero-card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.96),
+          rgba(238, 246, 255, 0.96)
+        );
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        padding: 36px;
+        box-shadow: var(--shadow);
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #eaf3ff;
+        color: var(--primary-dark);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 16px 0 14px;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: 760px;
+        font-size: 1.08rem;
+        color: var(--text-soft);
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 24px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 46px;
+        padding: 0 16px;
+        border-radius: 12px;
+        font-weight: 700;
+        text-decoration: none;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        color: var(--text);
+      }
+
+      .btn-primary {
+        background: var(--primary);
+        border-color: var(--primary);
+        color: #fff;
+      }
+
+      .btn-primary:hover {
+        background: var(--primary-dark);
+        border-color: var(--primary-dark);
+        text-decoration: none;
+      }
+
+      .btn:hover {
+        text-decoration: none;
+      }
+
+      .page {
+        padding: 10px 0 72px;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 96px;
+        background: rgba(255, 255, 255, 0.88);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        padding: 18px;
+        box-shadow: var(--shadow);
+      }
+
+      .sidebar h2 {
+        margin: 0 0 12px;
+        font-size: 1rem;
+      }
+
+      .toc {
+        display: grid;
+        gap: 8px;
+      }
+
+      .toc a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 12px;
+        color: var(--text-soft);
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .toc a:hover {
+        background: var(--surface-soft);
+        color: var(--primary-dark);
+      }
+
+      .content {
+        display: grid;
+        gap: 20px;
+      }
+
+      .section {
+        background: rgba(255, 255, 255, 0.92);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        padding: 28px;
+        box-shadow: var(--shadow);
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+        letter-spacing: -0.02em;
+      }
+
+      .section p {
+        margin: 0 0 14px;
+        color: var(--text-soft);
+      }
+
+      .section p:last-child,
+      .section ul:last-child,
+      .section ol:last-child {
+        margin-bottom: 0;
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .mini-card {
+        background: var(--surface-soft);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-lg);
+        padding: 18px;
+      }
+
+      .mini-card h3 {
+        margin: 0 0 8px;
+        font-size: 1.02rem;
+      }
+
+      .mini-card p {
+        margin: 0;
+        font-size: 0.96rem;
+      }
+
+      .steps,
+      .bullets {
+        padding-left: 20px;
+        color: var(--text-soft);
+      }
+
+      .steps li,
+      .bullets li {
+        margin: 10px 0;
+      }
+
+      .callout {
+        margin-top: 16px;
+        background: #f3f8ff;
+        border: 1px solid #d8e8fb;
+        border-left: 4px solid var(--primary);
+        border-radius: 16px;
+        padding: 16px 18px;
+        color: var(--text-soft);
+      }
+
+      .footer {
+        padding: 24px 0 48px;
+        color: var(--text-soft);
+        font-size: 0.95rem;
+      }
+
+      .footer-card {
+        background: rgba(255, 255, 255, 0.85);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px 20px;
+      }
+
+      @media (max-width: 920px) {
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .sidebar {
+          position: static;
+        }
+
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero-card,
+        .section {
+          padding: 22px;
+        }
+
+        .header-inner {
+          min-height: auto;
+          padding: 12px 0;
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .nav {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="brand" href="/passeo/">
+          <img src="/assets/images/club-app/passeo.png" alt="Passeo icon" />
+          <span>Passeo</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="/passeo/">Overview</a>
+          <a href="/passeo/roles/">Roles</a>
+          <a class="active" href="/passeo/sessions/">Sessions</a>
+          <a href="/passeo/faq/">FAQ</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="eyebrow">Passeo Guide</div>
+          <h1>How sessions work in Passeo</h1>
+          <p>
+            Sessions are the center of club activity in Passeo. They help
+            organizers publish upcoming activities, let members join with clear
+            expectations, and make attendance and participation easier to track.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#join-and-check-in"
+              >Join & Check in</a
+            >
+            <a class="btn" href="#managing-sessions">Managing sessions</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="page">
+      <div class="container layout">
+        <aside class="sidebar" aria-label="On this page">
+          <h2>On this page</h2>
+          <nav class="toc">
+            <a href="#what-is-a-session">What is a session?</a>
+            <a href="#join-and-check-in">Join and check in</a>
+            <a href="#attendance-and-participation"
+              >Attendance and participation</a
+            >
+            <a href="#capacity-and-locking">Capacity and locking</a>
+            <a href="#past-sessions">Past sessions</a>
+            <a href="#managing-sessions">Managing sessions</a>
+          </nav>
+        </aside>
+
+        <div class="content">
+          <section id="what-is-a-session" class="section">
+            <h2>What is a session?</h2>
+            <p>
+              A session is a scheduled club activity inside Passeo. It can
+              represent a weekly meetup, a lesson, a volunteer event, a
+              practice, or any recurring or one-time gathering your club wants
+              to organize.
+            </p>
+            <p>
+              Each session can include details such as title, time, location,
+              available spots, and attendance status. This gives members one
+              clear place to understand what is happening and whether they can
+              participate.
+            </p>
+
+            <div class="grid-2">
+              <div class="mini-card">
+                <h3>For members</h3>
+                <p>
+                  See upcoming activities, join eligible sessions, and track
+                  whether you have checked in.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>For organizers</h3>
+                <p>
+                  Create structure, limit capacity when needed, and keep
+                  attendance records more consistent.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="join-and-check-in" class="section">
+            <h2>Join and check in</h2>
+            <p>
+              Joining a session and checking in are related, but they are not
+              always the same action. A member may join a session ahead of time,
+              and later check in when they actually attend.
+            </p>
+
+            <ol class="steps">
+              <li>Open the session details page.</li>
+              <li>
+                Review the time, location, and any participation requirements.
+              </li>
+              <li>Join the session if it is available and you are eligible.</li>
+              <li>
+                When the event happens, check in to record actual attendance.
+              </li>
+            </ol>
+
+            <div class="callout">
+              Joining shows intent to attend. Check-in records actual
+              participation. This helps clubs keep their session history cleaner
+              and more accurate.
+            </div>
+          </section>
+
+          <section id="attendance-and-participation" class="section">
+            <h2>Attendance and participation</h2>
+            <p>
+              Passeo can distinguish between headcount and participation.
+              Depending on how your club is configured, a session may track who
+              attended, how many times a member participated, or how many
+              credits were used.
+            </p>
+
+            <div class="grid-2">
+              <div class="mini-card">
+                <h3>Check-ins</h3>
+                <p>
+                  Useful when the club mainly wants a record of who showed up.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Participation</h3>
+                <p>
+                  Useful when a club wants stronger reporting for credits,
+                  contribution, or repeated attendance.
+                </p>
+              </div>
+            </div>
+
+            <p style="margin-top: 18px">
+              This structure makes session reporting more useful for organizers
+              while keeping the member flow simple.
+            </p>
+          </section>
+
+          <section id="capacity-and-locking" class="section">
+            <h2>Capacity and locking</h2>
+            <p>
+              Some sessions may have a maximum number of attendees. When a
+              session reaches that limit, Passeo can lock further joins so
+              organizers do not need to manage overbooking manually.
+            </p>
+
+            <ul class="bullets">
+              <li>Open sessions allow eligible members to join.</li>
+              <li>Locked or full sessions prevent additional joins.</li>
+              <li>
+                Members can see whether a session is still available before they
+                try to join.
+              </li>
+            </ul>
+
+            <div class="callout">
+              This is especially helpful for classes, limited-space activities,
+              and any club event where capacity matters.
+            </div>
+          </section>
+
+          <section id="past-sessions" class="section">
+            <h2>Past sessions</h2>
+            <p>
+              Passeo can keep a record of previous sessions so organizers can
+              review attendance history and participation patterns over time.
+            </p>
+            <p>
+              Past sessions are useful for reporting, credit adjustments,
+              reconciliation, and backfilling attendance when a club needs to
+              correct records.
+            </p>
+
+            <div class="grid-2">
+              <div class="mini-card">
+                <h3>For organizers</h3>
+                <p>
+                  Review historical attendance, correct records when
+                  appropriate, and export data if needed.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>For members</h3>
+                <p>
+                  See whether a session was attended and avoid confusion around
+                  repeat check-ins.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section id="managing-sessions" class="section">
+            <h2>Managing sessions</h2>
+            <p>
+              Hosts, admins, and owners may have permission to manage sessions,
+              depending on club settings. Common management actions can include
+              creating sessions, editing details, setting capacity, and
+              reviewing attendee history.
+            </p>
+
+            <ul class="bullets">
+              <li>Create a new session for an upcoming activity</li>
+              <li>Update time, location, or session notes</li>
+              <li>Control capacity and availability</li>
+              <li>Review attendees and participation totals</li>
+              <li>Use historical records to support reporting</li>
+            </ul>
+
+            <div class="callout">
+              Exact permissions depend on club role configuration. See
+              <a href="/passeo/roles/">Roles</a> for a role-by-role overview.
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-card">
+          Passeo helps clubs organize members, sessions, attendance, and
+          participation with a cleaner and simpler workflow.
+        </div>
+      </div>
+    </footer>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          const href = link.getAttribute('href') || '';
+          const label = (link.textContent || '').trim();
+
+          trackEvent('homepage_link_click', {
+            link_text: label,
+            destination: href,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

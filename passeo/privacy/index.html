@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passeo Privacy Policy</title>
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        margin: 0;
+        padding: 24px;
+        line-height: 1.6;
+        color: #222;
+        background: #fff;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1 {
+        margin-bottom: 8px;
+      }
+      h2 {
+        margin-top: 28px;
+      }
+      p,
+      li {
+        margin: 12px 0;
+      }
+      .muted {
+        color: #666;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Privacy Policy for Passeo</h1>
+      <p class="muted">Last updated: April 2026</p>
+
+      <p>
+        Passeo is a club session and attendance management app designed to help
+        users manage sessions, track participation, and manage credits.
+      </p>
+
+      <h2>Information We Collect</h2>
+      <p>
+        Passeo may collect limited information needed to provide app
+        functionality and improve the product experience.
+      </p>
+      <p>This may include:</p>
+      <ul>
+        <li>Membership and session-related data used within the app</li>
+        <li>Attendance and participation records</li>
+        <li>App preferences and locally stored settings</li>
+        <li>
+          Limited usage and analytics data, such as feature usage and basic
+          interaction events
+        </li>
+      </ul>
+
+      <h2>How We Use Information</h2>
+      <p>
+        Information is used to support core app features such as check-ins,
+        attendance tracking, reporting, and general product improvement.
+      </p>
+
+      <h2>Analytics and Tracking</h2>
+      <p>
+        Passeo and related website pages may use limited analytics or tracking
+        tools to understand app and website usage, improve performance, and
+        enhance the user experience.
+      </p>
+      <p>
+        We do not intentionally collect sensitive personal information for
+        advertising purposes.
+      </p>
+
+      <h2>Data Sharing</h2>
+      <p>
+        We do not sell personal data. Information may be processed by service
+        providers that support app functionality, hosting, analytics, or related
+        technical operations.
+      </p>
+
+      <h2>Data Storage</h2>
+      <p>
+        Some data may be stored locally on your device, and some data may be
+        processed by backend services required for app functionality.
+      </p>
+
+      <h2>Contact</h2>
+      <p>If you have questions about this Privacy Policy, please contact:</p>
+      <p>cleanutilityapps@gmail.com</p>
+    </div>
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          const href = link.getAttribute('href') || '';
+          const label = (link.textContent || '').trim();
+
+          trackEvent('homepage_link_click', {
+            link_text: label,
+            destination: href,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
