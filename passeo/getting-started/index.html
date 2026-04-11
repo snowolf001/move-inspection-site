@@ -115,18 +115,52 @@
         border-color: rgba(59, 130, 246, 0.3);
       }
 
-      .sidebar-back {
-        display: block;
-        margin-bottom: 14px;
-        padding-bottom: 14px;
+      .breadcrumb {
+        display: flex;
+        align-items: center;
+        gap: 2px;
+        margin-bottom: 16px;
+        padding-bottom: 16px;
         border-bottom: 1px solid var(--border);
+        flex-wrap: wrap;
+      }
+
+      .breadcrumb-sep {
+        color: rgba(255, 255, 255, 0.18);
         font-size: 13px;
+        padding: 0 2px;
+        user-select: none;
+      }
+
+      .breadcrumb a {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
         color: #94a3b8;
+        text-decoration: none;
+        border: 1px solid transparent;
+        margin-bottom: 0;
+        background: transparent;
+      }
+
+      .breadcrumb a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+        color: #dbeafe;
         text-decoration: none;
       }
 
-      .sidebar-back:hover {
+      .breadcrumb a.bc-passeo {
         color: #dbeafe;
+        font-weight: 600;
+      }
+
+      .breadcrumb a.bc-passeo:hover {
+        background: rgba(37, 99, 235, 0.12);
+        border-color: rgba(59, 130, 246, 0.25);
       }
 
       .content { min-width: 0; display: grid; gap: 20px; }
@@ -268,7 +302,11 @@
     <div class="page">
       <div class="layout">
         <aside class="sidebar">
-          <a class="sidebar-back" href="/">u{2190} All apps</a>
+          <nav class="breadcrumb" aria-label="Site navigation">
+            <a href="/">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a class="bc-passeo" href="/passeo/">Passeo</a>
+          </nav>
           <h2>Passeo</h2>
           <nav class="nav">
             <a href="/passeo/">Overview</a>
