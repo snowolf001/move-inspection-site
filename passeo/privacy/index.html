@@ -1,9 +1,16 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Passeo Privacy Policy</title>
+    <title>Privacy Policy | Passeo</title>
+    <meta
+      name="description"
+      content="Privacy Policy for Passeo, a club session and attendance management app."
+    />
+    <link rel="canonical" href="https://cleanutilityapps.com/passeo/privacy/" />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
     <!-- Google Analytics -->
     <script
       async
@@ -14,116 +21,261 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
-      gtag('config', 'G-LBCQ8VL0TB');
+      gtag("js", new Date());
+      gtag("config", "G-LBCQ8VL0TB");
     </script>
+
     <style>
+      :root {
+        --bg-top: #0b1c3a;
+        --bg-bottom: #08142b;
+        --card: rgba(255, 255, 255, 0.06);
+        --card-inner: rgba(255, 255, 255, 0.04);
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #ffffff;
+        --soft: #cbd5e1;
+        --muted: #94a3b8;
+        --blue: #2563eb;
+        --blue-hover: #1d4ed8;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        --max-width: 1180px;
+        --sidebar-width: 250px;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+
       body {
-        font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         margin: 0;
-        padding: 24px;
-        line-height: 1.6;
-        color: #222;
-        background: #fff;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+        color: var(--text);
+        line-height: 1.65;
+        min-height: 100vh;
       }
-      .container {
-        max-width: 800px;
+
+      a { color: #dbeafe; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+
+      .page {
+        max-width: var(--max-width);
         margin: 0 auto;
+        padding: 28px 20px 72px;
       }
+
+      .layout {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .sidebar {
+        position: sticky;
+        top: 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .sidebar h2 { margin: 0 0 16px; font-size: 20px; }
+
+      .nav a {
+        display: block;
+        padding: 10px 12px;
+        border-radius: 10px;
+        color: #dbeafe;
+        margin-bottom: 6px;
+        font-weight: 600;
+        border: 1px solid transparent;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
+        text-decoration: none;
+      }
+
+      .nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
+      }
+
+      .content { min-width: 0; display: grid; gap: 20px; }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
+      }
+
       h1 {
-        margin-bottom: 8px;
+        margin: 0 0 12px;
+        font-size: clamp(30px, 4vw, 42px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
       }
-      h2 {
-        margin-top: 28px;
-      }
-      p,
-      li {
-        margin: 12px 0;
-      }
-      .muted {
-        color: #666;
+
+      h2 { margin: 0 0 12px; font-size: 22px; letter-spacing: -0.01em; }
+
+      p { color: var(--soft); line-height: 1.75; margin: 0 0 12px; }
+      p:last-child { margin-bottom: 0; }
+
+      .meta {
+        color: var(--muted);
         font-size: 14px;
+        margin: 0 0 16px;
+      }
+
+      ul {
+        color: var(--soft);
+        padding-left: 22px;
+        margin: 8px 0 0;
+      }
+
+      ul li { margin: 8px 0; }
+
+      .contact-link {
+        color: #93c5fd;
+      }
+
+      .footer {
+        margin-top: 12px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: #64748b;
+        font-size: 13px;
+      }
+
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; }
+      }
+
+      @media (max-width: 640px) {
+        .page { padding: 20px 16px 56px; }
+        .card { padding: 20px; }
       }
     </style>
   </head>
+
   <body>
-    <div class="container">
-      <h1>Privacy Policy for Passeo</h1>
-      <p class="muted">Last updated: April 2026</p>
+    <div class="page">
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Passeo</h2>
+          <nav class="nav">
+            <a href="/passeo/">Overview</a>
+            <a href="/passeo/getting-started/">Getting Started</a>
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a href="/passeo/faq/">FAQ</a>
+            <a class="active" href="/passeo/privacy/">Privacy</a>
+          </nav>
+        </aside>
 
-      <p>
-        Passeo is a club session and attendance management app designed to help
-        users manage sessions, track participation, and manage credits.
-      </p>
+        <main class="content">
+          <section class="card">
+            <h1>Privacy Policy for Passeo</h1>
+            <p class="meta">Last updated: April 2026</p>
+            <p>
+              Passeo is a club session and attendance management app designed to
+              help users manage sessions, track participation, and manage
+              credits.
+            </p>
+          </section>
 
-      <h2>Information We Collect</h2>
-      <p>
-        Passeo may collect limited information needed to provide app
-        functionality and improve the product experience.
-      </p>
-      <p>This may include:</p>
-      <ul>
-        <li>Membership and session-related data used within the app</li>
-        <li>Attendance and participation records</li>
-        <li>App preferences and locally stored settings</li>
-        <li>
-          Limited usage and analytics data, such as feature usage and basic
-          interaction events
-        </li>
-      </ul>
+          <section class="card">
+            <h2>Information We Collect</h2>
+            <p>
+              Passeo may collect limited information needed to provide app
+              functionality and improve the product experience.
+            </p>
+            <p>This may include:</p>
+            <ul>
+              <li>Membership and session-related data used within the app</li>
+              <li>Attendance and participation records</li>
+              <li>App preferences and locally stored settings</li>
+              <li>
+                Limited usage and analytics data, such as feature usage and
+                basic interaction events
+              </li>
+            </ul>
+          </section>
 
-      <h2>How We Use Information</h2>
-      <p>
-        Information is used to support core app features such as check-ins,
-        attendance tracking, reporting, and general product improvement.
-      </p>
+          <section class="card">
+            <h2>How We Use Information</h2>
+            <p>
+              Information is used to support core app features such as
+              check-ins, attendance tracking, reporting, and general product
+              improvement.
+            </p>
+          </section>
 
-      <h2>Analytics and Tracking</h2>
-      <p>
-        Passeo and related website pages may use limited analytics or tracking
-        tools to understand app and website usage, improve performance, and
-        enhance the user experience.
-      </p>
-      <p>
-        We do not intentionally collect sensitive personal information for
-        advertising purposes.
-      </p>
+          <section class="card">
+            <h2>Analytics and Tracking</h2>
+            <p>
+              Passeo and related website pages may use limited analytics or
+              tracking tools to understand app and website usage, improve
+              performance, and enhance the user experience.
+            </p>
+            <p>
+              We do not intentionally collect sensitive personal information for
+              advertising purposes.
+            </p>
+          </section>
 
-      <h2>Data Sharing</h2>
-      <p>
-        We do not sell personal data. Information may be processed by service
-        providers that support app functionality, hosting, analytics, or related
-        technical operations.
-      </p>
+          <section class="card">
+            <h2>Data Sharing</h2>
+            <p>
+              We do not sell personal data. Information may be processed by
+              service providers that support app functionality, hosting,
+              analytics, or related technical operations.
+            </p>
+          </section>
 
-      <h2>Data Storage</h2>
-      <p>
-        Some data may be stored locally on your device, and some data may be
-        processed by backend services required for app functionality.
-      </p>
+          <section class="card">
+            <h2>Data Storage</h2>
+            <p>
+              Some data may be stored locally on your device, and some data may
+              be processed by backend services required for app functionality.
+            </p>
+          </section>
 
-      <h2>Contact</h2>
-      <p>If you have questions about this Privacy Policy, please contact:</p>
-      <p>cleanutilityapps@gmail.com</p>
+          <section class="card">
+            <h2>Contact</h2>
+            <p>
+              If you have questions about this Privacy Policy, please contact:
+            </p>
+            <p>
+              <a class="contact-link" href="mailto:cleanutilityapps@gmail.com"
+                >cleanutilityapps@gmail.com</a
+              >
+            </p>
+          </section>
+
+          <footer class="footer">© 2026 Clean Utility Apps</footer>
+        </main>
+      </div>
     </div>
+
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script>
       function trackEvent(eventName, params = {}) {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, params);
+        if (typeof gtag === "function") {
+          gtag("event", eventName, params);
         }
       }
 
-      document.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', function () {
-          const href = link.getAttribute('href') || '';
-          const label = (link.textContent || '').trim();
-
-          trackEvent('homepage_link_click', {
-            link_text: label,
-            destination: href,
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function () {
+          trackEvent("passeo_link_click", {
+            text: link.textContent.trim(),
+            href: link.getAttribute("href"),
           });
         });
       });

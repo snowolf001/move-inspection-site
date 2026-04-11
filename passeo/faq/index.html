@@ -1,9 +1,9 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FAQ · Passeo</title>
+    <title>FAQ | Passeo</title>
     <meta
       name="description"
       content="Frequently asked questions about Passeo, including club setup, roles, sessions, attendance, participation, and member access."
@@ -20,410 +20,200 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag('js', new Date());
-      gtag('config', 'G-LBCQ8VL0TB');
+      gtag("js", new Date());
+      gtag("config", "G-LBCQ8VL0TB");
     </script>
 
     <style>
       :root {
-        --bg: #f7fbff;
-        --surface: #ffffff;
-        --surface-soft: #eef6ff;
-        --text: #153047;
-        --text-soft: #4e6b84;
-        --line: #d9e8f5;
-        --primary: #2a7fff;
-        --primary-dark: #1767dc;
-        --shadow: 0 10px 30px rgba(35, 94, 168, 0.08);
-        --radius-xl: 24px;
-        --radius-lg: 18px;
-        --radius-md: 14px;
-        --max: 1120px;
+        --bg-top: #0b1c3a;
+        --bg-bottom: #08142b;
+        --card: rgba(255, 255, 255, 0.06);
+        --card-inner: rgba(255, 255, 255, 0.04);
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #ffffff;
+        --soft: #cbd5e1;
+        --muted: #94a3b8;
+        --blue: #2563eb;
+        --blue-hover: #1d4ed8;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        --max-width: 1180px;
+        --sidebar-width: 250px;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
 
       body {
         margin: 0;
-        font-family:
-          Inter,
-          ui-sans-serif,
-          system-ui,
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          sans-serif;
-        background:
-          radial-gradient(
-            circle at top left,
-            rgba(42, 127, 255, 0.1),
-            transparent 28%
-          ),
-          linear-gradient(180deg, #f8fbff 0%, #f4f9ff 100%);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
         color: var(--text);
         line-height: 1.65;
+        min-height: 100vh;
       }
 
-      a {
-        color: var(--primary-dark);
-        text-decoration: none;
-      }
-
-      a:hover {
-        text-decoration: underline;
-      }
-
-      .container {
-        width: min(1120px, calc(100% - 32px));
-        margin: 0 auto;
-      }
-
-      .site-header {
-        position: sticky;
-        top: 0;
-        z-index: 50;
-        backdrop-filter: blur(12px);
-        background: rgba(247, 251, 255, 0.85);
-        border-bottom: 1px solid rgba(217, 232, 245, 0.9);
-      }
-
-      .header-inner {
-        min-height: 72px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 16px;
-      }
-
-      .brand {
-        display: inline-flex;
-        align-items: center;
-        gap: 12px;
-        color: var(--text);
-        text-decoration: none;
-        font-weight: 700;
-        font-size: 1.05rem;
-      }
-
-      .brand img {
-        width: 40px;
-        height: 40px;
-        display: block;
-        border-radius: 10px;
-        object-fit: cover;
-        box-shadow: var(--shadow);
-      }
-
-      .nav {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 10px;
-      }
-
-      .nav a {
-        padding: 10px 14px;
-        border-radius: 999px;
-        color: var(--text-soft);
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-      }
-
-      .nav a.active,
-      .nav a:hover {
-        background: var(--surface-soft);
-        color: var(--primary-dark);
-      }
-
-      .hero {
-        padding: 56px 0 26px;
-      }
-
-      .hero-card {
-        background: linear-gradient(
-          180deg,
-          rgba(255, 255, 255, 0.96),
-          rgba(238, 246, 255, 0.96)
-        );
-        border: 1px solid var(--line);
-        border-radius: 28px;
-        padding: 36px;
-        box-shadow: var(--shadow);
-      }
-
-      .eyebrow {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        background: #eaf3ff;
-        color: var(--primary-dark);
-        padding: 8px 12px;
-        border-radius: 999px;
-        font-size: 0.84rem;
-        font-weight: 700;
-        letter-spacing: 0.02em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 16px 0 14px;
-        font-size: clamp(2rem, 4vw, 3.3rem);
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-      }
-
-      .hero p {
-        margin: 0;
-        max-width: 760px;
-        font-size: 1.08rem;
-        color: var(--text-soft);
-      }
-
-      .hero-actions {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 24px;
-      }
-
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 46px;
-        padding: 0 16px;
-        border-radius: 12px;
-        font-weight: 700;
-        text-decoration: none;
-        border: 1px solid var(--line);
-        background: var(--surface);
-        color: var(--text);
-      }
-
-      .btn-primary {
-        background: var(--primary);
-        border-color: var(--primary);
-        color: #fff;
-      }
-
-      .btn-primary:hover {
-        background: var(--primary-dark);
-        border-color: var(--primary-dark);
-        text-decoration: none;
-      }
-
-      .btn:hover {
-        text-decoration: none;
-      }
+      a { color: #dbeafe; text-decoration: none; }
+      a:hover { text-decoration: underline; }
 
       .page {
-        padding: 10px 0 72px;
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 28px 20px 72px;
       }
 
       .layout {
         display: grid;
-        grid-template-columns: 280px minmax(0, 1fr);
+        grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
         gap: 24px;
         align-items: start;
       }
 
       .sidebar {
         position: sticky;
-        top: 96px;
-        background: rgba(255, 255, 255, 0.88);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-xl);
-        padding: 18px;
-        box-shadow: var(--shadow);
+        top: 20px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 20px;
       }
 
-      .sidebar h2 {
-        margin: 0 0 12px;
-        font-size: 1rem;
-      }
+      .sidebar h2 { margin: 0 0 16px; font-size: 20px; }
 
-      .toc {
-        display: grid;
-        gap: 8px;
-      }
-
-      .toc a {
+      .nav a {
         display: block;
         padding: 10px 12px;
-        border-radius: 12px;
-        color: var(--text-soft);
+        border-radius: 10px;
+        color: #dbeafe;
+        margin-bottom: 6px;
         font-weight: 600;
+        border: 1px solid transparent;
+      }
+
+      .nav a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: var(--border);
         text-decoration: none;
       }
 
-      .toc a:hover {
-        background: var(--surface-soft);
-        color: var(--primary-dark);
+      .nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
       }
 
-      .content {
-        display: grid;
-        gap: 20px;
+      .content { min-width: 0; display: grid; gap: 20px; }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 24px;
       }
 
-      .section {
-        background: rgba(255, 255, 255, 0.92);
-        border: 1px solid var(--line);
-        border-radius: var(--radius-xl);
-        padding: 28px;
-        box-shadow: var(--shadow);
-      }
-
-      .section h2 {
-        margin: 0 0 14px;
-        font-size: 1.5rem;
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(32px, 5vw, 46px);
+        line-height: 1.08;
         letter-spacing: -0.02em;
       }
 
-      details {
-        border: 1px solid var(--line);
-        background: var(--surface);
-        border-radius: 16px;
-        padding: 0;
-        overflow: hidden;
+      h2 { margin: 0 0 16px; font-size: 24px; letter-spacing: -0.01em; }
+
+      p { color: var(--soft); line-height: 1.7; margin: 0 0 12px; }
+      p:last-child { margin-bottom: 0; }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
       }
 
-      details + details {
-        margin-top: 14px;
+      details {
+        border: 1px solid var(--border);
+        background: var(--card-inner);
+        border-radius: 14px;
+        overflow: hidden;
+        margin-bottom: 12px;
       }
+
+      details:last-of-type { margin-bottom: 0; }
 
       summary {
         list-style: none;
         cursor: pointer;
-        padding: 18px 20px;
+        padding: 16px 20px;
         font-weight: 700;
         color: var(--text);
-        background: linear-gradient(180deg, #ffffff, #f8fbff);
+        background: rgba(255, 255, 255, 0.03);
       }
 
-      summary::-webkit-details-marker {
-        display: none;
-      }
+      summary::-webkit-details-marker { display: none; }
 
       details[open] summary {
-        border-bottom: 1px solid var(--line);
-        background: var(--surface-soft);
+        border-bottom: 1px solid var(--border);
+        background: rgba(37, 99, 235, 0.1);
       }
 
       .answer {
-        padding: 16px 20px 20px;
-        color: var(--text-soft);
+        padding: 16px 20px;
       }
 
-      .answer p {
-        margin: 0 0 12px;
-      }
-
-      .answer p:last-child {
-        margin-bottom: 0;
-      }
+      .answer p { color: var(--soft); }
+      .answer a { color: #93c5fd; }
 
       .footer {
-        padding: 24px 0 48px;
-        color: var(--text-soft);
-        font-size: 0.95rem;
+        margin-top: 12px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        color: #64748b;
+        font-size: 13px;
       }
 
-      .footer-card {
-        background: rgba(255, 255, 255, 0.85);
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px 20px;
-      }
-
-      @media (max-width: 920px) {
-        .layout {
-          grid-template-columns: 1fr;
-        }
-
-        .sidebar {
-          position: static;
-        }
+      @media (max-width: 900px) {
+        .layout { grid-template-columns: 1fr; }
+        .sidebar { position: static; }
       }
 
       @media (max-width: 640px) {
-        .hero-card,
-        .section {
-          padding: 22px;
-        }
-
-        .header-inner {
-          min-height: auto;
-          padding: 12px 0;
-          align-items: flex-start;
-          flex-direction: column;
-        }
-
-        .nav {
-          width: 100%;
-        }
+        .page { padding: 20px 16px 56px; }
+        .card { padding: 20px; }
       }
     </style>
   </head>
+
   <body>
-    <header class="site-header">
-      <div class="container header-inner">
-        <a class="brand" href="/passeo/">
-          <img src="/assets/images/passeo/passeo.png" alt="Passeo icon" />
-          <span>Passeo</span>
-        </a>
-
-        <nav class="nav" aria-label="Primary">
-          <a href="/passeo/">Overview</a>
-          <a href="/passeo/roles/">Roles</a>
-          <a href="/passeo/sessions/">Sessions</a>
-          <a class="active" href="/passeo/faq/">FAQ</a>
-        </nav>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="container">
-        <div class="hero-card">
-          <div class="eyebrow">Passeo Guide</div>
-          <h1>Frequently asked questions</h1>
-          <p>
-            A quick guide to the most common questions about Passeo, including
-            clubs, roles, sessions, attendance, participation, and member
-            access.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#general">General</a>
-            <a class="btn" href="#roles-and-permissions">Roles & Permissions</a>
-            <a class="btn" href="#sessions-and-attendance"
-              >Sessions & Attendance</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <main class="page">
-      <div class="container layout">
-        <aside class="sidebar" aria-label="On this page">
-          <h2>FAQ sections</h2>
-          <nav class="toc">
-            <a href="#general">General</a>
-            <a href="#roles-and-permissions">Roles & permissions</a>
-            <a href="#sessions-and-attendance">Sessions & attendance</a>
-            <a href="#members-and-access">Members & access</a>
+    <div class="page">
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Passeo</h2>
+          <nav class="nav">
+            <a href="/passeo/">Overview</a>
+            <a href="/passeo/getting-started/">Getting Started</a>
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a class="active" href="/passeo/faq/">FAQ</a>
+            <a href="/passeo/privacy/">Privacy</a>
           </nav>
         </aside>
 
-        <div class="content">
-          <section id="general" class="section">
+        <main class="content">
+          <section class="card">
+            <div class="eyebrow">Passeo guide</div>
+            <h1>Frequently asked questions</h1>
+            <p>
+              A quick guide to the most common questions about Passeo, including
+              clubs, roles, sessions, attendance, participation, and member
+              access.
+            </p>
+          </section>
+
+          <section id="general" class="card">
             <h2>General</h2>
 
             <details open>
@@ -460,8 +250,8 @@
             </details>
           </section>
 
-          <section id="roles-and-permissions" class="section">
-            <h2>Roles & permissions</h2>
+          <section id="roles-and-permissions" class="card">
+            <h2>Roles &amp; permissions</h2>
 
             <details open>
               <summary>What roles exist in Passeo?</summary>
@@ -495,19 +285,17 @@
                 <p>
                   Yes. A club may choose how responsibilities are handled
                   internally, so the exact workflow can vary depending on the
-                  organization’s needs.
+                  organization's needs.
                 </p>
               </div>
             </details>
           </section>
 
-          <section id="sessions-and-attendance" class="section">
-            <h2>Sessions & attendance</h2>
+          <section id="sessions-and-attendance" class="card">
+            <h2>Sessions &amp; attendance</h2>
 
             <details open>
-              <summary>
-                What is the difference between joining and checking in?
-              </summary>
+              <summary>What is the difference between joining and checking in?</summary>
               <div class="answer">
                 <p>
                   Joining means a member plans to attend a session. Checking in
@@ -518,9 +306,7 @@
             </details>
 
             <details>
-              <summary>
-                Can a session have a maximum number of attendees?
-              </summary>
+              <summary>Can a session have a maximum number of attendees?</summary>
               <div class="answer">
                 <p>
                   Yes. Clubs can use capacity limits for sessions. Once the
@@ -542,20 +328,18 @@
             </details>
 
             <details>
-              <summary>
-                Can attendance and participation be tracked separately?
-              </summary>
+              <summary>Can attendance and participation be tracked separately?</summary>
               <div class="answer">
                 <p>
-                  Yes. Depending on the club’s setup, Passeo can distinguish
+                  Yes. Depending on the club's setup, Passeo can distinguish
                   between simple check-ins and broader participation tracking.
                 </p>
               </div>
             </details>
           </section>
 
-          <section id="members-and-access" class="section">
-            <h2>Members & access</h2>
+          <section id="members-and-access" class="card">
+            <h2>Members &amp; access</h2>
 
             <details open>
               <summary>Can members see upcoming sessions?</summary>
@@ -583,44 +367,38 @@
               <summary>Is Passeo meant to reduce manual tracking?</summary>
               <div class="answer">
                 <p>
-                  Yes. One of Passeo’s main goals is to reduce manual
+                  Yes. One of Passeo's main goals is to reduce manual
                   coordination and make attendance, sessions, and role-based
                   responsibilities easier to manage in a consistent way.
                 </p>
               </div>
             </details>
           </section>
-        </div>
-      </div>
-    </main>
 
-    <footer class="footer">
-      <div class="container">
-        <div class="footer-card">
-          Looking for more detail? Visit <a href="/passeo/roles/">Roles</a> or
-          <a href="/passeo/sessions/">Sessions</a>.
-        </div>
+          <footer class="footer">
+            Looking for more detail? Visit <a href="/passeo/roles/">Roles</a> or
+            <a href="/passeo/sessions/">Sessions</a>.
+            &nbsp;&nbsp;© 2026 Clean Utility Apps
+          </footer>
+        </main>
       </div>
-    </footer>
+    </div>
 
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
 
     <script>
       function trackEvent(eventName, params = {}) {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, params);
+        if (typeof gtag === "function") {
+          gtag("event", eventName, params);
         }
       }
 
-      document.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', function () {
-          const href = link.getAttribute('href') || '';
-          const label = (link.textContent || '').trim();
-
-          trackEvent('homepage_link_click', {
-            link_text: label,
-            destination: href,
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", function () {
+          trackEvent("passeo_link_click", {
+            text: link.textContent.trim(),
+            href: link.getAttribute("href"),
           });
         });
       });
