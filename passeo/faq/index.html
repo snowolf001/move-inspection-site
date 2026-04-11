@@ -4,6 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FAQ | Passeo</title>
+    <meta
+      name="description"
+      content="Frequently asked questions about Passeo, including club setup, roles, sessions, attendance, participation, and member access."
+    />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
 
     <link rel="stylesheet" href="/assets/css/site.css" />
 
@@ -11,6 +30,7 @@
       * {
         box-sizing: border-box;
       }
+
       html,
       body {
         overflow-x: hidden;
@@ -20,6 +40,9 @@
         color: #dbeafe;
         text-decoration: none;
       }
+      a:hover {
+        text-decoration: underline;
+      }
 
       .page {
         max-width: 1120px;
@@ -27,37 +50,68 @@
         padding: 20px 16px 56px;
       }
 
-      .breadcrumb {
+      .page-breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
         font-size: 13px;
         color: var(--muted);
-        margin-bottom: 14px;
       }
 
-      /* mobile docs nav */
+      .page-breadcrumb a {
+        color: #dbeafe;
+      }
+
+      .bc-sep {
+        color: #64748b;
+      }
+
+      .bc-current {
+        color: #cbd5e1;
+      }
+
       .docs-nav-mobile {
         display: flex;
         gap: 10px;
         overflow-x: auto;
+        padding: 4px 0 8px;
         margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .docs-nav-mobile::-webkit-scrollbar {
+        display: none;
       }
 
       .docs-nav-mobile a {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
         padding: 8px 12px;
         border-radius: 999px;
         font-size: 13px;
+        font-weight: 600;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
         white-space: nowrap;
+        color: #dbeafe;
       }
 
       .docs-nav-mobile a.active {
         background: rgba(37, 99, 235, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
       }
 
       .layout {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 18px;
+        align-items: start;
       }
 
       .sidebar {
@@ -65,6 +119,7 @@
       }
 
       .content {
+        min-width: 0;
         display: grid;
         gap: 16px;
       }
@@ -77,55 +132,208 @@
       }
 
       h1 {
+        margin: 0 0 12px;
         font-size: clamp(30px, 8vw, 46px);
-        margin-bottom: 10px;
+        line-height: 1.08;
+        letter-spacing: -0.02em;
       }
 
       h2 {
-        font-size: clamp(22px, 6vw, 24px);
-        margin-bottom: 12px;
+        margin: 0 0 16px;
+        font-size: 24px;
+        letter-spacing: -0.01em;
       }
 
-      /* FAQ items */
+      p {
+        color: var(--soft);
+        line-height: 1.7;
+        margin: 0 0 12px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
+      }
 
       details {
         border: 1px solid var(--border);
+        background: var(--card-inner);
         border-radius: 14px;
         overflow: hidden;
         margin-bottom: 12px;
-        background: var(--card-inner);
+      }
+
+      details:last-of-type {
+        margin-bottom: 0;
       }
 
       summary {
+        list-style: none;
         cursor: pointer;
-        padding: 16px;
+        padding: 16px 20px;
         font-weight: 700;
-        font-size: 15px;
-        line-height: 1.5;
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
       }
 
       details[open] summary {
-        background: rgba(37, 99, 235, 0.1);
         border-bottom: 1px solid var(--border);
+        background: rgba(37, 99, 235, 0.1);
       }
 
       .answer {
-        padding: 16px;
+        padding: 16px 20px;
       }
 
       .answer p {
         color: var(--soft);
-        font-size: 15px;
-        line-height: 1.7;
       }
 
-      @media (min-width: 900px) {
+      .answer a {
+        color: #93c5fd;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        color: #dbeafe;
+      }
+
+      .site-nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+      }
+
+      .site-footer {
+        margin-top: 20px;
+      }
+
+      .site-footer-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .site-footer-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 24px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+
+        .site-footer-links {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-footer-links a {
+          background: transparent;
+        }
+      }
+
+      @media (min-width: 901px) {
         .docs-nav-mobile {
           display: none;
         }
 
         .layout {
-          grid-template-columns: 250px 1fr;
+          grid-template-columns: 250px minmax(0, 1fr);
           gap: 24px;
         }
 
@@ -133,10 +341,76 @@
           display: block;
           position: sticky;
           top: 80px;
-          padding: 20px;
-          border-radius: 20px;
           background: var(--card);
           border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 20px;
+        }
+
+        .sidebar h2 {
+          margin: 0 0 16px;
+          font-size: 20px;
+        }
+
+        .nav a {
+          display: block;
+          padding: 10px 12px;
+          border-radius: 10px;
+          color: #dbeafe;
+          margin-bottom: 6px;
+          font-weight: 600;
+          border: 1px solid transparent;
+        }
+
+        .nav a.active {
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card {
+          border-radius: 20px;
+          padding: 24px;
+        }
+
+        .content {
+          gap: 20px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex !important;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          padding: 0;
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          text-align: center;
+        }
+
+        .site-nav a {
+          min-height: 40px;
+          padding: 8px 14px;
+          border-radius: 999px;
+          font-size: 14px;
+        }
+
+        .site-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-brand {
+          max-width: none;
         }
       }
     </style>
@@ -145,57 +419,303 @@
   <body>
     <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/">Clean Utility Apps</a>
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
       </div>
     </header>
 
     <div class="page">
-      <div class="breadcrumb">Home / Passeo / FAQ</div>
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/passeo/">Passeo</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">FAQ</span>
+      </nav>
 
-      <!-- mobile nav -->
-      <div class="docs-nav-mobile">
+      <div class="docs-nav-mobile" aria-label="Passeo documentation">
         <a href="/passeo/">Overview</a>
         <a href="/passeo/getting-started/">Getting Started</a>
         <a href="/passeo/roles/">Roles</a>
         <a href="/passeo/sessions/">Sessions</a>
         <a class="active" href="/passeo/faq/">FAQ</a>
+        <a href="/passeo/privacy/">Privacy</a>
       </div>
 
       <div class="layout">
         <aside class="sidebar">
-          <h3>Passeo</h3>
-          <nav>
-            <a href="/passeo/">Overview</a><br />
-            <a href="/passeo/getting-started/">Getting Started</a><br />
-            <a href="/passeo/roles/">Roles</a><br />
-            <a href="/passeo/sessions/">Sessions</a><br />
-            <a href="/passeo/faq/">FAQ</a>
+          <h2>Passeo</h2>
+          <nav class="nav" aria-label="Passeo documentation">
+            <a href="/passeo/">Overview</a>
+            <a href="/passeo/getting-started/">Getting Started</a>
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a class="active" href="/passeo/faq/">FAQ</a>
+            <a href="/passeo/privacy/">Privacy</a>
           </nav>
         </aside>
 
         <main class="content">
           <section class="card">
-            <h1>FAQ</h1>
-            <p>Common questions about Passeo.</p>
+            <div class="eyebrow">Passeo guide</div>
+            <h1>Frequently asked questions</h1>
+            <p>
+              A quick guide to the most common questions about Passeo, including
+              clubs, roles, sessions, attendance, participation, and member
+              access.
+            </p>
           </section>
 
-          <section class="card">
+          <section id="general" class="card">
+            <h2>General</h2>
+
             <details open>
               <summary>What is Passeo?</summary>
               <div class="answer">
-                <p>Passeo is a club management app.</p>
+                <p>
+                  Passeo is a club management app designed to make it easier to
+                  organize members, sessions, attendance, and participation in
+                  one place.
+                </p>
               </div>
             </details>
 
             <details>
-              <summary>Who is it for?</summary>
+              <summary>Who is Passeo for?</summary>
               <div class="answer">
-                <p>Clubs, groups, and small organizations.</p>
+                <p>
+                  Passeo is designed for clubs and groups that need a simple way
+                  to manage activities, member participation, and session
+                  records without adding unnecessary complexity.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Does Passeo only work for one type of club?</summary>
+              <div class="answer">
+                <p>
+                  No. Passeo is flexible enough for many kinds of clubs and
+                  recurring groups, including activity clubs, community groups,
+                  classes, volunteer teams, and small organizations.
+                </p>
               </div>
             </details>
           </section>
+
+          <section id="roles-and-permissions" class="card">
+            <h2>Roles &amp; permissions</h2>
+
+            <details open>
+              <summary>What roles exist in Passeo?</summary>
+              <div class="answer">
+                <p>
+                  Clubs in Passeo can use role-based access so different people
+                  can have different levels of responsibility. Common roles may
+                  include owner, admin, host, and member.
+                </p>
+                <p>
+                  See <a href="/passeo/roles/">Roles</a> for a more complete
+                  overview.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Can every member manage sessions?</summary>
+              <div class="answer">
+                <p>
+                  Not usually. Session management is typically limited to
+                  higher-permission roles such as host, admin, or owner,
+                  depending on how the club is configured.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Can permissions differ from club to club?</summary>
+              <div class="answer">
+                <p>
+                  Yes. A club may choose how responsibilities are handled
+                  internally, so the exact workflow can vary depending on the
+                  organization's needs.
+                </p>
+              </div>
+            </details>
+          </section>
+
+          <section id="sessions-and-attendance" class="card">
+            <h2>Sessions &amp; attendance</h2>
+
+            <details open>
+              <summary>
+                What is the difference between joining and checking in?
+              </summary>
+              <div class="answer">
+                <p>
+                  Joining means a member plans to attend a session. Checking in
+                  means the member actually attended and the attendance was
+                  recorded.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Can a session have a maximum number of attendees?
+              </summary>
+              <div class="answer">
+                <p>
+                  Yes. Clubs can use capacity limits for sessions. Once the
+                  session reaches its limit, further joins can be locked to
+                  prevent overbooking.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Does Passeo keep past session records?</summary>
+              <div class="answer">
+                <p>
+                  Yes. Past sessions can be retained so clubs can review
+                  attendance history, participation totals, and activity records
+                  over time.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>
+                Can attendance and participation be tracked separately?
+              </summary>
+              <div class="answer">
+                <p>
+                  Yes. Depending on the club's setup, Passeo can distinguish
+                  between simple check-ins and broader participation tracking.
+                </p>
+              </div>
+            </details>
+          </section>
+
+          <section id="members-and-access" class="card">
+            <h2>Members &amp; access</h2>
+
+            <details open>
+              <summary>Can members see upcoming sessions?</summary>
+              <div class="answer">
+                <p>
+                  Yes. Members can view upcoming sessions and review details
+                  such as timing, location, and whether the session is still
+                  available.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Can organizers review member history?</summary>
+              <div class="answer">
+                <p>
+                  Depending on role permissions, organizers may be able to
+                  review participation history, attendance records, and other
+                  club-related member activity.
+                </p>
+              </div>
+            </details>
+
+            <details>
+              <summary>Is Passeo meant to reduce manual tracking?</summary>
+              <div class="answer">
+                <p>
+                  Yes. One of Passeo's main goals is to reduce manual
+                  coordination and make attendance, sessions, and role-based
+                  responsibilities easier to manage in a consistent way.
+                </p>
+              </div>
+            </details>
+          </section>
+
+          <footer class="site-footer">
+            <div class="site-footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/privacy/">Privacy</a>
+            </div>
+            © 2026 Clean Utility Apps
+          </footer>
         </main>
       </div>
     </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          trackEvent('passeo_link_click', {
+            text: link.textContent.trim(),
+            href: link.getAttribute('href'),
+          });
+        });
+      });
+    </script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

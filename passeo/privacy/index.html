@@ -4,19 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Privacy Policy | Passeo</title>
-
     <meta
       name="description"
       content="Privacy Policy for Passeo, a club session and attendance management app."
     />
+    <link rel="canonical" href="https://cleanutilityapps.com/passeo/privacy/" />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
 
-    <link rel="icon" href="/assets/images/passeo/passeo.png" />
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
+
     <link rel="stylesheet" href="/assets/css/site.css" />
 
     <style>
       * {
         box-sizing: border-box;
       }
+
       html,
       body {
         overflow-x: hidden;
@@ -27,42 +42,78 @@
         text-decoration: none;
       }
 
+      a:hover {
+        text-decoration: underline;
+      }
+
       .page {
-        max-width: 880px;
+        max-width: 1120px;
         margin: 0 auto;
         padding: 20px 16px 56px;
       }
 
-      .breadcrumb {
+      .page-breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
         font-size: 13px;
         color: var(--muted);
-        margin-bottom: 14px;
       }
 
-      /* mobile docs nav */
+      .page-breadcrumb a {
+        color: #dbeafe;
+      }
+
+      .bc-sep {
+        color: #64748b;
+      }
+
+      .bc-current {
+        color: #cbd5e1;
+      }
+
       .docs-nav-mobile {
         display: flex;
         gap: 10px;
         overflow-x: auto;
+        padding: 4px 0 8px;
         margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .docs-nav-mobile::-webkit-scrollbar {
+        display: none;
       }
 
       .docs-nav-mobile a {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
         padding: 8px 12px;
         border-radius: 999px;
         font-size: 13px;
+        font-weight: 600;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
         white-space: nowrap;
+        color: #dbeafe;
       }
 
       .docs-nav-mobile a.active {
         background: rgba(37, 99, 235, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
       }
 
       .layout {
         display: grid;
         grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: start;
       }
 
       .sidebar {
@@ -70,6 +121,7 @@
       }
 
       .content {
+        min-width: 0;
         display: grid;
         gap: 16px;
       }
@@ -82,43 +134,179 @@
       }
 
       h1 {
-        font-size: clamp(28px, 7vw, 40px);
-        margin-bottom: 10px;
+        margin: 0 0 12px;
+        font-size: clamp(28px, 7vw, 42px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
       }
 
       h2 {
-        font-size: 20px;
-        margin-bottom: 8px;
+        margin: 0 0 12px;
+        font-size: 22px;
+        letter-spacing: -0.01em;
       }
 
       p {
         color: var(--soft);
-        line-height: 1.7;
-        font-size: 15px;
+        line-height: 1.75;
+        margin: 0 0 12px;
       }
 
-      ul {
-        padding-left: 20px;
-        color: var(--soft);
+      p:last-child {
+        margin-bottom: 0;
       }
 
       .meta {
-        font-size: 13px;
         color: var(--muted);
-        margin-bottom: 10px;
+        font-size: 14px;
+        margin: 0 0 16px;
+      }
+
+      ul {
+        color: var(--soft);
+        padding-left: 22px;
+        margin: 8px 0 0;
+      }
+
+      ul li {
+        margin: 8px 0;
       }
 
       .contact-link {
         color: #93c5fd;
       }
 
-      @media (min-width: 900px) {
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        color: #dbeafe;
+      }
+
+      .site-nav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        text-decoration: none;
+      }
+
+      .site-nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+      }
+
+      .site-footer {
+        margin-top: 20px;
+      }
+
+      .site-footer-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .site-footer-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 24px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+
+        .site-footer-links {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-footer-links a {
+          background: transparent;
+        }
+      }
+
+      @media (min-width: 901px) {
         .docs-nav-mobile {
           display: none;
         }
 
         .layout {
-          grid-template-columns: 250px 1fr;
+          grid-template-columns: 250px minmax(0, 1fr);
           gap: 24px;
         }
 
@@ -126,14 +314,76 @@
           display: block;
           position: sticky;
           top: 80px;
-          padding: 20px;
-          border-radius: 20px;
           background: var(--card);
           border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 20px;
         }
 
-        .page {
-          max-width: 1120px;
+        .sidebar h2 {
+          margin: 0 0 16px;
+          font-size: 20px;
+        }
+
+        .nav a {
+          display: block;
+          padding: 10px 12px;
+          border-radius: 10px;
+          color: #dbeafe;
+          margin-bottom: 6px;
+          font-weight: 600;
+          border: 1px solid transparent;
+        }
+
+        .nav a.active {
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card {
+          border-radius: 20px;
+          padding: 24px;
+        }
+
+        .content {
+          gap: 20px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex !important;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          padding: 0;
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          text-align: center;
+        }
+
+        .site-nav a {
+          min-height: 40px;
+          padding: 8px 14px;
+          border-radius: 999px;
+          font-size: 14px;
+        }
+
+        .site-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-brand {
+          max-width: none;
         }
       }
     </style>
@@ -142,15 +392,55 @@
   <body>
     <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/">Clean Utility Apps</a>
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
       </div>
     </header>
 
     <div class="page">
-      <div class="breadcrumb">Home / Passeo / Privacy</div>
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/passeo/">Passeo</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Privacy</span>
+      </nav>
 
-      <!-- mobile nav -->
-      <div class="docs-nav-mobile">
+      <div class="docs-nav-mobile" aria-label="Passeo documentation">
         <a href="/passeo/">Overview</a>
         <a href="/passeo/getting-started/">Getting Started</a>
         <a href="/passeo/roles/">Roles</a>
@@ -161,72 +451,145 @@
 
       <div class="layout">
         <aside class="sidebar">
-          <h3>Passeo</h3>
-          <nav>
-            <a href="/passeo/">Overview</a><br />
-            <a href="/passeo/getting-started/">Getting Started</a><br />
-            <a href="/passeo/roles/">Roles</a><br />
-            <a href="/passeo/sessions/">Sessions</a><br />
-            <a href="/passeo/faq/">FAQ</a><br />
-            <a href="/passeo/privacy/">Privacy</a>
+          <h2>Passeo</h2>
+          <nav class="nav" aria-label="Passeo documentation">
+            <a href="/passeo/">Overview</a>
+            <a href="/passeo/getting-started/">Getting Started</a>
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a href="/passeo/faq/">FAQ</a>
+            <a class="active" href="/passeo/privacy/">Privacy</a>
           </nav>
         </aside>
 
         <main class="content">
           <section class="card">
-            <h1>Privacy Policy</h1>
+            <h1>Privacy Policy for Passeo</h1>
             <p class="meta">Last updated: April 2026</p>
             <p>
               Passeo is a club session and attendance management app designed to
-              help organize sessions, track participation, and manage club
-              workflows.
+              help users manage sessions, track participation, and manage
+              credits.
             </p>
           </section>
 
           <section class="card">
             <h2>Information We Collect</h2>
-            <p>We collect only what is necessary to operate the app:</p>
+            <p>
+              Passeo may collect limited information needed to provide app
+              functionality and improve the product experience.
+            </p>
+            <p>This may include:</p>
             <ul>
-              <li>Membership and session data</li>
-              <li>Attendance records</li>
-              <li>Basic usage analytics</li>
+              <li>Membership and session-related data used within the app</li>
+              <li>Attendance and participation records</li>
+              <li>App preferences and locally stored settings</li>
+              <li>
+                Limited usage and analytics data, such as feature usage and
+                basic interaction events
+              </li>
             </ul>
           </section>
 
           <section class="card">
             <h2>How We Use Information</h2>
             <p>
-              Data is used to power features like sessions, check-ins, and
-              reporting.
+              Information is used to support core app features such as
+              check-ins, attendance tracking, reporting, and general product
+              improvement.
             </p>
           </section>
 
           <section class="card">
-            <h2>Analytics</h2>
+            <h2>Analytics and Tracking</h2>
             <p>
-              Limited analytics are used to improve product performance and
-              usability.
+              Passeo and related website pages may use limited analytics or
+              tracking tools to understand app and website usage, improve
+              performance, and enhance the user experience.
+            </p>
+            <p>
+              We do not intentionally collect sensitive personal information for
+              advertising purposes.
             </p>
           </section>
 
           <section class="card">
             <h2>Data Sharing</h2>
             <p>
-              We do not sell personal data. Data may be processed by
-              infrastructure providers.
+              We do not sell personal data. Information may be processed by
+              service providers that support app functionality, hosting,
+              analytics, or related technical operations.
+            </p>
+          </section>
+
+          <section class="card">
+            <h2>Data Storage</h2>
+            <p>
+              Some data may be stored locally on your device, and some data may
+              be processed by backend services required for app functionality.
             </p>
           </section>
 
           <section class="card">
             <h2>Contact</h2>
             <p>
-              <a class="contact-link" href="mailto:cleanutilityapps@gmail.com">
-                cleanutilityapps@gmail.com
-              </a>
+              If you have questions about this Privacy Policy, please contact:
+            </p>
+            <p>
+              <a class="contact-link" href="mailto:cleanutilityapps@gmail.com"
+                >cleanutilityapps@gmail.com</a
+              >
             </p>
           </section>
+
+          <footer class="site-footer">
+            <div class="site-footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/privacy/">Privacy</a>
+            </div>
+            © 2026 Clean Utility Apps
+          </footer>
         </main>
       </div>
     </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          trackEvent('passeo_link_click', {
+            text: link.textContent.trim(),
+            href: link.getAttribute('href'),
+          });
+        });
+      });
+    </script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>

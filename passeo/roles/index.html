@@ -8,7 +8,22 @@
       name="description"
       content="Learn how owner, admin, and member roles work in Passeo and what each role can do."
     />
+    <link rel="canonical" href="https://cleanutilityapps.com/passeo/roles/" />
     <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <!-- Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
+    </script>
 
     <link rel="stylesheet" href="/assets/css/site.css" />
 
@@ -16,6 +31,7 @@
       * {
         box-sizing: border-box;
       }
+
       html,
       body {
         overflow-x: hidden;
@@ -26,14 +42,19 @@
         text-decoration: none;
       }
 
+      a:hover {
+        text-decoration: underline;
+      }
+
       .page {
         max-width: 1120px;
         margin: 0 auto;
         padding: 20px 16px 56px;
       }
 
-      .breadcrumb {
+      .page-breadcrumb {
         display: flex;
+        align-items: center;
         flex-wrap: wrap;
         gap: 6px;
         margin-bottom: 14px;
@@ -41,16 +62,38 @@
         color: var(--muted);
       }
 
+      .page-breadcrumb a {
+        color: #dbeafe;
+      }
+
+      .bc-sep {
+        color: #64748b;
+      }
+
+      .bc-current {
+        color: #cbd5e1;
+      }
+
       .docs-nav-mobile {
         display: flex;
         gap: 10px;
         overflow-x: auto;
-        padding: 4px 0 10px;
+        padding: 4px 0 8px;
         margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .docs-nav-mobile::-webkit-scrollbar {
+        display: none;
       }
 
       .docs-nav-mobile a {
         flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
         padding: 8px 12px;
         border-radius: 999px;
         font-size: 13px;
@@ -58,16 +101,24 @@
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
         white-space: nowrap;
+        color: #dbeafe;
+      }
+
+      .docs-nav-mobile a:hover {
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.08);
       }
 
       .docs-nav-mobile a.active {
         background: rgba(37, 99, 235, 0.2);
+        border-color: rgba(59, 130, 246, 0.3);
       }
 
       .layout {
         display: grid;
         grid-template-columns: 1fr;
-        gap: 16px;
+        gap: 18px;
+        align-items: start;
       }
 
       .sidebar {
@@ -75,6 +126,7 @@
       }
 
       .content {
+        min-width: 0;
         display: grid;
         gap: 16px;
       }
@@ -87,29 +139,76 @@
       }
 
       h1 {
+        margin: 0 0 12px;
         font-size: clamp(30px, 8vw, 46px);
-        margin-bottom: 10px;
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        text-wrap: balance;
       }
 
       h2 {
+        margin: 0 0 10px;
         font-size: clamp(22px, 6vw, 24px);
-        margin-bottom: 10px;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        text-wrap: balance;
       }
 
       h3 {
-        font-size: 16px;
-        margin-bottom: 6px;
+        margin: 0 0 8px;
+        font-size: 17px;
+        line-height: 1.25;
       }
 
       p {
         color: var(--soft);
         line-height: 1.7;
+        margin: 0 0 12px;
+        text-wrap: pretty;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 10px;
+        background: var(--blue);
+        color: white;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 16px;
+      }
+
+      .btn:hover {
+        background: var(--blue-hover);
+        text-decoration: none;
       }
 
       .grid-3 {
         display: grid;
         grid-template-columns: 1fr;
         gap: 12px;
+        margin-top: 16px;
       }
 
       .role-card {
@@ -120,29 +219,74 @@
       }
 
       .role-badge {
-        display: inline-block;
-        padding: 4px 10px;
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        padding: 0 10px;
+        margin-bottom: 12px;
         border-radius: 999px;
         background: rgba(37, 99, 235, 0.18);
-        font-size: 12px;
-        margin-bottom: 8px;
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 0.85rem;
+        font-weight: 800;
+      }
+
+      .role-card ul {
+        margin: 8px 0 0;
+        padding-left: 20px;
+        color: var(--soft);
+      }
+
+      .role-card li {
+        margin: 6px 0;
       }
 
       .table-wrap {
         overflow-x: auto;
-        margin-top: 12px;
+        background: var(--card-inner);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        margin-top: 16px;
       }
 
       table {
         width: 100%;
-        min-width: 520px;
         border-collapse: collapse;
+        min-width: 540px;
       }
 
       th,
       td {
-        padding: 10px 12px;
+        padding: 13px 16px;
+        text-align: left;
         border-bottom: 1px solid var(--border);
+        vertical-align: top;
+      }
+
+      th {
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--soft);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      td {
+        color: var(--soft);
+      }
+
+      tr:last-child td {
+        border-bottom: none;
+      }
+
+      .yes {
+        color: #4ade80;
+        font-weight: 700;
+      }
+
+      .maybe {
+        color: #fbbf24;
+        font-weight: 700;
       }
 
       .note-box {
@@ -152,42 +296,192 @@
         padding: 16px;
       }
 
-      .btn {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
+      .note-box strong {
+        color: #93c5fd;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
         min-height: 48px;
-        margin-top: 16px;
-        background: var(--blue);
-        color: white;
-        border-radius: 10px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
         font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        color: #dbeafe;
+      }
+
+      .site-nav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        text-decoration: none;
+      }
+
+      .site-nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+      }
+
+      .site-footer {
+        margin-top: 20px;
+      }
+
+      .site-footer-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .site-footer-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+
+      .site-footer-links a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        text-decoration: none;
       }
 
       @media (min-width: 640px) {
+        .page {
+          padding: 24px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+
         .grid-3 {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .btn {
+          width: auto;
+        }
+
+        .site-footer-links {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-footer-links a {
+          background: transparent;
         }
       }
 
-      @media (min-width: 900px) {
+      @media (min-width: 901px) {
         .docs-nav-mobile {
           display: none;
         }
 
         .layout {
-          grid-template-columns: 250px 1fr;
+          grid-template-columns: 250px minmax(0, 1fr);
+          gap: 24px;
         }
 
         .sidebar {
           display: block;
           position: sticky;
           top: 80px;
-          padding: 20px;
-          border-radius: 20px;
           background: var(--card);
           border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 20px;
+        }
+
+        .sidebar h2 {
+          margin: 0 0 16px;
+          font-size: 20px;
+        }
+
+        .nav a {
+          display: block;
+          padding: 10px 12px;
+          border-radius: 10px;
+          color: #dbeafe;
+          margin-bottom: 6px;
+          font-weight: 600;
+          border: 1px solid transparent;
+        }
+
+        .nav a:hover {
+          background: rgba(255, 255, 255, 0.06);
+          border-color: var(--border);
+          text-decoration: none;
+        }
+
+        .nav a.active {
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(59, 130, 246, 0.3);
         }
 
         .content {
@@ -195,7 +489,49 @@
         }
 
         .card {
+          border-radius: 20px;
           padding: 24px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex !important;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          padding: 0;
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          text-align: center;
+        }
+
+        .site-nav a {
+          min-height: 40px;
+          padding: 8px 14px;
+          border-radius: 999px;
+          font-size: 14px;
+        }
+
+        .site-nav a:hover {
+          background: rgba(255, 255, 255, 0.08);
+        }
+
+        .site-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-brand {
+          max-width: none;
         }
       }
     </style>
@@ -204,97 +540,312 @@
   <body>
     <header class="site-header">
       <div class="site-header-inner">
-        <a class="site-brand" href="/">Clean Utility Apps</a>
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
       </div>
     </header>
 
     <div class="page">
-      <div class="breadcrumb">
-        <a href="/">Home</a> / <a href="/passeo/">Passeo</a> /
-        <span>Roles</span>
-      </div>
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/passeo/">Passeo</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Roles</span>
+      </nav>
 
-      <!-- Mobile Docs Nav -->
-      <div class="docs-nav-mobile">
+      <div class="docs-nav-mobile" aria-label="Passeo documentation">
         <a href="/passeo/">Overview</a>
         <a href="/passeo/getting-started/">Getting Started</a>
         <a class="active" href="/passeo/roles/">Roles</a>
         <a href="/passeo/sessions/">Sessions</a>
         <a href="/passeo/faq/">FAQ</a>
+        <a href="/passeo/privacy/">Privacy</a>
       </div>
 
       <div class="layout">
         <aside class="sidebar">
           <h2>Passeo</h2>
-          <nav class="nav">
+          <nav class="nav" aria-label="Passeo documentation">
             <a href="/passeo/">Overview</a>
             <a href="/passeo/getting-started/">Getting Started</a>
             <a class="active" href="/passeo/roles/">Roles</a>
             <a href="/passeo/sessions/">Sessions</a>
             <a href="/passeo/faq/">FAQ</a>
+            <a href="/passeo/privacy/">Privacy</a>
           </nav>
         </aside>
 
         <main class="content">
           <section class="card">
+            <div class="eyebrow">Passeo guide</div>
             <h1>Roles and permissions</h1>
-            <p>Clear roles help organize how your club runs.</p>
+            <p>
+              Passeo is designed for clubs and recurring groups. Clear roles
+              help everyone understand who manages the club, who helps operate
+              it, and what regular members can do inside the app.
+            </p>
           </section>
 
           <section class="card">
             <h2>Role overview</h2>
+            <p>
+              These are the three main roles in Passeo. Depending on how your
+              club is configured, owners and admins may handle operations
+              together while members focus on joining sessions and tracking
+              participation.
+            </p>
 
             <div class="grid-3">
-              <div class="role-card">
+              <article class="role-card">
                 <div class="role-badge">Owner</div>
                 <h3>Club leadership</h3>
-                <p>Main control of the club.</p>
-              </div>
+                <p>
+                  The owner is the main club manager and typically created the
+                  club or is responsible for overall control.
+                </p>
+                <ul>
+                  <li>Manage club settings</li>
+                  <li>Create and manage sessions</li>
+                  <li>Manage members and roles</li>
+                  <li>Review activity and reports</li>
+                </ul>
+              </article>
 
-              <div class="role-card">
+              <article class="role-card">
                 <div class="role-badge">Admin</div>
                 <h3>Operational support</h3>
-                <p>Helps manage daily operations.</p>
-              </div>
+                <p>
+                  Admins help run the club. They usually handle member
+                  management, check-in support, and session operations.
+                </p>
+                <ul>
+                  <li>Help manage members</li>
+                  <li>Help operate sessions</li>
+                  <li>Support attendance workflows</li>
+                  <li>Reduce owner workload</li>
+                </ul>
+              </article>
 
-              <div class="role-card">
+              <article class="role-card">
                 <div class="role-badge">Member</div>
-                <h3>Participation</h3>
-                <p>Joins sessions and participates.</p>
-              </div>
+                <h3>Everyday participation</h3>
+                <p>
+                  Members join the club, participate in sessions, and interact
+                  with the experience that matters most on a daily basis.
+                </p>
+                <ul>
+                  <li>Join with a code</li>
+                  <li>View available sessions</li>
+                  <li>Check in when eligible</li>
+                  <li>Track participation history</li>
+                </ul>
+              </article>
             </div>
           </section>
 
           <section class="card">
             <h2>Permission matrix</h2>
+            <p>
+              Exact behavior may evolve over time, but this table reflects the
+              intended role model for the Passeo documentation site.
+            </p>
 
             <div class="table-wrap">
               <table>
-                <tr>
-                  <th>Action</th>
-                  <th>Owner</th>
-                  <th>Admin</th>
-                  <th>Member</th>
-                </tr>
-                <tr>
-                  <td>Create session</td>
-                  <td>Yes</td>
-                  <td>Yes</td>
-                  <td>—</td>
-                </tr>
+                <thead>
+                  <tr>
+                    <th>Action</th>
+                    <th>Owner</th>
+                    <th>Admin</th>
+                    <th>Member</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Create club</td>
+                    <td class="yes">Yes</td>
+                    <td>—</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>Edit club settings</td>
+                    <td class="yes">Yes</td>
+                    <td class="maybe">Usually</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>Create sessions</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>Manage members</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>Adjust participation or credits</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td>—</td>
+                  </tr>
+                  <tr>
+                    <td>View available sessions</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Join club with a code</td>
+                    <td>—</td>
+                    <td>—</td>
+                    <td class="yes">Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Check in to a session</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                  </tr>
+                  <tr>
+                    <td>View own participation history</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                  </tr>
+                  <tr>
+                    <td>Export reports</td>
+                    <td class="yes">Yes</td>
+                    <td class="yes">Yes</td>
+                    <td>—</td>
+                  </tr>
+                </tbody>
               </table>
             </div>
           </section>
 
           <section class="card">
+            <h2>Practical guidance</h2>
             <div class="note-box">
-              <p><strong>Best practice:</strong> keep admins limited.</p>
+              <p>
+                <strong>Best practice:</strong> keep the number of admins
+                limited and assign the role only to trusted organizers. Members
+                should have a simple, low-friction experience: join the club,
+                see sessions, and check in without confusion.
+              </p>
+              <p>
+                If your club has only one organizer, the owner role may cover
+                almost everything. If your club is larger, admins can help with
+                day-to-day operations while the owner keeps overall control.
+              </p>
             </div>
 
-            <a class="btn" href="/passeo/sessions/">Next →</a>
+            <a class="btn" href="/passeo/sessions/">Next: Sessions →</a>
           </section>
+
+          <footer class="site-footer">
+            <div class="site-footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/privacy/">Privacy</a>
+            </div>
+            © 2026 Clean Utility Apps
+          </footer>
         </main>
       </div>
     </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script>
+      function trackEvent(eventName, params = {}) {
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
+        }
+      }
+
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          trackEvent('passeo_link_click', {
+            text: link.textContent.trim(),
+            href: link.getAttribute('href'),
+          });
+        });
+      });
+    </script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!nav.classList.contains('open')) return;
+          if (nav.contains(e.target) || btn.contains(e.target)) return;
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 960) {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
