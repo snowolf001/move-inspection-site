@@ -64,14 +64,16 @@
       /* ── Mobile-first improvements ── */
 
       .container {
+        max-width: 1080px;
+        margin: 0 auto;
         padding: 24px 16px 56px;
+        text-align: center;
       }
 
       /* HERO */
 
       .hero {
         padding-top: 8px;
-        text-align: center;
       }
 
       .logo {
@@ -114,35 +116,113 @@
       /* BUTTONS */
 
       .buttons {
+        display: flex;
         flex-direction: column;
+        align-items: center;
         gap: 12px;
+        margin-bottom: 42px;
       }
 
       .btn {
         width: 100%;
+        max-width: 340px;
         min-height: 48px;
+      }
+
+      /* SECTION */
+
+      .section {
+        margin-top: 52px;
+      }
+
+      .section h2 {
+        font-size: 28px;
+        margin-bottom: 10px;
+      }
+
+      .section-intro {
+        max-width: 720px;
+        margin: 0 auto 20px;
+        color: var(--muted);
+        line-height: 1.6;
       }
 
       /* SCREENSHOTS */
 
       .grid {
+        display: grid;
         grid-template-columns: 1fr;
         gap: 16px;
+        margin-top: 20px;
       }
 
       .card {
+        width: 100%;
         max-width: 100%;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 12px;
+        backdrop-filter: blur(8px);
+        box-shadow: var(--shadow);
+        margin: 0 auto;
+      }
+
+      .card img {
+        width: 100%;
+        border-radius: 14px;
+        display: block;
+      }
+
+      .card-title {
+        margin-top: 10px;
+        font-size: 14px;
+        color: var(--soft);
       }
 
       /* FEATURES */
 
       .features {
+        display: grid;
         grid-template-columns: 1fr;
+        gap: 16px;
+        margin-top: 24px;
+        text-align: left;
       }
 
-      /* FAQ -> upgrade to better UX */
+      .feature {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .feature h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .feature p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.6;
+        font-size: 14px;
+      }
+
+      /* FAQ */
+
+      .faq {
+        max-width: 800px;
+        margin: 20px auto 0;
+        text-align: left;
+      }
 
       .faq-item {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 18px;
+        margin-bottom: 14px;
         cursor: pointer;
         transition: background 0.2s ease;
       }
@@ -151,10 +231,20 @@
         background: rgba(255, 255, 255, 0.05);
       }
 
-      /* SECTION SPACING */
+      .faq-item strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 16px;
+      }
 
-      .section {
-        margin-top: 52px;
+      .faq-item p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.7;
+      }
+
+      footer {
+        /* replaced by .site-footer in site.css */
       }
 
       /* ── Tablet ── */
@@ -163,10 +253,12 @@
         .buttons {
           flex-direction: row;
           justify-content: center;
+          align-items: unset;
         }
 
         .btn {
           width: auto;
+          max-width: unset;
           min-width: 220px;
         }
 
@@ -182,8 +274,13 @@
       /* ── Desktop ── */
 
       @media (min-width: 900px) {
+        .container {
+          padding: 36px 20px 70px;
+        }
+
         .grid {
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(auto-fit, minmax(220px, 260px));
+          justify-content: center;
         }
 
         .features {
