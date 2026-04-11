@@ -20,8 +20,8 @@
       function gtag() {
         dataLayer.push(arguments);
       }
-      gtag("js", new Date());
-      gtag("config", "G-LBCQ8VL0TB");
+      gtag('js', new Date());
+      gtag('config', 'G-LBCQ8VL0TB');
     </script>
 
     <style>
@@ -41,20 +41,30 @@
         --sidebar-width: 250px;
       }
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
 
       body {
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         background: linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
         color: var(--text);
         line-height: 1.65;
         min-height: 100vh;
       }
 
-      a { color: #dbeafe; text-decoration: none; }
-      a:hover { text-decoration: underline; }
+      a {
+        color: #dbeafe;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
 
       .page {
         max-width: var(--max-width);
@@ -78,7 +88,10 @@
         padding: 20px;
       }
 
-      .sidebar h2 { margin: 0 0 16px; font-size: 20px; }
+      .sidebar h2 {
+        margin: 0 0 16px;
+        font-size: 20px;
+      }
 
       .nav a {
         display: block;
@@ -149,7 +162,11 @@
         border-color: rgba(59, 130, 246, 0.25);
       }
 
-      .content { min-width: 0; display: grid; gap: 20px; }
+      .content {
+        min-width: 0;
+        display: grid;
+        gap: 20px;
+      }
 
       .card {
         background: var(--card);
@@ -165,11 +182,24 @@
         letter-spacing: -0.02em;
       }
 
-      h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: -0.01em; }
-      h3 { margin: 0 0 8px; font-size: 18px; }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 24px;
+        letter-spacing: -0.01em;
+      }
+      h3 {
+        margin: 0 0 8px;
+        font-size: 18px;
+      }
 
-      p { color: var(--soft); line-height: 1.7; margin: 0 0 12px; }
-      p:last-child { margin-bottom: 0; }
+      p {
+        color: var(--soft);
+        line-height: 1.7;
+        margin: 0 0 12px;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
 
       .eyebrow {
         display: inline-block;
@@ -197,15 +227,24 @@
         padding: 18px;
       }
 
-      .mini-card h3 { color: var(--text); }
-      .mini-card p { margin: 0; font-size: 0.95rem; }
+      .mini-card h3 {
+        color: var(--text);
+      }
+      .mini-card p {
+        margin: 0;
+        font-size: 0.95rem;
+      }
 
-      .steps, .bullets {
+      .steps,
+      .bullets {
         padding-left: 22px;
         color: var(--soft);
       }
 
-      .steps li, .bullets li { margin: 10px 0; }
+      .steps li,
+      .bullets li {
+        margin: 10px 0;
+      }
 
       .callout {
         margin-top: 16px;
@@ -226,14 +265,24 @@
       }
 
       @media (max-width: 900px) {
-        .layout { grid-template-columns: 1fr; }
-        .sidebar { position: static; }
-        .grid-2 { grid-template-columns: 1fr; }
+        .layout {
+          grid-template-columns: 1fr;
+        }
+        .sidebar {
+          position: static;
+        }
+        .grid-2 {
+          grid-template-columns: 1fr;
+        }
       }
 
       @media (max-width: 640px) {
-        .page { padding: 20px 16px 56px; }
-        .card { padding: 20px; }
+        .page {
+          padding: 20px 16px 56px;
+        }
+        .card {
+          padding: 20px;
+        }
       }
     </style>
   </head>
@@ -264,8 +313,9 @@
             <h1>How sessions work in Passeo</h1>
             <p>
               Sessions are the center of club activity in Passeo. They help
-              organizers publish upcoming activities, let members join with clear
-              expectations, and make attendance and participation easier to track.
+              organizers publish upcoming activities, let members join with
+              clear expectations, and make attendance and participation easier
+              to track.
             </p>
           </section>
 
@@ -312,9 +362,13 @@
 
             <ol class="steps">
               <li>Open the session details page.</li>
-              <li>Review the time, location, and any participation requirements.</li>
+              <li>
+                Review the time, location, and any participation requirements.
+              </li>
               <li>Join the session if it is available and you are eligible.</li>
-              <li>When the event happens, check in to record actual attendance.</li>
+              <li>
+                When the event happens, check in to record actual attendance.
+              </li>
             </ol>
 
             <div class="callout">
@@ -349,7 +403,7 @@
               </div>
             </div>
 
-            <p style="margin-top: 16px;">
+            <p style="margin-top: 16px">
               This structure makes session reporting more useful for organizers
               while keeping the member flow simple.
             </p>
@@ -366,7 +420,10 @@
             <ul class="bullets">
               <li>Open sessions allow eligible members to join.</li>
               <li>Locked or full sessions prevent additional joins.</li>
-              <li>Members can see whether a session is still available before they try to join.</li>
+              <li>
+                Members can see whether a session is still available before they
+                try to join.
+              </li>
             </ul>
 
             <div class="callout">
@@ -415,7 +472,8 @@
             </p>
             <p>
               Refer to the <a href="/passeo/roles/">Roles</a> guide to
-              understand which roles can create and manage sessions in your club.
+              understand which roles can create and manage sessions in your
+              club.
             </p>
           </section>
 
@@ -429,16 +487,16 @@
 
     <script>
       function trackEvent(eventName, params = {}) {
-        if (typeof gtag === "function") {
-          gtag("event", eventName, params);
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, params);
         }
       }
 
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", function () {
-          trackEvent("passeo_link_click", {
+      document.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', function () {
+          trackEvent('passeo_link_click', {
             text: link.textContent.trim(),
-            href: link.getAttribute("href"),
+            href: link.getAttribute('href'),
           });
         });
       });
