@@ -32,6 +32,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -43,6 +44,12 @@ body {
   color: var(--text);
   line-height: 1.65;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 /* ── Site Header ────────────────────────────────────── */
@@ -124,6 +131,32 @@ body {
   background: rgba(37, 99, 235, 0.18);
   border-color: rgba(59, 130, 246, 0.28);
   color: var(--blue-light);
+}
+
+/* ── Mobile menu button ─────────────────────────────── */
+.site-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+.site-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.site-menu-btn svg {
+  display: block;
+  pointer-events: none;
 }
 
 /* ── Page Breadcrumb ────────────────────────────────── */
@@ -236,13 +269,61 @@ body {
 }
 
 /* ── Responsive ─────────────────────────────────────── */
+
+/* Tablet and below: hamburger menu */
+@media (max-width: 768px) {
+  /* Show hamburger, hide inline nav */
+  .site-menu-btn {
+    display: flex;
+  }
+
+  .site-nav {
+    /* Drop down as a fixed panel below the sticky header */
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    z-index: 99;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 12px 16px 18px;
+    background: rgba(11, 28, 58, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+
+  .site-nav.open {
+    display: flex;
+  }
+
+  .site-nav a {
+    padding: 13px 14px;
+    border-radius: 10px;
+    font-size: 15px;
+    width: 100%;
+    color: var(--soft);
+  }
+
+  .site-nav a.active {
+    color: var(--blue-light);
+  }
+}
+
+/* Phone */
 @media (max-width: 640px) {
   .site-header-inner {
     padding: 0 16px;
   }
 
-  .site-nav a {
-    padding: 5px 9px;
-    font-size: 13px;
+  .page-breadcrumb {
+    margin-bottom: 14px;
+  }
+
+  .site-footer {
+    margin-top: 48px;
+    padding: 20px 16px;
   }
 }
