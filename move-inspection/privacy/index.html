@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="/assets/css/site.css" />
 
     <style>
+      /* ── Mobile-first reading layout ── */
+
       body {
         min-height: 100vh;
         display: flex;
@@ -46,27 +48,30 @@
         width: 100%;
         max-width: 760px;
         margin: 0 auto;
-        padding: 32px 24px 64px;
-        box-sizing: border-box;
+        padding: 20px 16px 56px;
       }
+
+      /* cards */
 
       .card {
         background: var(--card);
         border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 28px 32px;
-        margin-bottom: 20px;
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 16px;
       }
 
+      /* typography */
+
       h1 {
-        margin: 0 0 8px;
-        font-size: clamp(28px, 4vw, 38px);
+        margin: 0 0 10px;
+        font-size: clamp(26px, 7vw, 36px);
         line-height: 1.1;
         letter-spacing: -0.02em;
       }
 
       h2 {
-        margin: 0 0 12px;
+        margin: 0 0 10px;
         font-size: 18px;
         font-weight: 600;
         color: #e2e8f0;
@@ -75,7 +80,8 @@
       p {
         margin: 0 0 12px;
         color: #94a3b8;
-        line-height: 1.65;
+        line-height: 1.7;
+        font-size: 15px;
       }
 
       p:last-child {
@@ -84,9 +90,11 @@
 
       .meta {
         color: #64748b;
-        font-size: 14px;
+        font-size: 13px;
         margin-bottom: 0;
       }
+
+      /* links */
 
       .contact-link {
         color: var(--blue-light);
@@ -95,6 +103,30 @@
 
       .contact-link:hover {
         text-decoration: underline;
+      }
+
+      /* tablet */
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 28px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+      }
+
+      /* desktop */
+
+      @media (min-width: 900px) {
+        .page {
+          padding: 32px 24px 72px;
+        }
+
+        .card {
+          padding: 26px 28px;
+        }
       }
     </style>
   </head>
