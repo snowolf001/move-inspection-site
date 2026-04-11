@@ -322,6 +322,48 @@
         gap: 18px;
       }
 
+      .breadcrumb {
+        display: inline-flex;
+        align-items: center;
+        gap: 2px;
+      }
+
+      .breadcrumb-sep {
+        color: rgba(255, 255, 255, 0.18);
+        font-size: 13px;
+        padding: 0 2px;
+        user-select: none;
+      }
+
+      .breadcrumb a {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        color: #94a3b8;
+        text-decoration: none;
+        border: 1px solid transparent;
+        transition: background 0.15s, color 0.15s;
+      }
+
+      .breadcrumb a:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(255, 255, 255, 0.08);
+        color: #dbeafe;
+      }
+
+      .breadcrumb a.bc-move {
+        color: #dbeafe;
+        font-weight: 600;
+      }
+
+      .breadcrumb a.bc-move:hover {
+        background: rgba(37, 99, 235, 0.12);
+        border-color: rgba(59, 130, 246, 0.25);
+      }
+
       footer {
         margin-top: 70px;
         font-size: 12px;
@@ -355,7 +397,11 @@
   <body>
     <div class="container">
       <div class="topbar">
-        <a href="/">← Clean Utility Apps</a>
+        <nav class="breadcrumb" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a class="bc-move" href="/move-inspection/">Move Inspection</a>
+        </nav>
         <div class="topbar-links">
           <a href="/passeo/">Passeo</a>
         </div>
