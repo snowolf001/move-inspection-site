@@ -5,7 +5,9 @@
   if (!window.__siteTrackingInit) {
     window.__siteTrackingInit = true;
     window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
+    function gtag() {
+      dataLayer.push(arguments);
+    }
     window.gtag = gtag;
     gtag('js', new Date());
     gtag('config', MEASUREMENT_ID);
@@ -33,17 +35,17 @@
       app: cfg.app,
       page: cfg.page,
       page_type: cfg.pageType || '',
-      path: window.location.pathname
+      path: window.location.pathname,
     });
   }
 
   // Global link-click tracking via querySelectorAll delegation
   document.querySelectorAll('a').forEach(function (link) {
     link.addEventListener('click', function () {
-      var eventName = (cfg && cfg.app) ? cfg.app + '_link_click' : 'link_click';
+      var eventName = cfg && cfg.app ? cfg.app + '_link_click' : 'link_click';
       window.trackEvent(eventName, {
         link_text: link.textContent.trim().substring(0, 100),
-        destination: link.href
+        destination: link.href,
       });
     });
   });
