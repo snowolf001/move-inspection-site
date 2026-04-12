@@ -44,18 +44,8 @@
       href="/assets/images/move-inspection/icon.png"
     />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
-    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-LBCQ8VL0TB');
+      window.pageTracking = { app: 'site', page: 'home', pageType: 'homepage' };
     </script>
 
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -838,25 +828,7 @@
     <!-- Vercel Analytics -->
     <script defer src="/_vercel/insights/script.js"></script>
 
-    <script>
-      function trackEvent(eventName, params = {}) {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, params);
-        }
-      }
-
-      document.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', function () {
-          const href = link.getAttribute('href') || '';
-          const label = (link.textContent || '').trim();
-
-          trackEvent('homepage_link_click', {
-            link_text: label,
-            destination: href,
-          });
-        });
-      });
-    </script>
+    <script src="/assets/js/site-tracking.js"></script>
 
     <script>
       (function () {

@@ -44,18 +44,8 @@
       href="/assets/images/move-inspection/icon.png"
     />
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-LBCQ8VL0TB"
-    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-LBCQ8VL0TB');
+      window.pageTracking = { app: 'move_inspection', page: 'index', pageType: 'landing' };
     </script>
 
     <link rel="stylesheet" href="/assets/css/site.css" />
@@ -549,9 +539,7 @@
       }
 
       function trackEvent(eventName, params = {}) {
-        if (typeof gtag === 'function') {
-          gtag('event', eventName, params);
-        }
+        window.trackEvent(eventName, params);
       }
 
       googlePlayBtn.addEventListener('click', function (e) {
@@ -590,6 +578,8 @@
         });
       });
     </script>
+
+    <script src="/assets/js/site-tracking.js"></script>
 
     <script>
       // Mobile menu toggle
