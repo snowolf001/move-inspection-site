@@ -331,6 +331,26 @@
         text-decoration: none;
       }
 
+      .doc-image {
+        margin-top: 14px;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .doc-image img {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow);
+      }
+
+      .doc-caption {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 6px;
+      }
+
       @media (min-width: 640px) {
         .page {
           padding: 24px 20px 64px;
@@ -586,12 +606,23 @@
             <ol class="steps">
               <li>Open the session details page.</li>
               <li>Review the time, location, and current availability.</li>
-              <li>Check in when the session is open and you are eligible.</li>
+              <li>
+                Tap the <strong>Check In</strong> button when the session is
+                open.
+              </li>
               <li>
                 If credits are used by your club, the appropriate credits are
                 deducted during check-in.
               </li>
             </ol>
+
+            <!-- 📱 Screenshot -->
+            <div class="doc-image">
+              <img src="/assets/images/passeo/sessiondetails.png" />
+              <div class="doc-caption">
+                The Check In button appears when the session is available.
+              </div>
+            </div>
 
             <div class="callout">
               Check-in records actual participation. This keeps club records
@@ -678,6 +709,14 @@
                 needed.
               </li>
             </ul>
+
+            <!-- 📱 Screenshot -->
+            <div class="doc-image">
+              <img src="/assets/images/passeo/credits.png" />
+              <div class="doc-caption">
+                Credit history shows balance, usage, and adjustments over time.
+              </div>
+            </div>
 
             <div class="grid-2">
               <div class="mini-card">
