@@ -40,8 +40,6 @@
     <link rel="stylesheet" href="/assets/css/site.css" />
 
     <style>
-      /* ── Mobile-first Passeo page ── */
-
       * {
         box-sizing: border-box;
       }
@@ -59,15 +57,11 @@
         color: inherit;
       }
 
-      /* ── Layout ── */
-
       .container {
         max-width: var(--max-width);
         margin: 0 auto;
         padding: 22px 16px 56px;
       }
-
-      /* ── Hero ── */
 
       .hero {
         padding-top: 4px;
@@ -104,8 +98,6 @@
         font-size: 15px;
       }
 
-      /* ── Buttons ── */
-
       .hero-buttons {
         display: flex;
         flex-direction: column;
@@ -118,8 +110,6 @@
         min-height: 48px;
         padding: 14px 18px;
       }
-
-      /* ── Hero screenshot ── */
 
       .hero-image {
         margin: 0 auto 14px;
@@ -151,8 +141,6 @@
         font-size: 16px;
       }
 
-      /* ── Sections ── */
-
       .section {
         margin-top: 52px;
       }
@@ -169,8 +157,6 @@
         font-size: 15px;
         line-height: 1.7;
       }
-
-      /* ── Product highlights ── */
 
       .showcase-list {
         display: grid;
@@ -216,8 +202,6 @@
         line-height: 1.7;
       }
 
-      /* ── Features ── */
-
       .features {
         display: grid;
         grid-template-columns: 1fr;
@@ -250,8 +234,6 @@
         line-height: 1.6;
       }
 
-      /* ── Docs ── */
-
       .docs-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -283,7 +265,66 @@
         line-height: 1.6;
       }
 
-      /* ── Desktop enhancements ── */
+      .pro-card {
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: left;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .pro-badge {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 12px;
+        margin-bottom: 12px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.16);
+        border: 1px solid rgba(59, 130, 246, 0.28);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .pro-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .pro-item {
+        background: var(--card-inner, rgba(255, 255, 255, 0.03));
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 16px;
+      }
+
+      .pro-item h3 {
+        margin: 0 0 6px;
+        font-size: 17px;
+      }
+
+      .pro-item p {
+        margin: 0;
+        color: var(--soft);
+        font-size: 14px;
+        line-height: 1.7;
+      }
+
+      .pro-callout {
+        margin-top: 16px;
+        background: rgba(37, 99, 235, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        border-left: 4px solid var(--blue);
+        border-radius: 14px;
+        padding: 14px 16px;
+        color: var(--soft);
+        line-height: 1.7;
+      }
 
       @media (min-width: 640px) {
         .container {
@@ -322,6 +363,15 @@
         .docs-grid {
           grid-template-columns: repeat(2, 1fr);
           gap: 14px;
+        }
+
+        .pro-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+        }
+
+        .pro-card {
+          padding: 22px;
         }
       }
 
@@ -405,7 +455,7 @@
 
         <div class="hero-image">
           <img
-            src="/assets/images/passeo/homescreen.png"
+            src="/assets/images/passeo/home screen.png"
             alt="Passeo app home screen showing active sessions, next session, and credits"
           />
         </div>
@@ -427,7 +477,7 @@
           <article class="showcase">
             <div class="showcase-image">
               <img
-                src="/assets/images/passeo/sessiondetails.png"
+                src="/assets/images/passeo/session details.png"
                 alt="Passeo session details screen with check-in actions and host tools"
               />
             </div>
@@ -444,7 +494,7 @@
           <article class="showcase">
             <div class="showcase-image">
               <img
-                src="/assets/images/passeo/credits.png"
+                src="/assets/images/passeo/credit history.png"
                 alt="Passeo credit history screen showing balances and usage history"
               />
             </div>
@@ -503,6 +553,46 @@
       </section>
 
       <section class="section">
+        <h2>Passeo Pro for advanced club operations</h2>
+        <p class="section-intro">
+          Passeo is free for everyday club operations. For clubs that need
+          deeper visibility and reporting, Passeo Pro unlocks advanced tools.
+        </p>
+
+        <div class="pro-card">
+          <div class="pro-badge">Passeo Pro</div>
+          <p class="desc" style="max-width: none; margin: 0; text-align: left">
+            Keep day-to-day session management simple, then upgrade when your
+            club needs reporting, accountability, and better long-term records.
+          </p>
+
+          <div class="pro-grid">
+            <div class="pro-item">
+              <h3>Reports and exports</h3>
+              <p>
+                Generate session reports and participation summaries. Export
+                records for sharing, reconciliation, or external reporting
+                needs.
+              </p>
+            </div>
+
+            <div class="pro-item">
+              <h3>Audit log</h3>
+              <p>
+                Review important actions such as check-ins, credit changes, and
+                session updates so your club has a clearer operational history.
+              </p>
+            </div>
+          </div>
+
+          <div class="pro-callout">
+            Passeo Pro is a <strong>club-level upgrade</strong>. When one member
+            upgrades, the entire club can access Pro features.
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
         <h2>Guides &amp; documentation</h2>
         <p class="section-intro">
           Everything you need to set up and run your club with Passeo.
@@ -550,7 +640,6 @@
     <script src="/assets/js/site-tracking.js"></script>
 
     <script>
-      // Mobile menu toggle
       (function () {
         var btn = document.getElementById('site-menu-btn');
         var nav = document.getElementById('site-nav');
