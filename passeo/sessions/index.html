@@ -6,7 +6,7 @@
     <title>Sessions | Passeo</title>
     <meta
       name="description"
-      content="Learn how sessions work in Passeo, including check-in, attendance, participation tracking, and session management."
+      content="Learn how sessions work in Passeo, including check-in, capacity, credits, backfill, participation tracking, and session management."
     />
     <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
 
@@ -537,8 +537,8 @@
             <h1>How sessions work in Passeo</h1>
             <p>
               Sessions are the center of club activity in Passeo. They help
-              organizers publish upcoming activities, and make attendance and
-              participation easier to track.
+              organizers publish upcoming activities, track attendance, manage
+              capacity, and handle credits in a consistent way.
             </p>
           </section>
 
@@ -552,16 +552,17 @@
             </p>
             <p>
               Each session can include details such as title, time, location,
-              available spots, and attendance status. This gives members one
-              clear place to understand what is happening and whether they can
-              participate.
+              available spots, attendance status, and check-in availability.
+              This gives members one clear place to understand what is happening
+              and whether they can participate.
             </p>
 
             <div class="grid-2">
               <div class="mini-card">
                 <h3>For members</h3>
                 <p>
-                  See upcoming activities and track whether you have checked in.
+                  See upcoming activities, review session details, and track
+                  whether you have checked in.
                 </p>
               </div>
               <div class="mini-card">
@@ -577,25 +578,56 @@
           <section id="check-in" class="card">
             <h2>Check in to a session</h2>
             <p>
-              In Passeo, check-in is how attendance is recorded. There is no
-              separate join step. Members simply check in when they attend a
-              session.
+              In Passeo, check-in is the main way attendance is recorded.
+              Members open a session, review the details, and check in when they
+              attend.
             </p>
 
             <ol class="steps">
               <li>Open the session details page.</li>
+              <li>Review the time, location, and current availability.</li>
+              <li>Check in when the session is open and you are eligible.</li>
               <li>
-                Review the time, location, and any participation requirements.
-              </li>
-              <li>
-                When you attend, check in to record your attendance and
-                participation.
+                If credits are used by your club, the appropriate credits are
+                deducted during check-in.
               </li>
             </ol>
 
             <div class="callout">
               Check-in records actual participation. This keeps club records
-              simpler, cleaner, and more accurate.
+              simpler, cleaner, and more accurate than relying on manual
+              attendance notes.
+            </div>
+          </section>
+
+          <section id="going-and-intents" class="card">
+            <h2>Who’s Going and session intents</h2>
+            <p>
+              Clubs can optionally enable a lightweight “Who’s Going” flow
+              before a session starts. This lets members indicate interest in a
+              session without using credits and without checking in yet.
+            </p>
+
+            <div class="grid-2">
+              <div class="mini-card">
+                <h3>Before the session</h3>
+                <p>
+                  Members can mark that they plan to attend so organizers get a
+                  better sense of expected turnout.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>At the actual session</h3>
+                <p>
+                  Members still need to check in to record attendance. Intent is
+                  not the same as attendance.
+                </p>
+              </div>
+            </div>
+
+            <div class="callout">
+              Session intents are useful when a club wants visibility into
+              expected participation without deducting credits too early.
             </div>
           </section>
 
@@ -630,8 +662,43 @@
             </p>
           </section>
 
+          <section id="credits" class="card">
+            <h2>Credits and participation usage</h2>
+            <p>
+              Some clubs use credits as part of attendance. When a member checks
+              in, Passeo can deduct credits automatically based on the club’s
+              setup and the participation being recorded.
+            </p>
+
+            <ul class="bullets">
+              <li>Credits can be viewed alongside membership details.</li>
+              <li>Credit usage is tied to actual session participation.</li>
+              <li>
+                Organizers can review credit history and make adjustments when
+                needed.
+              </li>
+            </ul>
+
+            <div class="grid-2">
+              <div class="mini-card">
+                <h3>Standard check-in</h3>
+                <p>
+                  A member checks in once and one participation record is
+                  created.
+                </p>
+              </div>
+              <div class="mini-card">
+                <h3>Multi-credit participation</h3>
+                <p>
+                  When allowed by the club, check-in can record more than one
+                  credit for the same session.
+                </p>
+              </div>
+            </div>
+          </section>
+
           <section id="capacity-and-locking" class="card">
-            <h2>Capacity and locking</h2>
+            <h2>Capacity and availability</h2>
             <p>
               Some sessions may have a maximum number of attendees. When a
               session reaches that limit, Passeo can prevent additional
@@ -641,7 +708,7 @@
 
             <ul class="bullets">
               <li>Open sessions allow eligible members to check in.</li>
-              <li>Locked or full sessions prevent additional check-ins.</li>
+              <li>Full sessions prevent additional check-ins.</li>
               <li>
                 Members can see whether a session is still available before they
                 try to check in.
@@ -654,16 +721,37 @@
             </div>
           </section>
 
+          <section id="manual-check-in" class="card">
+            <h2>Manual check-in for hosts and owners</h2>
+            <p>
+              Organizers may also have tools to record attendance manually. This
+              is useful when a member is present but cannot complete check-in on
+              their own device, or when attendance needs to be corrected on the
+              spot.
+            </p>
+
+            <ul class="bullets">
+              <li>Manual check-in helps keep attendance accurate.</li>
+              <li>
+                It can also support multi-credit participation when your club
+                uses that model.
+              </li>
+              <li>
+                Availability depends on the organizer’s role and club settings.
+              </li>
+            </ul>
+          </section>
+
           <section id="past-sessions" class="card">
-            <h2>Past sessions</h2>
+            <h2>Past sessions and history</h2>
             <p>
               Passeo can keep a record of previous sessions so organizers can
               review attendance history and participation patterns over time.
             </p>
             <p>
-              Past sessions are useful for reporting, credit adjustments,
-              reconciliation, and backfilling attendance when a club needs to
-              correct records.
+              Past sessions are useful for reporting, reconciliation, and credit
+              review. They also help reduce confusion around repeat check-ins or
+              missing attendance records.
             </p>
 
             <div class="grid-2">
@@ -677,20 +765,48 @@
               <div class="mini-card">
                 <h3>For members</h3>
                 <p>
-                  See whether a session was attended and avoid confusion around
-                  repeat check-ins.
+                  See whether a session was attended and better understand past
+                  participation.
                 </p>
               </div>
+            </div>
+          </section>
+
+          <section id="backfill" class="card">
+            <h2>Backfill and attendance corrections</h2>
+            <p>
+              Sometimes attendance needs to be recorded after the session has
+              already happened. Passeo can support backfill within the limits
+              configured by the club.
+            </p>
+
+            <ul class="bullets">
+              <li>
+                Backfill is useful when a real attendee was missed during the
+                live session.
+              </li>
+              <li>
+                Clubs can control how far back attendance corrections are
+                allowed.
+              </li>
+              <li>
+                Organizer permissions and club rules determine who can do this.
+              </li>
+            </ul>
+
+            <div class="callout">
+              Backfill helps fix legitimate attendance mistakes without turning
+              old sessions into open-ended records.
             </div>
           </section>
 
           <section id="managing-sessions" class="card">
             <h2>Managing sessions</h2>
             <p>
-              Hosts, hosts, and owners may have permission to manage sessions,
-              depending on club settings. Common management actions can include
-              creating sessions, editing details, setting capacity, and
-              reviewing attendee history.
+              Hosts and owners may have permission to manage sessions, depending
+              on club settings. Common management actions can include creating
+              sessions, editing details, setting capacity, reviewing attendees,
+              and handling operational attendance tasks.
             </p>
             <p>
               Refer to the <a href="/passeo/roles/">Roles</a> guide to
