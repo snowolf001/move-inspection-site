@@ -36,6 +36,14 @@
         text-decoration: underline;
       }
 
+      .page,
+      .layout,
+      .content,
+      .card,
+      .table-wrap {
+        min-width: 0;
+      }
+
       .page {
         max-width: 1120px;
         margin: 0 auto;
@@ -120,6 +128,7 @@
         border: 1px solid var(--border);
         border-radius: 18px;
         padding: 18px;
+        overflow: hidden;
       }
 
       h1 {
@@ -228,17 +237,18 @@
 
       .table-wrap {
         overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
         background: var(--card-inner);
         border: 1px solid var(--border);
         border-radius: 14px;
         margin-top: 16px;
-        -webkit-overflow-scrolling: touch;
+        max-width: 100%;
       }
 
       table {
-        width: 100%;
+        width: max-content;
+        min-width: 100%;
         border-collapse: collapse;
-        min-width: 680px;
       }
 
       th,
@@ -247,6 +257,7 @@
         text-align: left;
         border-bottom: 1px solid var(--border);
         vertical-align: top;
+        white-space: nowrap;
       }
 
       th {
