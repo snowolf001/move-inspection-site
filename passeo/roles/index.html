@@ -73,32 +73,33 @@
       }
 
       .docs-nav-mobile {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
         gap: 10px;
+        overflow-x: auto;
         padding: 4px 0 8px;
         margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .docs-nav-mobile::-webkit-scrollbar {
+        display: none;
       }
 
       .docs-nav-mobile a {
-        display: flex;
+        flex: 0 0 auto;
+        display: inline-flex;
         align-items: center;
         justify-content: center;
-        min-height: 44px;
-        padding: 10px 12px;
-        border-radius: 12px;
+        min-height: 40px;
+        padding: 8px 12px;
+        border-radius: 999px;
         font-size: 13px;
         font-weight: 600;
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid var(--border);
+        white-space: nowrap;
         color: #dbeafe;
-        text-align: center;
-        white-space: normal;
-      }
-
-      .docs-nav-mobile a:hover {
-        text-decoration: none;
-        background: rgba(255, 255, 255, 0.08);
       }
 
       .docs-nav-mobile a.active {
@@ -411,10 +412,6 @@
 
         .card {
           padding: 22px;
-        }
-
-        .docs-nav-mobile {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
         }
 
         .grid-3 {
