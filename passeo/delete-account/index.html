@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delete Account | Passeo</title>
+    <meta
+      name="description"
+      content="How to delete your Passeo account, either through the app or by submitting a request if you no longer have app access."
+    />
+    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <script>
+      window.pageTracking = {
+        app: 'passeo',
+        page: 'delete_account',
+        pageType: 'support',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      a {
+        color: #dbeafe;
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .page {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 20px 16px 56px;
+      }
+
+      .page-breadcrumb {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-bottom: 14px;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      .page-breadcrumb a {
+        color: #dbeafe;
+      }
+
+      .bc-sep {
+        color: #64748b;
+      }
+
+      .bc-current {
+        color: #cbd5e1;
+      }
+
+      .docs-nav-mobile {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 4px 0 8px;
+        margin-bottom: 16px;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+
+      .docs-nav-mobile::-webkit-scrollbar {
+        display: none;
+      }
+
+      .docs-nav-mobile a {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 40px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border);
+        white-space: nowrap;
+        color: #dbeafe;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+
+      .sidebar {
+        display: none;
+      }
+
+      .content {
+        min-width: 0;
+        display: grid;
+        gap: 16px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(28px, 7vw, 42px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        margin: 0 0 12px;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+      }
+
+      h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      p {
+        color: var(--soft);
+        line-height: 1.75;
+        margin: 0 0 12px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(239, 68, 68, 0.12);
+        border: 1px solid rgba(239, 68, 68, 0.25);
+        color: #fca5a5;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      /* Path indicator badges */
+      .path-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 14px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
+      .path-badge.primary {
+        background: rgba(34, 197, 94, 0.12);
+        border: 1px solid rgba(34, 197, 94, 0.25);
+        color: #86efac;
+      }
+
+      .path-badge.fallback {
+        background: rgba(251, 191, 36, 0.1);
+        border: 1px solid rgba(251, 191, 36, 0.22);
+        color: #fde68a;
+      }
+
+      /* In-app steps */
+      .steps-list {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+
+      .step-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+        background: var(--card-inner);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+
+      .step-num {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: rgba(37, 99, 235, 0.22);
+        color: #dbeafe;
+        font-weight: 800;
+        font-size: 14px;
+      }
+
+      .step-text {
+        color: var(--soft);
+        line-height: 1.6;
+        font-size: 15px;
+        padding-top: 4px;
+        margin: 0;
+      }
+
+      /* Info list for what to include */
+      .info-list {
+        display: grid;
+        gap: 8px;
+        margin-top: 14px;
+        margin-bottom: 14px;
+      }
+
+      .info-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 12px 14px;
+        background: var(--card-inner);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+      }
+
+      .info-dot {
+        flex-shrink: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #60a5fa;
+        margin-top: 6px;
+      }
+
+      .info-item-text {
+        color: var(--soft);
+        font-size: 15px;
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      .info-item-label {
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      /* Notice callout */
+      .notice {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        padding: 12px 14px;
+        border-radius: 12px;
+        background: rgba(59, 130, 246, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        margin-top: 14px;
+      }
+
+      .notice-icon {
+        flex-shrink: 0;
+        margin-top: 1px;
+        color: #93c5fd;
+      }
+
+      .notice p {
+        font-size: 14px;
+        color: #bfdbfe;
+        margin: 0;
+        line-height: 1.6;
+      }
+
+      /* Contact email button */
+      .contact-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 20px;
+        border-radius: 10px;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(59, 130, 246, 0.35);
+        color: #dbeafe;
+        font-weight: 700;
+        font-size: 15px;
+        text-decoration: none;
+        margin-top: 16px;
+      }
+
+      .contact-btn:hover {
+        background: rgba(37, 99, 235, 0.28);
+        text-decoration: none;
+      }
+
+      /* Data fate list */
+      .fate-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .fate-item {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+      }
+
+      .fate-icon {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 16px;
+        margin-top: 1px;
+      }
+
+      .fate-icon.del {
+        background: rgba(239, 68, 68, 0.12);
+      }
+
+      .fate-icon.anon {
+        background: rgba(251, 191, 36, 0.1);
+      }
+
+      .fate-item p {
+        font-size: 15px;
+        margin: 0;
+        line-height: 1.65;
+      }
+
+      /* Header / nav / footer shared */
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        color: #dbeafe;
+      }
+
+      .site-nav a:hover {
+        background: rgba(255, 255, 255, 0.08);
+        text-decoration: none;
+      }
+
+      .site-nav a.active {
+        background: rgba(37, 99, 235, 0.2);
+      }
+
+      .site-footer {
+        margin-top: 20px;
+      }
+
+      .site-footer-links {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 18px;
+      }
+
+      .site-footer-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 14px;
+        border-radius: 12px;
+        text-decoration: none;
+        color: #dbeafe;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid var(--border);
+      }
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 24px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+
+        .site-footer-links {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 12px;
+        }
+
+        .site-footer-links a {
+          background: transparent;
+        }
+      }
+
+      @media (min-width: 901px) {
+        .docs-nav-mobile {
+          display: none;
+        }
+
+        .layout {
+          grid-template-columns: 250px minmax(0, 1fr);
+          gap: 24px;
+        }
+
+        .sidebar {
+          display: block;
+          position: sticky;
+          top: 80px;
+          background: var(--card);
+          border: 1px solid var(--border);
+          border-radius: 20px;
+          padding: 20px;
+        }
+
+        .sidebar h2 {
+          margin: 0 0 16px;
+          font-size: 20px;
+        }
+
+        .nav a {
+          display: block;
+          padding: 10px 12px;
+          border-radius: 10px;
+          color: #dbeafe;
+          margin-bottom: 6px;
+          font-weight: 600;
+          border: 1px solid transparent;
+        }
+
+        .nav a.active {
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(59, 130, 246, 0.3);
+        }
+
+        .card {
+          border-radius: 20px;
+          padding: 24px;
+        }
+
+        .content {
+          gap: 20px;
+        }
+      }
+
+      @media (min-width: 960px) {
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex !important;
+          flex-direction: row;
+          align-items: center;
+          gap: 8px;
+          padding: 0;
+          background: transparent;
+          border: 0;
+          box-shadow: none;
+          text-align: center;
+        }
+
+        .site-nav a {
+          min-height: 40px;
+          padding: 8px 14px;
+          border-radius: 999px;
+          font-size: 14px;
+        }
+
+        .site-header-inner {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 16px;
+        }
+
+        .site-brand {
+          max-width: none;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <a href="/passeo/">Passeo</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">Delete Account</span>
+      </nav>
+
+      <div class="docs-nav-mobile" aria-label="Passeo documentation">
+        <a href="/passeo/">Overview</a>
+        <a href="/passeo/getting-started/">Getting Started</a>
+        <a href="/passeo/roles/">Roles</a>
+        <a href="/passeo/sessions/">Sessions</a>
+        <a href="/passeo/faq/">FAQ</a>
+        <a href="/passeo/privacy/">Privacy</a>
+      </div>
+
+      <div class="layout">
+        <aside class="sidebar">
+          <h2>Passeo</h2>
+          <nav class="nav" aria-label="Passeo documentation">
+            <a href="/passeo/">Overview</a>
+            <a href="/passeo/getting-started/">Getting Started</a>
+            <a href="/passeo/roles/">Roles</a>
+            <a href="/passeo/sessions/">Sessions</a>
+            <a href="/passeo/faq/">FAQ</a>
+            <a href="/passeo/privacy/">Privacy</a>
+          </nav>
+        </aside>
+
+        <main class="content">
+          <section class="card">
+            <div class="eyebrow">Account deletion</div>
+            <h1>Delete Your Account</h1>
+            <p>
+              Passeo accounts are tied to a local identity stored on your
+              device. The fastest way to delete your account is directly through
+              the app. If you no longer have access to the app or your local
+              identity, you can submit a request and we will handle it manually.
+            </p>
+          </section>
+
+          <!-- Primary path: in-app -->
+          <section class="card">
+            <div class="path-badge primary">Preferred — fastest</div>
+            <h2>If you still have app access</h2>
+            <p>
+              Deleting your account from inside the app is immediate and does
+              not require any manual review. Use this path whenever possible.
+            </p>
+
+            <div class="steps-list" role="list">
+              <div class="step-row" role="listitem">
+                <span class="step-num" aria-hidden="true">1</span>
+                <p class="step-text">Open Passeo on your device.</p>
+              </div>
+              <div class="step-row" role="listitem">
+                <span class="step-num" aria-hidden="true">2</span>
+                <p class="step-text">
+                  Go to your <strong>Profile</strong> (tap your name or avatar
+                  in the bottom navigation).
+                </p>
+              </div>
+              <div class="step-row" role="listitem">
+                <span class="step-num" aria-hidden="true">3</span>
+                <p class="step-text">
+                  Scroll down and tap <strong>Delete My Account</strong>.
+                </p>
+              </div>
+              <div class="step-row" role="listitem">
+                <span class="step-num" aria-hidden="true">4</span>
+                <p class="step-text">
+                  Read the confirmation and confirm the deletion. This action
+                  cannot be undone.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Fallback path: manual request -->
+          <section class="card">
+            <div class="path-badge fallback">Fallback — no app access</div>
+            <h2>If you no longer have app access</h2>
+            <p>
+              If you have lost access to the app or your local identity and
+              cannot use the in-app deletion flow, you can request account
+              deletion by emailing us. To help us locate your account, please
+              include as many of the following details as you can.
+            </p>
+
+            <div class="info-list" role="list">
+              <div class="info-item" role="listitem">
+                <div class="info-dot" aria-hidden="true"></div>
+                <p class="info-item-text">
+                  <span class="info-item-label">Club name</span> — the name of
+                  the club you were a member of in Passeo.
+                </p>
+              </div>
+              <div class="info-item" role="listitem">
+                <div class="info-dot" aria-hidden="true"></div>
+                <p class="info-item-text">
+                  <span class="info-item-label">Member display name</span> — the
+                  name shown for your account in the app.
+                </p>
+              </div>
+              <div class="info-item" role="listitem">
+                <div class="info-dot" aria-hidden="true"></div>
+                <p class="info-item-text">
+                  <span class="info-item-label">Approximate join date</span> —
+                  roughly when you joined the club (month and year is fine).
+                </p>
+              </div>
+              <div class="info-item" role="listitem">
+                <div class="info-dot" aria-hidden="true"></div>
+                <p class="info-item-text">
+                  <span class="info-item-label">Recovery code</span> — if you
+                  still have it, this is the most reliable way for us to locate
+                  your account.
+                </p>
+              </div>
+            </div>
+
+            <div class="notice" role="note">
+              <svg
+                class="notice-icon"
+                width="18"
+                height="18"
+                viewBox="0 0 20 20"
+                fill="none"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="10"
+                  cy="10"
+                  r="8.5"
+                  stroke="#93c5fd"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M10 9v5M10 7h.01"
+                  stroke="#93c5fd"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <p>
+                <strong>A recovery code is helpful but not required.</strong>
+                If you do not have one, provide as much of the other information
+                as you can and we will do our best to locate your account.
+              </p>
+            </div>
+
+            <a
+              class="contact-btn"
+              href="mailto:cleanutilityapps@gmail.com?subject=Passeo%20Account%20Deletion%20Request"
+            >
+              Email us to request deletion
+            </a>
+
+            <p style="margin-top: 10px; font-size: 14px; color: var(--muted)">
+              We will process your request within 7 days of receiving sufficient
+              identifying information.
+            </p>
+          </section>
+
+          <!-- What happens to your data -->
+          <section class="card">
+            <h2>What happens to your data</h2>
+            <p>
+              When your account is deleted, your personal data is removed or
+              permanently anonymized. Here is what to expect.
+            </p>
+
+            <div class="fate-list">
+              <div class="fate-item">
+                <div class="fate-icon del" aria-hidden="true">🗑</div>
+                <p>
+                  <strong>Personal information is deleted.</strong> Your display
+                  name, recovery code, profile data, and any other information
+                  that identifies you personally will be permanently removed.
+                </p>
+              </div>
+              <div class="fate-item">
+                <div class="fate-icon anon" aria-hidden="true">📊</div>
+                <p>
+                  <strong>Historical activity may be anonymized.</strong>
+                  Attendance records and participation history that contribute
+                  to club reports may be retained in anonymized form only —
+                  stripped of any personally identifying information — so that
+                  aggregate club statistics remain accurate.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <footer class="site-footer">
+            <div class="site-footer-links">
+              <a href="/">Home</a>
+              <a href="/passeo/">Passeo</a>
+              <a href="/passeo/privacy/">Privacy</a>
+            </div>
+            © 2026 Clean Utility Apps
+          </footer>
+        </main>
+      </div>
+    </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
