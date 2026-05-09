@@ -31,7 +31,7 @@
     <link
       rel="icon"
       type="image/png"
-      href="/assets/images/move-inspection/icon.png"
+      href="/assets/images/dinner-ready/dinnerReadyIcon.png"
     />
 
     <script>
@@ -77,12 +77,7 @@
         height: 80px;
         border-radius: 20px;
         margin: 0 auto 18px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: rgba(37, 99, 235, 0.18);
-        border: 1px solid rgba(59, 130, 246, 0.28);
-        font-size: 38px;
+        display: block;
         box-shadow: var(--shadow);
       }
 
@@ -175,14 +170,17 @@
       }
 
       .docs-grid {
-        display: grid;
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
         text-align: left;
         margin-top: 18px;
       }
 
       .doc-card {
+        flex: 1 1 260px;
+        max-width: 420px;
         background: var(--card);
         border: 1px solid var(--border);
         border-radius: 14px;
@@ -190,6 +188,7 @@
         text-decoration: none;
         color: inherit;
         display: block;
+        box-sizing: border-box;
       }
 
       .doc-card h3 {
@@ -213,11 +212,6 @@
         .features {
           grid-template-columns: repeat(2, 1fr);
           gap: 16px;
-        }
-
-        .docs-grid {
-          grid-template-columns: repeat(2, 1fr);
-          gap: 14px;
         }
       }
 
@@ -278,7 +272,11 @@
 
     <div class="container">
       <section class="hero">
-        <div class="app-icon" aria-hidden="true">🍽️</div>
+        <img
+          class="app-icon"
+          src="/assets/images/dinner-ready/dinnerReadyIcon.png"
+          alt="DinnerReady app icon"
+        />
         <h1>DinnerReady</h1>
         <p class="tagline">AI-powered meal planning — simplified.</p>
         <p class="desc">
