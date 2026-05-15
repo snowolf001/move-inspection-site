@@ -769,6 +769,11 @@
           gap: 24px;
         }
 
+        /* 2-column layout variant */
+        .onboarding-steps.two-col {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .onboarding-step {
           padding: 24px;
         }
@@ -1083,46 +1088,71 @@
           <section class="card">
             <article class="walkthrough-section">
               <div class="step-badge">Step 3</div>
-              <div class="walkthrough-content">
-                <div class="step-text">
-                  <h3>Invite Members</h3>
+              <h3>Invite Members</h3>
+              <p>Members join your club using a club join code.</p>
 
-                  <div class="step-instructions">
-                    <h4>Instructions:</h4>
-                    <ol>
-                      <li>Open Club Settings</li>
-                      <li>Find your Club Join Code</li>
-                      <li>Share the code with members</li>
-                      <li>
-                        Members:
-                        <ul>
-                          <li>Install Passeo</li>
-                          <li>Tap "Join Club"</li>
-                          <li>Enter the join code</li>
-                        </ul>
-                      </li>
-                    </ol>
+              <div class="onboarding-steps two-col">
+                <!-- Step 3A: Find join code -->
+                <div class="onboarding-step">
+                  <div class="phone-screenshot-item">
+                    <img
+                      src="/assets/images/passeo/01-invite-members.png"
+                      alt="Passeo Profile screen showing the highlighted club join code"
+                      class="phone-screenshot"
+                      loading="lazy"
+                    />
+                    <p class="screenshot-caption">
+                      Find your club join code in Profile.
+                    </p>
                   </div>
-
-                  <div class="step-notes">
-                    <h4>Important notes:</h4>
-                    <ul>
-                      <li>Members join by themselves</li>
-                      <li>No need to manually create every member</li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="step-screenshot">
-                  <div class="screenshot-placeholder">
-                    <span class="screenshot-placeholder-text"
-                      >Screenshot: club-join-code.png</span
-                    >
-                  </div>
-                  <p class="screenshot-caption">
-                    Members can quickly join using your club join code.
+                  <h4>Find your club join code</h4>
+                  <p>
+                    Open Profile to find your club join code and share it with
+                    members.
                   </p>
+                  <ul>
+                    <li>Share the join code with members</li>
+                    <li>Members can join by themselves</li>
+                    <li>No need to manually create every member</li>
+                  </ul>
                 </div>
+
+                <!-- Step 3B: Members join -->
+                <div class="onboarding-step">
+                  <div class="phone-screenshot-item">
+                    <img
+                      src="/assets/images/passeo/02-invite-members.png"
+                      alt="Passeo Join Club screen showing join code entry"
+                      class="phone-screenshot"
+                      loading="lazy"
+                    />
+                    <p class="screenshot-caption">
+                      Members enter the join code to join the club.
+                    </p>
+                  </div>
+                  <h4>Members join using the code</h4>
+                  <p>
+                    Members open Passeo, tap "Join a Club", and enter the join
+                    code.
+                  </p>
+                  <ul>
+                    <li>Enter first and last name</li>
+                    <li>Enter the club join code</li>
+                    <li>Tap "Join Club"</li>
+                    <li>Join instantly</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div
+                class="step-notes"
+                style="margin-top: 20px; align-self: flex-start"
+              >
+                <h4>Note:</h4>
+                <p style="color: var(--soft); font-size: 14px; margin: 0">
+                  After members join, the club owner can promote members to
+                  hosts if needed.
+                </p>
               </div>
             </article>
           </section>
