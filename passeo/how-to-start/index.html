@@ -6,7 +6,7 @@
     <title>How to Start with Passeo | Club Setup Guide</title>
     <meta
       name="description"
-      content="Learn how to set up your club, create sessions, add credits, invite members, and manage check-ins with Passeo."
+      content="Step-by-step guide for club managers. Learn exactly how to create your club, add members, create sessions, manage credits, and run check-ins with Passeo."
     />
     <meta
       property="og:title"
@@ -14,7 +14,7 @@
     />
     <meta
       property="og:description"
-      content="A beginner-friendly guide to setting up your club, creating sessions, and managing attendance with Passeo."
+      content="Follow this complete walkthrough to set up your club, create sessions, invite members, and manage attendance with Passeo."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -29,7 +29,7 @@
     />
     <meta
       name="twitter:description"
-      content="A beginner-friendly guide to setting up your club, creating sessions, and managing attendance with Passeo."
+      content="Follow this complete walkthrough to set up your club, create sessions, invite members, and manage attendance with Passeo."
     />
     <meta name="twitter:image" content="/assets/images/passeo/passeo.png" />
     <link
@@ -143,7 +143,7 @@
       .content {
         min-width: 0;
         display: grid;
-        gap: 16px;
+        gap: 24px;
       }
 
       .card {
@@ -168,13 +168,15 @@
 
       h3 {
         margin: 0 0 8px;
-        font-size: 18px;
+        font-size: 20px;
+        color: #dbeafe;
       }
 
       p {
         color: var(--soft);
         line-height: 1.7;
         margin: 0 0 12px;
+        font-size: 15px;
       }
 
       p:last-child {
@@ -228,51 +230,187 @@
         background: rgba(37, 99, 235, 0.12);
       }
 
-      .steps-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 12px;
-        margin-top: 18px;
-      }
-
-      .step-card {
+      /* Walkthrough section styles */
+      .walkthrough-section {
         background: var(--card-inner);
         border: 1px solid var(--border);
-        border-radius: 14px;
-        padding: 20px;
+        border-radius: 16px;
+        padding: 24px;
+        margin-top: 16px;
       }
 
-      .step-number {
+      .walkthrough-section:first-of-type {
+        margin-top: 0;
+      }
+
+      .step-badge {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 34px;
-        height: 34px;
+        min-width: 36px;
+        height: 36px;
+        padding: 0 12px;
         border-radius: 999px;
         background: rgba(37, 99, 235, 0.22);
         color: #dbeafe;
         font-weight: 800;
+        font-size: 14px;
+        margin-bottom: 14px;
+      }
+
+      .walkthrough-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+
+      .step-text h3 {
         margin-bottom: 12px;
       }
 
-      .step-card h3 {
-        font-size: 18px;
+      .step-instructions {
+        background: rgba(37, 99, 235, 0.08);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 12px;
+        padding: 18px;
+        margin: 16px 0;
       }
 
-      .step-card p {
+      .step-instructions h4 {
+        margin: 0 0 12px;
         font-size: 15px;
+        font-weight: 700;
+        color: #dbeafe;
       }
 
-      .step-card ul {
-        margin: 8px 0 0;
+      .step-instructions ol {
+        margin: 0;
         padding-left: 20px;
         color: var(--soft);
         font-size: 15px;
+        line-height: 1.8;
+      }
+
+      .step-instructions ol li {
+        margin-bottom: 6px;
+      }
+
+      .step-instructions ul {
+        margin: 0;
+        padding-left: 20px;
+        list-style: disc;
+      }
+
+      .step-notes {
+        background: rgba(255, 255, 255, 0.03);
+        border-left: 3px solid rgba(59, 130, 246, 0.4);
+        padding: 14px 18px;
+        margin: 16px 0 0;
+        border-radius: 6px;
+      }
+
+      .step-notes h4 {
+        margin: 0 0 10px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #93c5fd;
+      }
+
+      .step-notes ul {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--soft);
+        font-size: 14px;
         line-height: 1.7;
       }
 
-      .step-card ul li {
+      .step-notes ul li {
         margin-bottom: 4px;
+      }
+
+      .screenshot-placeholder {
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.8),
+          rgba(30, 41, 59, 0.6)
+        );
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 32px;
+        min-height: 340px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+      }
+
+      .screenshot-placeholder::before {
+        content: '📱';
+        font-size: 56px;
+        margin-bottom: 16px;
+        opacity: 0.4;
+      }
+
+      .screenshot-placeholder-text {
+        color: #64748b;
+        font-size: 13px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .screenshot-caption {
+        margin-top: 10px;
+        font-size: 14px;
+        color: #94a3b8;
+        text-align: center;
+        font-style: italic;
+      }
+
+      .optional-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(168, 85, 247, 0.15);
+        border: 1px solid rgba(168, 85, 247, 0.3);
+        color: #e9d5ff;
+        font-size: 12px;
+        font-weight: 700;
+        margin-left: 8px;
+        vertical-align: middle;
+      }
+
+      .tips-list {
+        display: grid;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .tip-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 14px 16px;
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .tip-icon {
+        flex-shrink: 0;
+        font-size: 18px;
+        opacity: 0.7;
+      }
+
+      .tip-text {
+        color: var(--soft);
+        font-size: 15px;
+        line-height: 1.6;
+        margin: 0;
       }
 
       .faq-grid {
@@ -290,8 +428,9 @@
       }
 
       .faq-card h3 {
-        font-size: 18px;
+        font-size: 17px;
         color: #dbeafe;
+        margin-bottom: 10px;
       }
 
       .faq-card p {
@@ -460,11 +599,6 @@
           flex-wrap: wrap;
         }
 
-        .steps-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
-        }
-
         .faq-grid {
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 16px;
@@ -479,6 +613,10 @@
 
         .site-footer-links a {
           background: transparent;
+        }
+
+        .screenshot-placeholder {
+          min-height: 400px;
         }
       }
 
@@ -528,15 +666,29 @@
         }
 
         .content {
-          gap: 20px;
+          gap: 28px;
         }
 
-        .steps-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+        .walkthrough-section {
+          padding: 32px;
         }
 
-        .faq-grid {
+        /* Alternating layout on desktop */
+        .walkthrough-content {
           grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 32px;
+        }
+
+        .walkthrough-content.reverse {
+          direction: rtl;
+        }
+
+        .walkthrough-content.reverse > * {
+          direction: ltr;
+        }
+
+        .screenshot-placeholder {
+          min-height: 480px;
         }
       }
 
@@ -661,11 +813,10 @@
         <main class="content">
           <!-- Hero Section -->
           <section class="card">
-            <div class="eyebrow">Beginner-friendly guide</div>
+            <div class="eyebrow">Step-by-step guide</div>
             <h1>How to Start with Passeo</h1>
             <p>
-              Set up your club, create sessions, add credits, and start
-              check-ins in just a few simple steps.
+              Follow these steps to set up your club and run your first session.
             </p>
             <div class="btn-row">
               <a
@@ -688,11 +839,11 @@
             </div>
           </section>
 
-          <!-- Reassurance Section -->
+          <!-- Intro Section -->
           <section class="card reassurance">
             <h2>Start Simple</h2>
             <p>You do not need to set up everything perfectly on day one.</p>
-            <p>Many clubs begin with:</p>
+            <p>Most clubs begin with:</p>
             <ul>
               <li>One session</li>
               <li>A few members</li>
@@ -704,152 +855,487 @@
             </p>
           </section>
 
-          <!-- Step-by-step Setup Guide -->
+          <!-- Step 1 — Create Your Club -->
           <section class="card">
-            <h2>Step-by-step setup guide</h2>
-            <p>
-              Follow these steps to set up your club and run your first session
-              with Passeo.
-            </p>
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 1</div>
+              <div class="walkthrough-content">
+                <div class="step-text">
+                  <h3>Create Your Club</h3>
 
-            <div class="steps-grid">
-              <article class="step-card">
-                <div class="step-number">1</div>
-                <h3>Create Your Club</h3>
-                <p>
-                  Create your club and become the owner automatically. This
-                  gives you full control over club settings and management.
-                </p>
-                <ul>
-                  <li>Choose a club name</li>
-                  <li>Select your sport or activity type</li>
-                  <li>Invite members later when ready</li>
-                </ul>
-              </article>
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open Passeo</li>
+                      <li>Tap "Create Club"</li>
+                      <li>
+                        Enter:
+                        <ul>
+                          <li>First Name</li>
+                          <li>Last Name</li>
+                          <li>Club Name</li>
+                        </ul>
+                      </li>
+                      <li>Tap Create</li>
+                    </ol>
+                  </div>
 
-              <article class="step-card">
-                <div class="step-number">2</div>
-                <h3>Create Your First Session</h3>
-                <p>
-                  Create a session with date, time, and optional player
-                  capacity. Sessions can be one-time or recurring.
-                </p>
-                <ul>
-                  <li>Recurring sessions supported</li>
-                  <li>Optional location details</li>
-                  <li>Optional capacity limits</li>
-                </ul>
-              </article>
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>You automatically become the club owner</li>
+                      <li>
+                        Owners can manage the club and promote hosts later
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-              <article class="step-card">
-                <div class="step-number">3</div>
-                <h3>Invite Members</h3>
-                <p>
-                  Share your club join code so members can join themselves. No
-                  manual setup needed for each person.
-                </p>
-                <ul>
-                  <li>Members install the app</li>
-                  <li>Members join using the code</li>
-                  <li>Less manual management for you</li>
-                </ul>
-              </article>
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: create-club.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Create your club in less than a minute.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
 
-              <article class="step-card">
-                <div class="step-number">4</div>
-                <h3>Add Credits</h3>
-                <p>
-                  Managers can add credits to members before sessions. This
-                  helps track participation and manage attendance.
-                </p>
-                <ul>
-                  <li>Flexible credit amounts</li>
-                  <li>Support for guests</li>
-                  <li>Easy adjustments later</li>
-                </ul>
-              </article>
+          <!-- Step 2 — Create Your First Session -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 2</div>
+              <div class="walkthrough-content reverse">
+                <div class="step-text">
+                  <h3>Create Your First Session</h3>
+                  <p>
+                    Sessions are where members check in and attendance is
+                    tracked.
+                  </p>
 
-              <article class="step-card">
-                <div class="step-number">5</div>
-                <h3>Start Check-In</h3>
-                <p>
-                  Members can check themselves in, or hosts can manually check
-                  in members. Choose what works best for your club.
-                </p>
-                <ul>
-                  <li>Live attendance updates</li>
-                  <li>Manual backup available</li>
-                  <li>Useful for busy sessions</li>
-                </ul>
-              </article>
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open your club Home screen</li>
+                      <li>Tap the "New Session" button</li>
+                      <li>
+                        On the New Session page:
+                        <ul>
+                          <li>Select a location</li>
+                          <li>Select a host, or leave it empty for no host</li>
+                          <li>
+                            Enter a session name
+                            <ul>
+                              <li>
+                                If left blank, the location name will be used
+                                automatically
+                              </li>
+                            </ul>
+                          </li>
+                          <li>Choose the session date</li>
+                          <li>Choose the start time</li>
+                          <li>Choose the end time</li>
+                        </ul>
+                      </li>
+                      <li>Tap "Create Session"</li>
+                    </ol>
+                  </div>
 
-              <article class="step-card">
-                <div class="step-number">6</div>
-                <h3>Review Attendance</h3>
-                <p>
-                  Review attendance history and participation after sessions.
-                  Track who attended and when.
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Sessions are used for attendance and check-ins</li>
+                      <li>Hosts can help manage check-in during the session</li>
+                      <li>
+                        Player capacity is optional if supported by the selected
+                        location
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: home-new-session-button.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Create sessions directly from the club home screen.
+                  </p>
+                  <div class="screenshot-placeholder" style="margin-top: 20px">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: new-session-page.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Set location, host, and session time in just a few taps.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Step 3 — Invite Members -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 3</div>
+              <div class="walkthrough-content">
+                <div class="step-text">
+                  <h3>Invite Members</h3>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open Club Settings</li>
+                      <li>Find your Club Join Code</li>
+                      <li>Share the code with members</li>
+                      <li>
+                        Members:
+                        <ul>
+                          <li>Install Passeo</li>
+                          <li>Tap "Join Club"</li>
+                          <li>Enter the join code</li>
+                        </ul>
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Members join by themselves</li>
+                      <li>No need to manually create every member</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: club-join-code.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Members can quickly join using your club join code.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Step 4 — Promote a Member to Host -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 4</div>
+              <div class="walkthrough-content reverse">
+                <div class="step-text">
+                  <h3>Promote a Member to Host</h3>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open Profile</li>
+                      <li>Tap "Manage Members"</li>
+                      <li>Select a member</li>
+                      <li>Tap "Promote to Host"</li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Only the club owner can promote hosts</li>
+                      <li>Hosts can help manage sessions and check-ins</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: promote-host.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Hosts can help manage attendance and sessions.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Step 5 — Add Credits to Members -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 5</div>
+              <div class="walkthrough-content">
+                <div class="step-text">
+                  <h3>Add Credits to Members</h3>
+
+                  <p>
+                    <strong
+                      >Credits represent how many sessions a member can
+                      attend.</strong
+                    >
+                  </p>
+                  <p>Example: 1 session = 1 credit</p>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open Profile</li>
+                      <li>Tap "Manage Members"</li>
+                      <li>Select a member</li>
+                      <li>Tap "Adjust Credits"</li>
+                      <li>Enter the number of credits</li>
+                      <li>Tap Save</li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Credits can be adjusted later</li>
+                      <li>Clubs can choose their own credit system</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: manage-members.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Add credits so members can check in to sessions.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Optional Feature — Who's Going -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">
+                Optional
+                <span class="optional-badge">Feature</span>
+              </div>
+              <div class="walkthrough-content reverse">
+                <div class="step-text">
+                  <h3>See Who's Going</h3>
+
+                  <p>
+                    Members can mark whether they plan to attend before check-in
+                    starts.
+                  </p>
+
+                  <p>
+                    <strong>"Who's Going"</strong> helps estimate attendance
+                    before the session. <strong>Check-in</strong> records actual
+                    attendance and credit usage during the session.
+                  </p>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Members open a session</li>
+                      <li>Tap "Going"</li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Useful for estimating attendance</li>
+                      <li>Helps clubs prepare enough courts/tables/space</li>
+                      <li>Separate from actual check-in</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: whos-going-session.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    See expected attendance before sessions begin.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Step 6 — Start Check-In -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 6</div>
+              <div class="walkthrough-content">
+                <div class="step-text">
+                  <h3>Start Check-In</h3>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open a session</li>
+                      <li>Tap "Check-In Mode"</li>
+                      <li>Members can check themselves in</li>
+                      <li>Hosts can also manually check in members</li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>
+                        During check-in, you can choose how many credits to use
+                      </li>
+                      <li>
+                        Example: normal session = 1 credit, guest/player fee
+                        could use more credits
+                      </li>
+                      <li>
+                        Manual check-in helps when members forget their phones
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: check-in-mode.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Track attendance live during each session.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Step 7 — Review Attendance -->
+          <section class="card">
+            <article class="walkthrough-section">
+              <div class="step-badge">Step 7</div>
+              <div class="walkthrough-content reverse">
+                <div class="step-text">
+                  <h3>Review Attendance</h3>
+
+                  <div class="step-instructions">
+                    <h4>Instructions:</h4>
+                    <ol>
+                      <li>Open a session</li>
+                      <li>View checked-in members</li>
+                      <li>Open attendance history or reports</li>
+                    </ol>
+                  </div>
+
+                  <div class="step-notes">
+                    <h4>Important notes:</h4>
+                    <ul>
+                      <li>Review who attended</li>
+                      <li>Track participation history</li>
+                      <li>See club activity over time</li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="step-screenshot">
+                  <div class="screenshot-placeholder">
+                    <span class="screenshot-placeholder-text"
+                      >Screenshot: attendance-history.png</span
+                    >
+                  </div>
+                  <p class="screenshot-caption">
+                    Review attendance after every session.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Helpful Tips Section -->
+          <section class="card">
+            <h2>Helpful Tips</h2>
+            <p>Quick tips to help you get started smoothly.</p>
+
+            <div class="tips-list">
+              <div class="tip-item">
+                <span class="tip-icon">💡</span>
+                <p class="tip-text">Start with one session first</p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">✏️</span>
+                <p class="tip-text">You can always edit sessions later</p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">🤝</span>
+                <p class="tip-text">
+                  Hosts can help with check-ins during busy sessions
                 </p>
-                <ul>
-                  <li>See who attended</li>
-                  <li>View participation history</li>
-                  <li>Track club activity</li>
-                </ul>
-              </article>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">📱</span>
+                <p class="tip-text">
+                  Members who forget to check in can still be checked in
+                  manually
+                </p>
+              </div>
+              <div class="tip-item">
+                <span class="tip-icon">📄</span>
+                <p class="tip-text">
+                  Most clubs transition gradually from paper cards
+                </p>
+              </div>
             </div>
           </section>
 
-          <!-- Common Questions -->
+          <!-- FAQ Section -->
           <section class="card">
             <h2>Common Questions</h2>
-            <p>Questions club managers often have when starting with Passeo.</p>
+            <p>Answers to questions club managers often have.</p>
 
             <div class="faq-grid">
               <article class="faq-card">
                 <h3>Do all members need the app?</h3>
                 <p>
-                  No. Managers and hosts can still manually check in members or
-                  guests who do not have the app installed.
+                  No. Hosts and managers can still manually check in members or
+                  guests.
                 </p>
               </article>
 
               <article class="faq-card">
                 <h3>What if someone forgets to check in?</h3>
-                <p>
-                  Hosts or managers can manually check them in later. The system
-                  is flexible and allows for corrections.
-                </p>
+                <p>Hosts or managers can manually check them in later.</p>
               </article>
 
               <article class="faq-card">
-                <h3>Can I still use paper cards?</h3>
+                <h3>Can I still use paper cards at first?</h3>
                 <p>
                   Yes. Many clubs transition gradually while learning the
-                  system. Use whatever combination works for your club.
+                  system.
                 </p>
               </article>
 
               <article class="faq-card">
                 <h3>What if I make a mistake?</h3>
-                <p>
-                  Credits and attendance can be adjusted later. You have control
-                  to fix any errors that occur.
-                </p>
+                <p>Credits and attendance can be adjusted later.</p>
               </article>
 
               <article class="faq-card">
                 <h3>Is Passeo only for large clubs?</h3>
                 <p>
-                  No. Passeo works well for small groups and large clubs. Start
-                  with any size and grow over time.
-                </p>
-              </article>
-
-              <article class="faq-card">
-                <h3>How do recurring sessions work?</h3>
-                <p>
-                  Create a session template that repeats weekly, biweekly, or
-                  monthly. Save time by not recreating the same session.
+                  No. Passeo works well for both small groups and large clubs.
                 </p>
               </article>
             </div>
@@ -857,11 +1343,8 @@
 
           <!-- Final CTA Section -->
           <section class="card cta-section">
-            <h2>Ready to Try Passeo?</h2>
-            <p>
-              Create your club and run your first session in minutes. No long
-              setup or complicated configuration required.
-            </p>
+            <h2>Ready to Start Your Club?</h2>
+            <p>Create your club and run your first session in minutes.</p>
             <div class="btn-row">
               <a
                 class="btn"
@@ -879,6 +1362,7 @@
               >
                 Download for iPhone
               </a>
+              <a class="btn secondary" href="/passeo/">View Passeo Features</a>
             </div>
           </section>
 
