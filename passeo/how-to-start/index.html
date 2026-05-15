@@ -370,6 +370,28 @@
         font-style: italic;
       }
 
+      /* Phone screenshot styles */
+      .phone-screenshots {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .phone-screenshot-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .phone-screenshot {
+        width: 100%;
+        max-width: 280px;
+        height: auto;
+        border-radius: 12px;
+        border: 1px solid var(--border);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      }
+
       .optional-badge {
         display: inline-flex;
         align-items: center;
@@ -690,6 +712,10 @@
         .screenshot-placeholder {
           min-height: 480px;
         }
+
+        .phone-screenshot {
+          max-width: 320px;
+        }
       }
 
       @media (min-width: 960px) {
@@ -867,16 +893,10 @@
                     <h4>Instructions:</h4>
                     <ol>
                       <li>Open Passeo</li>
-                      <li>Tap "Create Club"</li>
+                      <li>Tap "Create a Club"</li>
                       <li>
-                        Enter:
-                        <ul>
-                          <li>First Name</li>
-                          <li>Last Name</li>
-                          <li>Club Name</li>
-                        </ul>
+                        Enter your name and club name, then tap Create Club
                       </li>
-                      <li>Tap Create</li>
                     </ol>
                   </div>
 
@@ -892,14 +912,30 @@
                 </div>
 
                 <div class="step-screenshot">
-                  <div class="screenshot-placeholder">
-                    <span class="screenshot-placeholder-text"
-                      >Screenshot: create-club.png</span
-                    >
+                  <div class="phone-screenshots">
+                    <div class="phone-screenshot-item">
+                      <img
+                        src="/assets/images/passeo/01-createclub.png"
+                        alt="Passeo welcome screen with Create a Club button highlighted"
+                        class="phone-screenshot"
+                        loading="lazy"
+                      />
+                      <p class="screenshot-caption">
+                        Tap Create a Club on the welcome screen.
+                      </p>
+                    </div>
+                    <div class="phone-screenshot-item">
+                      <img
+                        src="/assets/images/passeo/02-createclub.png"
+                        alt="Passeo Create a Club form with name and club name fields filled in"
+                        class="phone-screenshot"
+                        loading="lazy"
+                      />
+                      <p class="screenshot-caption">
+                        Enter your name and club name, then tap Create Club.
+                      </p>
+                    </div>
                   </div>
-                  <p class="screenshot-caption">
-                    Create your club in less than a minute.
-                  </p>
                 </div>
               </div>
             </article>
