@@ -149,6 +149,37 @@
         font-size: 16px;
       }
 
+      .hero-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 22px;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #dbeafe;
+        background: rgba(37, 99, 235, 0.12);
+        border: 1px solid rgba(59, 130, 246, 0.28);
+        border-radius: 999px;
+        text-decoration: none;
+        transition:
+          background 0.15s,
+          transform 0.1s;
+        letter-spacing: -0.01em;
+      }
+
+      .hero-cta:hover {
+        background: rgba(37, 99, 235, 0.22);
+        transform: translateY(-1px);
+        text-decoration: none;
+        color: #dbeafe;
+      }
+
+      .hero-cta:focus-visible {
+        outline: 2px solid #60a5fa;
+        outline-offset: 3px;
+      }
+
       .section {
         margin-top: 52px;
       }
@@ -478,6 +509,25 @@
           </a>
         </div>
 
+        <a class="hero-cta" href="/passeo/download/">
+          Get the App
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 7h8M7.5 3.5L11 7l-3.5 3.5"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+
         <div class="hero-image">
           <img
             src="/assets/images/passeo/homescreen.png"
@@ -625,6 +675,10 @@
           Everything you need to set up and run your club with Passeo.
         </p>
         <div class="docs-grid">
+          <a class="doc-card" href="/passeo/download/">
+            <h3>Download</h3>
+            <p>Get Passeo on iOS or Android and join your club.</p>
+          </a>
           <a class="doc-card" href="/passeo/how-to-start/">
             <h3>How to Start</h3>
             <p>
@@ -665,6 +719,7 @@
           <a href="/">Home</a>
           <a href="/move-inspection/">Move Inspection</a>
           <a href="/passeo/">Passeo</a>
+          <a href="/passeo/download/">Download</a>
           <a href="/passeo/privacy/">Privacy</a>
           <a href="/passeo/terms/">Terms of Use</a>
         </div>

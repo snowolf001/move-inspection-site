@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Download Passeo | Passeo</title>
+    <meta
+      name="description"
+      content="Download Passeo for iPhone and Android. Join your club, check in to sessions, and manage attendance."
+    />
+    <meta property="og:title" content="Download Passeo | Passeo" />
+    <meta
+      property="og:description"
+      content="Download Passeo for iPhone and Android. Join your club, check in to sessions, and manage attendance."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://cleanutilityapps.com/passeo/download/"
+    />
+    <meta property="og:image" content="/assets/images/passeo/passeo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Download Passeo | Passeo" />
+    <meta
+      name="twitter:description"
+      content="Download Passeo for iPhone and Android. Join your club, check in to sessions, and manage attendance."
+    />
+    <meta name="twitter:image" content="/assets/images/passeo/passeo.png" />
+    <link
+      rel="canonical"
+      href="https://cleanutilityapps.com/passeo/download/"
+    />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <script>
+      window.pageTracking = {
+        app: 'passeo',
+        page: 'download',
+        pageType: 'download',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        text-align: center;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 32px 16px 64px;
+      }
+
+      .app-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        margin: 0 auto 18px;
+        display: block;
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(30px, 9vw, 48px);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .subtitle {
+        font-size: 16px;
+        color: var(--soft);
+        margin: 0 auto 32px;
+        max-width: 480px;
+        line-height: 1.6;
+      }
+
+      /* ── Download buttons ── */
+      .download-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-bottom: 48px;
+      }
+
+      .btn-download {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 58px;
+        padding: 14px 24px;
+        border-radius: 14px;
+        font-size: 16px;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: -0.01em;
+        transition:
+          opacity 0.15s,
+          transform 0.1s;
+      }
+
+      .btn-download:hover {
+        opacity: 0.88;
+        transform: translateY(-1px);
+        text-decoration: none;
+      }
+
+      .btn-download:active {
+        transform: translateY(0);
+      }
+
+      .btn-download:focus-visible {
+        outline: 2px solid #60a5fa;
+        outline-offset: 3px;
+      }
+
+      .btn-appstore {
+        background: #ffffff;
+        color: #0b1c3a;
+        border: none;
+      }
+
+      .btn-googleplay {
+        background: transparent;
+        color: #ffffff;
+        border: 1.5px solid rgba(255, 255, 255, 0.25);
+      }
+
+      .btn-icon {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+      }
+
+      .btn-label {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1px;
+      }
+
+      .btn-label-sub {
+        font-size: 11px;
+        font-weight: 500;
+        opacity: 0.7;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .btn-label-main {
+        font-size: 17px;
+        font-weight: 700;
+      }
+
+      /* ── QR code area ── */
+      .qr-section {
+        margin-bottom: 52px;
+      }
+
+      .qr-label {
+        font-size: 13px;
+        color: var(--muted);
+        margin: 0 0 16px;
+        text-transform: uppercase;
+        letter-spacing: 0.07em;
+        font-weight: 600;
+      }
+
+      .qr-frame {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 176px;
+        height: 176px;
+        background: #ffffff;
+        border-radius: 20px;
+        padding: 12px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .qr-frame img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+
+      .qr-note {
+        margin: 12px auto 0;
+        max-width: 280px;
+        font-size: 13px;
+        color: var(--soft);
+        line-height: 1.55;
+      }
+
+      .qr-url {
+        margin: 6px 0 0;
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      /* ── Instructions ── */
+      .instructions {
+        text-align: left;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 22px 20px;
+        margin-bottom: 40px;
+      }
+
+      .instructions h2 {
+        margin: 0 0 18px;
+        font-size: 18px;
+        text-align: center;
+        color: #bfdbfe;
+      }
+
+      .steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+
+      .step {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+      }
+
+      .step-num {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: rgba(37, 99, 235, 0.18);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #93c5fd;
+        font-size: 14px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .step-body {
+        padding-top: 5px;
+      }
+
+      .step-body strong {
+        display: block;
+        font-size: 15px;
+        margin-bottom: 2px;
+      }
+
+      .step-body span {
+        font-size: 14px;
+        color: var(--soft);
+        line-height: 1.55;
+      }
+
+      /* ── Back link ── */
+      .back-link {
+        display: inline-block;
+        font-size: 14px;
+        color: #bfdbfe;
+        text-decoration: none;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      /* ── Responsive ── */
+      @media (min-width: 480px) {
+        .download-buttons {
+          flex-direction: row;
+          justify-content: center;
+        }
+
+        .btn-download {
+          flex: 1;
+          max-width: 240px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/passeo/passeo.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <div class="container">
+      <img
+        class="app-icon"
+        src="/assets/images/passeo/passeo.png"
+        alt="Passeo app icon"
+      />
+
+      <h1>Download Passeo</h1>
+      <p class="subtitle">
+        Install Passeo to join your club, check in, and manage attendance.
+      </p>
+
+      <div class="download-buttons">
+        <a
+          class="btn-download btn-appstore"
+          href="https://apps.apple.com/us/app/passeo/id6762928530"
+          target="_blank"
+          rel="noopener"
+          aria-label="Download on the App Store"
+        >
+          <!-- Apple logo -->
+          <svg
+            class="btn-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"
+            />
+          </svg>
+          <span class="btn-label">
+            <span class="btn-label-sub">Download on the</span>
+            <span class="btn-label-main">App Store</span>
+          </span>
+        </a>
+
+        <a
+          class="btn-download btn-googleplay"
+          href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.passeo"
+          target="_blank"
+          rel="noopener"
+          aria-label="Get it on Google Play"
+        >
+          <!-- Google Play triangle icon -->
+          <svg
+            class="btn-icon"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            aria-hidden="true"
+          >
+            <path
+              d="M3.18 23.76c.37.2.8.22 1.19.04l11.63-6.72-2.5-2.5-10.32 9.18zM20.66 10.37l-2.97-1.71-2.79 2.79 2.79 2.79 2.99-1.73c.85-.49.85-1.65-.02-2.14zM1.55.28C1.21.64 1 1.19 1 1.88v20.24c0 .69.21 1.24.56 1.6l.09.08 11.34-11.34v-.27L1.64.2l-.09.08zM4.37.24l11.63 6.72-2.5 2.5L3.18.28C3.57.1 4 .12 4.37.24z"
+            />
+          </svg>
+          <span class="btn-label">
+            <span class="btn-label-sub">Get it on</span>
+            <span class="btn-label-main">Google Play</span>
+          </span>
+        </a>
+      </div>
+
+      <div class="qr-section">
+        <p class="qr-label">Scan to download</p>
+        <div class="qr-frame">
+          <img
+            src="/assets/images/passeo/download-qr.png"
+            alt="QR code — scan to open the Passeo download page and install on iPhone or Android"
+            width="152"
+            height="152"
+          />
+        </div>
+        <p class="qr-note">
+          Scan the QR code to install Passeo on iPhone or Android.
+        </p>
+        <p class="qr-url">cleanutilityapps.com/passeo/download/</p>
+      </div>
+
+      <div class="instructions">
+        <h2>Getting started</h2>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num" aria-hidden="true">1</span>
+            <div class="step-body">
+              <strong>Install Passeo</strong>
+              <span
+                >Download the app from the App Store or Google Play and create
+                your account.</span
+              >
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">2</span>
+            <div class="step-body">
+              <strong>Open the app</strong>
+              <span>Launch Passeo and sign in to your account.</span>
+            </div>
+          </li>
+          <li class="step">
+            <span class="step-num" aria-hidden="true">3</span>
+            <div class="step-body">
+              <strong>Join your club using the club join code</strong>
+              <span
+                >Tap <em>Join a club</em>, enter the join code provided by your
+                club organizer, and you're in.</span
+              >
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <a class="back-link" href="/passeo/">← Back to Passeo</a>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/passeo/download/" aria-current="page">Download</a>
+          <a href="/passeo/privacy/">Privacy</a>
+          <a href="/passeo/terms/">Terms of Use</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
+    </div>
+
+    <!-- Vercel Analytics -->
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>
