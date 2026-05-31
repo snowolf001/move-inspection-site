@@ -200,6 +200,30 @@
         line-height: 1.6;
       }
 
+      .screenshots-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        margin-top: 24px;
+      }
+
+      .screenshot-item {
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+        line-height: 0;
+        transition:
+          transform 0.22s ease,
+          box-shadow 0.22s ease;
+      }
+
+      .screenshot-item img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 18px;
+      }
+
       @media (min-width: 640px) {
         .container {
           padding: 32px 20px 68px;
@@ -212,6 +236,11 @@
 
         .who-list {
           grid-template-columns: repeat(2, 1fr);
+        }
+
+        .screenshots-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 20px;
         }
       }
 
@@ -227,6 +256,16 @@
 
         .who-list {
           grid-template-columns: repeat(3, 1fr);
+        }
+
+        .screenshots-grid {
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+        }
+
+        .screenshot-item:hover {
+          transform: scale(1.03);
+          box-shadow: 0 8px 36px rgba(0, 0, 0, 0.6);
         }
       }
     </style>
@@ -285,6 +324,51 @@
           handymen, landscapers, and service providers quickly create clean,
           professional estimates and PDF quotes.
         </p>
+      </section>
+
+      <section class="section" aria-labelledby="screenshots-heading">
+        <h2 id="screenshots-heading">See Quote Ready in Action</h2>
+        <p class="section-intro">
+          Create quotes, manage customers, generate PDFs, and reuse templates
+          directly from your phone.
+        </p>
+        <div class="screenshots-grid">
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/home-ios.png"
+              alt="Quote Ready home screen"
+              loading="lazy"
+            />
+          </div>
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/details-ios.png"
+              alt="Quote details screen"
+              loading="lazy"
+            />
+          </div>
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/pdf-ios.png"
+              alt="PDF quote preview screen"
+              loading="lazy"
+            />
+          </div>
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/settings-ios.png"
+              alt="Settings screen"
+              loading="lazy"
+            />
+          </div>
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/template-ios.png"
+              alt="Template management screen"
+              loading="lazy"
+            />
+          </div>
+        </div>
       </section>
 
       <section class="section" aria-labelledby="features-heading">
