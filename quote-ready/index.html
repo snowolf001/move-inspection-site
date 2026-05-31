@@ -268,6 +268,48 @@
           box-shadow: 0 8px 36px rgba(0, 0, 0, 0.6);
         }
       }
+
+      .download-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin: 22px auto 0;
+        max-width: 340px;
+      }
+
+      .download-btns .btn {
+        width: 100%;
+        font-size: 15px;
+        padding: 13px 22px;
+      }
+
+      .btn-coming-soon {
+        opacity: 0.5;
+      }
+
+      .btn-coming-soon:hover {
+        opacity: 0.65;
+      }
+
+      .download-note {
+        margin: 14px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      @media (min-width: 540px) {
+        .download-btns {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          max-width: none;
+        }
+
+        .download-btns .btn {
+          width: auto;
+        }
+      }
     </style>
   </head>
 
@@ -323,6 +365,25 @@
           Quote Ready helps small businesses, contractors, cleaners, movers,
           handymen, landscapers, and service providers quickly create clean,
           professional estimates and PDF quotes.
+        </p>
+        <div class="download-btns">
+          <a
+            class="btn"
+            href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.quoteready"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Get it on Google Play</a
+          >
+          <a
+            class="btn secondary btn-coming-soon"
+            href="https://apps.apple.com/app/id6774484193"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Coming Soon on the App Store</a
+          >
+        </div>
+        <p class="download-note">
+          Available on Android. iOS version is coming soon.
         </p>
       </section>
 
