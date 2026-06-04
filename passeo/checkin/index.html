@@ -1,0 +1,966 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Passeo Web Check-in | Passeo</title>
+    <meta
+      name="description"
+      content="Passeo web check-in for club members. Open your check-in link, enter your recovery code, and check in to the active session."
+    />
+    <meta property="og:title" content="Passeo Web Check-in | Passeo" />
+    <meta
+      property="og:description"
+      content="Check in to an active Passeo session from your phone without installing the app."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://cleanutilityapps.com/passeo/checkin/"
+    />
+    <meta property="og:image" content="/assets/images/passeo/passeo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Passeo Web Check-in | Passeo" />
+    <meta
+      name="twitter:description"
+      content="Check in to an active Passeo session from your phone without installing the app."
+    />
+    <meta name="twitter:image" content="/assets/images/passeo/passeo.png" />
+    <link rel="canonical" href="https://cleanutilityapps.com/passeo/checkin/" />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <script>
+      window.pageTracking = {
+        app: 'passeo',
+        page: 'checkin',
+        pageType: 'utility',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        text-align: left;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 20px 16px 56px;
+      }
+
+      .hero {
+        margin-bottom: 18px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(32px, 9vw, 48px);
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+      }
+
+      .helper-text {
+        margin: 0 0 10px;
+        color: var(--soft);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .sub-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: var(--shadow-sm);
+      }
+
+      .status-card {
+        padding: 18px;
+        margin-bottom: 18px;
+      }
+
+      .status-title {
+        margin: 0 0 8px;
+        font-size: 20px;
+        color: #ffffff;
+      }
+
+      .status-copy {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.65;
+      }
+
+      .status-card.info {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .status-card.success {
+        background: rgba(34, 197, 94, 0.14);
+        border-color: rgba(34, 197, 94, 0.34);
+      }
+
+      .status-card.error {
+        background: rgba(239, 68, 68, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
+      }
+
+      .layout {
+        display: grid;
+        gap: 18px;
+      }
+
+      .session-card,
+      .form-card {
+        padding: 20px;
+      }
+
+      .section-title {
+        margin: 0 0 16px;
+        font-size: 20px;
+        color: #ffffff;
+      }
+
+      .session-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .session-item {
+        padding: 14px 15px;
+        border-radius: 16px;
+        border: 1px solid var(--border);
+        background: var(--card-inner);
+      }
+
+      .session-label {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .session-value {
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 1.5;
+        word-break: break-word;
+      }
+
+      .form-intro {
+        margin: 0 0 18px;
+        color: var(--soft);
+        line-height: 1.65;
+      }
+
+      .field {
+        margin-bottom: 16px;
+      }
+
+      .field:last-of-type {
+        margin-bottom: 20px;
+      }
+
+      .field label {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-weight: 700;
+        color: #dbeafe;
+      }
+
+      .field input,
+      .field select {
+        width: 100%;
+        min-height: 52px;
+        padding: 14px 16px;
+        border-radius: 14px;
+        border: 1px solid rgba(148, 163, 184, 0.28);
+        background: rgba(8, 20, 43, 0.7);
+        color: #ffffff;
+        font: inherit;
+        line-height: 1.3;
+        transition:
+          border-color 0.15s,
+          box-shadow 0.15s,
+          background 0.15s;
+      }
+
+      .field input::placeholder {
+        color: #94a3b8;
+      }
+
+      .field input:focus,
+      .field select:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.18);
+        background: rgba(8, 20, 43, 0.92);
+      }
+
+      .field-hint {
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .submit-btn {
+        width: 100%;
+        min-height: 54px;
+        font-size: 17px;
+        border-radius: 14px;
+      }
+
+      .submit-btn[disabled] {
+        cursor: wait;
+        opacity: 0.7;
+        transform: none;
+      }
+
+      .result-card {
+        margin-top: 16px;
+        padding: 16px;
+      }
+
+      .result-card.success {
+        background: rgba(34, 197, 94, 0.14);
+        border-color: rgba(34, 197, 94, 0.34);
+      }
+
+      .result-card.error {
+        background: rgba(239, 68, 68, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
+      }
+
+      .result-card p {
+        margin: 0;
+        color: #ffffff;
+        line-height: 1.6;
+      }
+
+      .result-card p + p {
+        margin-top: 6px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 16px;
+        color: #bfdbfe;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      .site-footer {
+        margin-top: 56px;
+        padding-top: 24px;
+      }
+
+      .site-footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .site-footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+      }
+
+      .site-footer-links a:hover {
+        color: var(--blue-light);
+      }
+
+      @media (min-width: 720px) {
+        .container {
+          padding: 28px 24px 72px;
+        }
+
+        .layout {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: start;
+        }
+
+        .session-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          padding: 0;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+
+        .site-nav a {
+          width: auto;
+          padding: 6px 12px;
+          border-radius: 999px;
+        }
+      }
+
+      @media (max-width: 719px) {
+        .site-header-inner {
+          padding: 0 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/passeo/passeo.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <span class="eyebrow">Public QR check-in</span>
+        <h1 id="page-title">Passeo Web Check-in</h1>
+        <p class="helper-text">
+          Enter your check-in code and choose how many people you are checking
+          in.
+        </p>
+        <p class="sub-note">Only active sessions can be checked in.</p>
+      </section>
+
+      <section
+        id="page-status"
+        class="card status-card info"
+        aria-live="polite"
+      >
+        <h2 class="status-title">Loading check-in details...</h2>
+        <p class="status-copy">
+          Please wait while we confirm your check-in link.
+        </p>
+      </section>
+
+      <section class="layout" id="checkin-layout" hidden>
+        <article class="card session-card" aria-labelledby="session-title">
+          <h2 class="section-title" id="session-title">Active session</h2>
+          <div class="session-grid" id="session-grid"></div>
+        </article>
+
+        <article class="card form-card" aria-labelledby="form-title">
+          <h2 class="section-title" id="form-title">Check in</h2>
+          <p class="form-intro">
+            Use the recovery code provided by your club and select the number of
+            people you are checking in.
+          </p>
+
+          <form id="checkin-form" novalidate>
+            <div class="field">
+              <label for="recovery-code">Check-in Code / Recovery Code</label>
+              <input
+                id="recovery-code"
+                name="recoveryCode"
+                type="text"
+                inputmode="text"
+                autocomplete="one-time-code"
+                placeholder="Enter your code"
+                required
+                maxlength="64"
+              />
+              <p class="field-hint">
+                Enter the code exactly as it was provided to you.
+              </p>
+            </div>
+
+            <div class="field">
+              <label for="credits-used">Number of people</label>
+              <select id="credits-used" name="creditsUsed">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+
+            <button class="btn submit-btn" id="submit-btn" type="submit">
+              Check In
+            </button>
+          </form>
+
+          <div id="result" hidden aria-live="polite"></div>
+        </article>
+      </section>
+
+      <a class="back-link" href="/passeo/">← Back to Passeo</a>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/passeo/download/">Download</a>
+          <a href="/passeo/privacy/">Privacy</a>
+          <a href="/passeo/terms/">Terms of Use</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
+    </main>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
+
+        var token = new URLSearchParams(window.location.search).get('token');
+        var statusEl = document.getElementById('page-status');
+        var statusTitleEl = statusEl.querySelector('.status-title');
+        var statusCopyEl = statusEl.querySelector('.status-copy');
+        var layoutEl = document.getElementById('checkin-layout');
+        var sessionGridEl = document.getElementById('session-grid');
+        var formEl = document.getElementById('checkin-form');
+        var recoveryCodeEl = document.getElementById('recovery-code');
+        var creditsUsedEl = document.getElementById('credits-used');
+        var submitBtnEl = document.getElementById('submit-btn');
+        var resultEl = document.getElementById('result');
+
+        function setStatus(type, title, copy) {
+          statusEl.className = 'card status-card ' + type;
+          statusTitleEl.textContent = title;
+          statusCopyEl.textContent = copy;
+          statusEl.hidden = false;
+        }
+
+        function clearResult() {
+          resultEl.hidden = true;
+          resultEl.className = '';
+          resultEl.innerHTML = '';
+        }
+
+        function showResult(type, lines) {
+          resultEl.className = 'card result-card ' + type;
+          resultEl.innerHTML = lines
+            .filter(Boolean)
+            .map(function (line) {
+              return '<p>' + escapeHtml(line) + '</p>';
+            })
+            .join('');
+          resultEl.hidden = false;
+        }
+
+        function escapeHtml(value) {
+          return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+
+        function firstValue(sources, keys) {
+          for (var i = 0; i < sources.length; i += 1) {
+            var source = sources[i];
+            if (!source || typeof source !== 'object') continue;
+            for (var j = 0; j < keys.length; j += 1) {
+              var key = keys[j];
+              if (
+                Object.prototype.hasOwnProperty.call(source, key) &&
+                source[key] !== null &&
+                source[key] !== undefined &&
+                source[key] !== ''
+              ) {
+                return source[key];
+              }
+            }
+          }
+          return '';
+        }
+
+        function normalizeMessage(payload, fallback) {
+          var message = firstValue(
+            [payload, payload && payload.error],
+            ['message', 'error', 'userMessage', 'detail']
+          );
+          if (typeof message === 'string' && message.trim()) {
+            return message.trim();
+          }
+          return fallback;
+        }
+
+        function formatDateTime(value) {
+          if (!value) return 'Not provided';
+          var date = new Date(value);
+          if (Number.isNaN(date.getTime())) {
+            return String(value);
+          }
+          return new Intl.DateTimeFormat(undefined, {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+          }).format(date);
+        }
+
+        function renderSession(activeSession, payload) {
+          var clubName = firstValue(
+            [activeSession, payload],
+            ['clubName', 'name']
+          );
+          var sessionName = firstValue(
+            [activeSession, payload],
+            ['sessionName', 'name', 'title']
+          );
+          var locationName = firstValue(
+            [activeSession, payload],
+            ['locationName', 'location', 'venueName', 'venue']
+          );
+          var startTime = firstValue(
+            [activeSession, payload],
+            ['startTime', 'startsAt', 'startAt', 'start']
+          );
+          var endTime = firstValue(
+            [activeSession, payload],
+            ['endTime', 'endsAt', 'endAt', 'end']
+          );
+          var items = [
+            { label: 'Club', value: clubName || 'Not available' },
+            sessionName ? { label: 'Session', value: sessionName } : null,
+            { label: 'Location', value: locationName || 'Not available' },
+            { label: 'Starts', value: formatDateTime(startTime) },
+            { label: 'Ends', value: formatDateTime(endTime) },
+          ].filter(Boolean);
+
+          sessionGridEl.innerHTML = items
+            .map(function (item) {
+              return (
+                '<div class="session-item">' +
+                '<span class="session-label">' +
+                escapeHtml(item.label) +
+                '</span>' +
+                '<div class="session-value">' +
+                escapeHtml(item.value) +
+                '</div>' +
+                '</div>'
+              );
+            })
+            .join('');
+        }
+
+        function setSubmitting(isSubmitting) {
+          submitBtnEl.disabled = isSubmitting;
+          submitBtnEl.textContent = isSubmitting
+            ? 'Checking In...'
+            : 'Check In';
+        }
+
+        function mapLoadFailure(message) {
+          var lower = String(message || '').toLowerCase();
+          if (
+            lower.indexOf('invalid') !== -1 &&
+            lower.indexOf('token') !== -1
+          ) {
+            return 'Invalid check-in link.';
+          }
+          if (
+            lower.indexOf('expired') !== -1 &&
+            lower.indexOf('token') !== -1
+          ) {
+            return 'This check-in link is no longer available.';
+          }
+          return message || 'We could not load this check-in link right now.';
+        }
+
+        function mapSubmitFailure(message) {
+          var lower = String(message || '').toLowerCase();
+
+          if (lower.indexOf('invalid') !== -1 && lower.indexOf('code') !== -1) {
+            return 'That check-in code was not recognized.';
+          }
+          if (
+            lower.indexOf('insufficient') !== -1 &&
+            lower.indexOf('credit') !== -1
+          ) {
+            return 'There are not enough credits available for this check-in.';
+          }
+          if (
+            lower.indexOf('already') !== -1 &&
+            lower.indexOf('check') !== -1
+          ) {
+            return 'This code has already been used for check-in.';
+          }
+          if (lower.indexOf('active session') !== -1) {
+            return 'No active session right now.';
+          }
+          if (
+            lower.indexOf('invalid') !== -1 &&
+            lower.indexOf('token') !== -1
+          ) {
+            return 'Invalid check-in link.';
+          }
+
+          return message || 'We could not complete your check-in right now.';
+        }
+
+        function getFriendlyRuntimeError(error, fallback) {
+          if (!error || !error.message) {
+            return fallback;
+          }
+
+          var message = String(error.message).trim();
+          var lower = message.toLowerCase();
+
+          if (
+            lower === 'failed to fetch' ||
+            lower.indexOf('networkerror') !== -1 ||
+            lower.indexOf('network request failed') !== -1 ||
+            lower.indexOf('load failed') !== -1
+          ) {
+            return fallback;
+          }
+
+          return message;
+        }
+
+        function getRemainingCredits(payload) {
+          return firstValue(
+            [payload, payload && payload.data],
+            ['remainingCredits', 'creditsRemaining', 'remaining']
+          );
+        }
+
+        async function readJson(response) {
+          try {
+            return await response.json();
+          } catch (error) {
+            return null;
+          }
+        }
+
+        async function loadSession() {
+          if (!token) {
+            setStatus(
+              'error',
+              'Invalid check-in link.',
+              'Open the QR link again to continue.'
+            );
+            layoutEl.hidden = true;
+            return;
+          }
+
+          try {
+            var response = await fetch(
+              API_BASE_URL +
+                '/api/public/checkin/session?token=' +
+                encodeURIComponent(token),
+              {
+                method: 'GET',
+                headers: {
+                  Accept: 'application/json',
+                },
+              }
+            );
+            var payload = await readJson(response);
+
+            if (!response.ok) {
+              throw new Error(
+                mapLoadFailure(
+                  normalizeMessage(
+                    payload,
+                    'We could not load this check-in link right now.'
+                  )
+                )
+              );
+            }
+
+            var activeSession = payload && payload.activeSession;
+            if (!activeSession) {
+              setStatus(
+                'info',
+                'No active session right now.',
+                'Check back when your club has an active session available for web check-in.'
+              );
+              layoutEl.hidden = true;
+              return;
+            }
+
+            renderSession(activeSession, payload);
+            setStatus(
+              'info',
+              'Ready to check in',
+              'Confirm your recovery code and choose how many people you are checking in.'
+            );
+            layoutEl.hidden = false;
+            clearResult();
+            recoveryCodeEl.focus();
+          } catch (error) {
+            var loadMessage = getFriendlyRuntimeError(
+              error,
+              'The check-in service is unavailable right now. Please try again later.'
+            );
+            setStatus(
+              'error',
+              loadMessage === 'Invalid check-in link.'
+                ? 'Invalid check-in link.'
+                : 'Unable to load check-in',
+              loadMessage === 'Invalid check-in link.'
+                ? 'Open the QR link again to continue.'
+                : loadMessage
+            );
+            layoutEl.hidden = true;
+          }
+        }
+
+        formEl.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          clearResult();
+
+          if (!token) {
+            setStatus(
+              'error',
+              'Invalid check-in link.',
+              'Open the QR link again to continue.'
+            );
+            return;
+          }
+
+          var recoveryCode = recoveryCodeEl.value.trim();
+          var creditsUsed = Number(creditsUsedEl.value || '1');
+
+          if (!recoveryCode) {
+            showResult('error', ['Enter your check-in code to continue.']);
+            recoveryCodeEl.focus();
+            return;
+          }
+
+          setSubmitting(true);
+
+          try {
+            var response = await fetch(API_BASE_URL + '/api/public/checkin', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+              body: JSON.stringify({
+                token: token,
+                recoveryCode: recoveryCode,
+                creditsUsed: creditsUsed,
+              }),
+            });
+            var payload = await readJson(response);
+
+            if (!response.ok) {
+              throw new Error(
+                mapSubmitFailure(
+                  normalizeMessage(
+                    payload,
+                    'We could not complete your check-in right now.'
+                  )
+                )
+              );
+            }
+
+            var backendMessage = normalizeMessage(
+              payload,
+              'Checked in successfully.'
+            );
+            var remainingCredits = getRemainingCredits(payload);
+            var lines = [backendMessage || 'Checked in successfully.'];
+
+            if (creditsUsed > 1) {
+              lines.push('You checked in ' + creditsUsed + ' people.');
+            }
+
+            if (remainingCredits !== '') {
+              lines.push('Remaining credits: ' + remainingCredits);
+            }
+
+            showResult('success', lines);
+            setStatus(
+              'success',
+              'Checked in successfully.',
+              'Your check-in has been recorded for the active session.'
+            );
+            recoveryCodeEl.value = '';
+            recoveryCodeEl.focus();
+          } catch (error) {
+            var submitMessage = getFriendlyRuntimeError(
+              error,
+              'The check-in service is unavailable right now. Please try again later.'
+            );
+            showResult('error', [submitMessage]);
+          } finally {
+            setSubmitting(false);
+          }
+        });
+
+        (function setupMobileNav() {
+          var btn = document.getElementById('site-menu-btn');
+          var nav = document.getElementById('site-nav');
+          if (!btn || !nav) return;
+
+          btn.addEventListener('click', function () {
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(open));
+          });
+
+          nav.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+              nav.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        })();
+
+        loadSession();
+      })();
+    </script>
+  </body>
+</html>
