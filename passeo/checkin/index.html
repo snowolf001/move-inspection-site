@@ -915,7 +915,7 @@
                   'Content-Type': 'application/json',
                   Accept: 'application/json',
                 },
-                body: JSON.stringify({token: token, recoveryCode: code}),
+                body: JSON.stringify({ token: token, recoveryCode: code }),
               }
             );
             var payload = await readJson(response);
@@ -941,6 +941,8 @@
 
             memberGreetingEl.textContent = 'Hi, ' + (memberName || 'Member');
             memberCreditsEl.textContent =
+              availableCredits !== null &&
+              availableCredits !== undefined &&
               availableCredits !== ''
                 ? 'Available Credits: ' + availableCredits
                 : '';
@@ -1000,7 +1002,11 @@
                 var alreadyLines = [
                   'You have already checked in to this session.',
                 ];
-                if (currentCredits !== '') {
+                if (
+                  currentCredits !== null &&
+                  currentCredits !== undefined &&
+                  currentCredits !== ''
+                ) {
                   alreadyLines.push('Available Credits: ' + currentCredits);
                 }
                 showCardResult(checkinResultEl, 'info', alreadyLines);
@@ -1014,7 +1020,11 @@
 
             var remainingCredits = getRemainingCredits(payload);
             var lines = ['Check-in successful'];
-            if (remainingCredits !== '') {
+            if (
+              remainingCredits !== null &&
+              remainingCredits !== undefined &&
+              remainingCredits !== ''
+            ) {
               lines.push('Remaining Credits: ' + remainingCredits);
             }
             showCardResult(checkinResultEl, 'success', lines);
