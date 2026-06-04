@@ -184,6 +184,8 @@
         line-height: 1.08;
         letter-spacing: -0.03em;
         color: #0f172a;
+        white-space: nowrap;
+        overflow-wrap: normal;
       }
 
       .poster-title {
@@ -196,7 +198,7 @@
       }
 
       .qr-frame {
-        width: min(100%, 380px);
+        width: min(100%, 460px);
         margin: 0 auto 20px;
         padding: 16px;
         border-radius: 28px;
@@ -210,7 +212,7 @@
         align-items: center;
         justify-content: center;
         width: 100%;
-        min-height: 280px;
+        min-height: 336px;
         overflow: hidden;
       }
 
@@ -219,7 +221,7 @@
         display: block;
         width: 100%;
         height: auto;
-        max-width: 320px;
+        max-width: 384px;
       }
 
       .qr-fallback {
@@ -249,18 +251,6 @@
         font-size: 16px;
         line-height: 1.7;
         color: #334155;
-      }
-
-      .poster-url {
-        margin: 0 auto 20px;
-        max-width: 100%;
-        padding: 11px 14px;
-        border-radius: 14px;
-        background: #eff6ff;
-        color: #1e3a8a;
-        font-size: 12px;
-        line-height: 1.5;
-        word-break: break-all;
       }
 
       .poster-footer {
@@ -413,6 +403,10 @@
         .site-header-inner {
           padding: 0 16px;
         }
+
+        .poster-club {
+          white-space: normal;
+        }
       }
 
       @media print {
@@ -455,24 +449,23 @@
         }
 
         .qr-frame {
-          width: 4.5in;
+          width: 5.2in;
           max-width: 100%;
           box-shadow: none;
           border-color: #cbd5e1;
         }
 
         .qr-code {
-          min-height: 4in;
+          min-height: 4.6in;
         }
 
         .qr-code img,
         .qr-code canvas {
-          max-width: 4in;
+          max-width: 4.6in;
         }
 
-        .poster-url {
-          background: #f8fafc;
-          color: #334155;
+        .poster-club {
+          white-space: nowrap;
         }
       }
     </style>
@@ -553,7 +546,7 @@
               aria-label="QR code for Passeo web check-in"
             ></div>
             <p class="qr-fallback" id="qr-fallback" hidden>
-              QR code is unavailable right now. Use the check-in link below.
+              QR code is unavailable right now. Please refresh and try again.
             </p>
           </div>
           <p class="poster-primary">Scan to check in</p>
@@ -561,7 +554,6 @@
           <p class="poster-helper">
             Use your recovery code to complete check-in.
           </p>
-          <div class="poster-url" id="poster-url"></div>
           <div class="poster-footer">Powered by Passeo</div>
         </article>
       </section>
@@ -606,7 +598,6 @@
         var clubNameEl = document.getElementById('club-name');
         var qrCodeEl = document.getElementById('qr-code');
         var qrFallbackEl = document.getElementById('qr-fallback');
-        var posterUrlEl = document.getElementById('poster-url');
 
         function setStatus(type, title, copy) {
           statusCardEl.className = 'status-card ' + type;
@@ -710,8 +701,8 @@
           try {
             new window.QRCode(qrCodeEl, {
               text: url,
-              width: 320,
-              height: 320,
+              width: 384,
+              height: 384,
               colorDark: '#0f172a',
               colorLight: '#ffffff',
               correctLevel: window.QRCode.CorrectLevel.H,
@@ -771,7 +762,6 @@
           }
 
           openCheckinBtnEl.href = posterUrl;
-          posterUrlEl.textContent = posterUrl;
           renderQrCode(posterUrl);
 
           try {
