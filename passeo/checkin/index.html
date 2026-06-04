@@ -649,10 +649,9 @@
         }
 
         function renderSession(activeSession, payload) {
-          var clubName = firstValue(
-            [activeSession, payload],
-            ['clubName', 'name']
-          );
+          var club = payload && payload.club ? payload.club : {};
+
+          var clubName = firstValue([club, payload], ['clubName', 'name']);
           var sessionName = firstValue(
             [activeSession, payload],
             ['sessionName', 'name', 'title']
