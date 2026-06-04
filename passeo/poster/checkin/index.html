@@ -188,6 +188,14 @@
         overflow-wrap: normal;
       }
 
+      .poster-session {
+        margin: 0 0 18px;
+        font-size: clamp(16px, 3.5vw, 24px);
+        font-weight: 700;
+        color: #334155;
+        line-height: 1.2;
+      }
+
       .poster-title {
         margin: 0 0 22px;
         font-size: clamp(28px, 6.8vw, 46px);
@@ -568,6 +576,7 @@
         <article class="poster" id="poster" hidden>
           <img id="club-logo" class="poster-logo is-hidden" alt="Club logo" />
           <h2 class="poster-club" id="club-name">Your Club</h2>
+          <p class="poster-session" id="session-name" hidden></p>
           <p class="poster-title">Web Check-in</p>
           <div class="qr-frame">
             <div
@@ -628,6 +637,7 @@
         var printBtnEl = document.getElementById('print-btn');
         var clubLogoEl = document.getElementById('club-logo');
         var clubNameEl = document.getElementById('club-name');
+        var sessionNameEl = document.getElementById('session-name');
         var qrCodeEl = document.getElementById('qr-code');
         var qrFallbackEl = document.getElementById('qr-fallback');
 
@@ -819,6 +829,19 @@
 
             clubNameEl.textContent = clubName;
             renderLogo(clubData.logoUrl, clubName);
+
+            var activeSession = payload && payload.activeSession;
+            if (activeSession) {
+              var sessionName = firstValue(
+                [activeSession, payload],
+                ['sessionName', 'name', 'title']
+              );
+              if (sessionName) {
+                sessionNameEl.textContent = sessionName;
+                sessionNameEl.hidden = false;
+              }
+            }
+
             posterEl.hidden = false;
             toolbarEl.hidden = false;
 

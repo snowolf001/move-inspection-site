@@ -152,6 +152,15 @@
         word-break: break-word;
       }
 
+      .club-session {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        text-transform: uppercase;
+      }
+
       .status-card {
         padding: 18px;
         margin-bottom: 18px;
@@ -315,6 +324,10 @@
         border-color: rgba(248, 113, 113, 0.3);
       }
 
+      .result-card.info {
+        background: rgba(255, 255, 255, 0.06);
+      }
+
       .result-card p {
         margin: 0;
         color: #ffffff;
@@ -323,6 +336,25 @@
 
       .result-card p + p {
         margin-top: 6px;
+      }
+
+      .member-card {
+        padding: 24px 20px;
+      }
+
+      .member-greeting {
+        margin: 0 0 6px;
+        font-size: 22px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.2;
+      }
+
+      .member-credits {
+        margin: 0 0 24px;
+        color: var(--soft);
+        font-size: 16px;
+        line-height: 1.5;
       }
 
       .back-link {
@@ -512,14 +544,13 @@
     </header>
 
     <main class="container">
-      <section class="hero" aria-labelledby="page-title">
-        <span class="eyebrow">Public QR check-in</span>
-        <h1 id="page-title">Passeo Web Check-in</h1>
-        <p class="helper-text">
-          Enter your check-in code and choose how many people you are checking
-          in.
-        </p>
-        <p class="sub-note">Only active sessions can be checked in.</p>
+      <section class="card club-card" id="club-card" hidden>
+        <img id="club-logo" class="club-logo is-hidden" alt="Club logo" />
+        <div class="club-copy">
+          <p class="club-label">Club</p>
+          <h2 class="club-name" id="club-name">Your Club</h2>
+          <p class="club-session" id="club-session" hidden></p>
+        </div>
       </section>
 
       <section
@@ -533,62 +564,49 @@
         </p>
       </section>
 
-      <section class="card club-card" id="club-card" hidden>
-        <img id="club-logo" class="club-logo is-hidden" alt="Club logo" />
-        <div class="club-copy">
-          <p class="club-label">Club</p>
-          <h2 class="club-name" id="club-name">Your Club</h2>
-        </div>
+      <section
+        class="card form-card"
+        id="code-card"
+        hidden
+        aria-labelledby="code-title"
+      >
+        <h2 class="section-title" id="code-title">Enter your code</h2>
+        <form id="code-form" novalidate>
+          <div class="field">
+            <label for="recovery-code">Check-in Code / Recovery Code</label>
+            <input
+              id="recovery-code"
+              name="recoveryCode"
+              type="text"
+              inputmode="text"
+              autocomplete="one-time-code"
+              placeholder="Enter your code"
+              required
+              maxlength="64"
+            />
+            <p class="field-hint">
+              Enter the code exactly as it was provided to you.
+            </p>
+          </div>
+          <button class="btn submit-btn" id="lookup-btn" type="submit">
+            Continue
+          </button>
+        </form>
+        <div id="code-result" hidden aria-live="polite"></div>
       </section>
 
-      <section class="layout" id="checkin-layout" hidden>
-        <article class="card session-card" aria-labelledby="session-title">
-          <h2 class="section-title" id="session-title">Active session</h2>
-          <div class="session-grid" id="session-grid"></div>
-        </article>
-
-        <article class="card form-card" aria-labelledby="form-title">
-          <h2 class="section-title" id="form-title">Check in</h2>
-          <p class="form-intro">
-            Use the recovery code provided by your club and select the number of
-            people you are checking in.
-          </p>
-
-          <form id="checkin-form" novalidate>
-            <div class="field">
-              <label for="recovery-code">Check-in Code / Recovery Code</label>
-              <input
-                id="recovery-code"
-                name="recoveryCode"
-                type="text"
-                inputmode="text"
-                autocomplete="one-time-code"
-                placeholder="Enter your code"
-                required
-                maxlength="64"
-              />
-              <p class="field-hint">
-                Enter the code exactly as it was provided to you.
-              </p>
-            </div>
-
-            <div class="field">
-              <label for="credits-used">Number of people</label>
-              <select id="credits-used" name="creditsUsed">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </div>
-
-            <button class="btn submit-btn" id="submit-btn" type="submit">
-              Check In
-            </button>
-          </form>
-
-          <div id="result" hidden aria-live="polite"></div>
-        </article>
+      <section
+        class="card member-card"
+        id="member-card"
+        hidden
+        aria-live="polite"
+      >
+        <p class="member-greeting" id="member-greeting"></p>
+        <p class="member-credits" id="member-credits"></p>
+        <button class="btn submit-btn" id="checkin-btn" type="button">
+          Check In
+        </button>
+        <div id="checkin-result" hidden aria-live="polite"></div>
       </section>
 
       <a class="back-link" href="/passeo/">← Back to Passeo</a>
@@ -617,16 +635,22 @@
         var statusEl = document.getElementById('page-status');
         var statusTitleEl = statusEl.querySelector('.status-title');
         var statusCopyEl = statusEl.querySelector('.status-copy');
-        var layoutEl = document.getElementById('checkin-layout');
-        var sessionGridEl = document.getElementById('session-grid');
         var clubCardEl = document.getElementById('club-card');
         var clubLogoEl = document.getElementById('club-logo');
         var clubNameEl = document.getElementById('club-name');
-        var formEl = document.getElementById('checkin-form');
+        var clubSessionEl = document.getElementById('club-session');
+        var codeCardEl = document.getElementById('code-card');
+        var codeFormEl = document.getElementById('code-form');
         var recoveryCodeEl = document.getElementById('recovery-code');
-        var creditsUsedEl = document.getElementById('credits-used');
-        var submitBtnEl = document.getElementById('submit-btn');
-        var resultEl = document.getElementById('result');
+        var lookupBtnEl = document.getElementById('lookup-btn');
+        var codeResultEl = document.getElementById('code-result');
+        var memberCardEl = document.getElementById('member-card');
+        var memberGreetingEl = document.getElementById('member-greeting');
+        var memberCreditsEl = document.getElementById('member-credits');
+        var checkinBtnEl = document.getElementById('checkin-btn');
+        var checkinResultEl = document.getElementById('checkin-result');
+
+        var validatedCode = null;
 
         function setStatus(type, title, copy) {
           statusEl.className = 'card status-card ' + type;
@@ -635,21 +659,25 @@
           statusEl.hidden = false;
         }
 
-        function clearResult() {
-          resultEl.hidden = true;
-          resultEl.className = '';
-          resultEl.innerHTML = '';
+        function hideStatus() {
+          statusEl.hidden = true;
         }
 
-        function showResult(type, lines) {
-          resultEl.className = 'card result-card ' + type;
-          resultEl.innerHTML = lines
+        function showCardResult(containerEl, type, lines) {
+          containerEl.className = 'card result-card ' + type;
+          containerEl.innerHTML = lines
             .filter(Boolean)
             .map(function (line) {
               return '<p>' + escapeHtml(line) + '</p>';
             })
             .join('');
-          resultEl.hidden = false;
+          containerEl.hidden = false;
+        }
+
+        function clearCardResult(containerEl) {
+          containerEl.hidden = true;
+          containerEl.className = '';
+          containerEl.innerHTML = '';
         }
 
         function escapeHtml(value) {
@@ -657,7 +685,7 @@
             .replace(/&/g, '&amp;')
             .replace(/</g, '&lt;')
             .replace(/>/g, '&gt;')
-            .replace(/\"/g, '&quot;')
+            .replace(/"/g, '&quot;')
             .replace(/'/g, '&#39;');
         }
 
@@ -691,56 +719,56 @@
           return fallback;
         }
 
-        function formatDateTime(value) {
-          if (!value) return 'Not provided';
-          var date = new Date(value);
-          if (Number.isNaN(date.getTime())) {
-            return String(value);
+        function getFriendlyRuntimeError(error, fallback) {
+          if (!error || !error.message) {
+            return fallback;
           }
-          return new Intl.DateTimeFormat(undefined, {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-          }).format(date);
+
+          var message = String(error.message).trim();
+          var lower = message.toLowerCase();
+
+          if (
+            lower === 'failed to fetch' ||
+            lower.indexOf('networkerror') !== -1 ||
+            lower.indexOf('network request failed') !== -1 ||
+            lower.indexOf('load failed') !== -1
+          ) {
+            return fallback;
+          }
+
+          return message;
         }
 
-        function renderSession(activeSession, payload) {
-          var sessionName = firstValue(
-            [activeSession, payload],
-            ['sessionName', 'name', 'title']
-          );
-          var locationName = firstValue(
-            [activeSession, payload],
-            ['locationName', 'location', 'venueName', 'venue']
-          );
-          var startTime = firstValue(
-            [activeSession, payload],
-            ['startTime', 'startsAt', 'startAt', 'start']
-          );
-          var endTime = firstValue(
-            [activeSession, payload],
-            ['endTime', 'endsAt', 'endAt', 'end']
-          );
-          var items = [
-            sessionName ? { label: 'Session', value: sessionName } : null,
-            { label: 'Location', value: locationName || 'Not available' },
-            { label: 'Starts', value: formatDateTime(startTime) },
-            { label: 'Ends', value: formatDateTime(endTime) },
-          ].filter(Boolean);
+        function mapLoadFailure(message) {
+          var lower = String(message || '').toLowerCase();
+          if (
+            lower.indexOf('invalid') !== -1 &&
+            lower.indexOf('token') !== -1
+          ) {
+            return 'Invalid check-in link.';
+          }
+          if (
+            lower.indexOf('expired') !== -1 &&
+            lower.indexOf('token') !== -1
+          ) {
+            return 'This check-in link is no longer available.';
+          }
+          return message || 'We could not load this check-in link right now.';
+        }
 
-          sessionGridEl.innerHTML = items
-            .map(function (item) {
-              return (
-                '<div class="session-item">' +
-                '<span class="session-label">' +
-                escapeHtml(item.label) +
-                '</span>' +
-                '<div class="session-value">' +
-                escapeHtml(item.value) +
-                '</div>' +
-                '</div>'
-              );
-            })
-            .join('');
+        function getRemainingCredits(payload) {
+          return firstValue(
+            [payload, payload && payload.data],
+            ['remainingCredits', 'creditsRemaining', 'remaining']
+          );
+        }
+
+        async function readJson(response) {
+          try {
+            return await response.json();
+          } catch (error) {
+            return null;
+          }
         }
 
         function renderClub(logoUrl, clubName) {
@@ -770,94 +798,14 @@
           };
         }
 
-        function setSubmitting(isSubmitting) {
-          submitBtnEl.disabled = isSubmitting;
-          submitBtnEl.textContent = isSubmitting
-            ? 'Checking In...'
-            : 'Check In';
+        function setLookupSubmitting(isSubmitting) {
+          lookupBtnEl.disabled = isSubmitting;
+          lookupBtnEl.textContent = isSubmitting ? 'Looking up...' : 'Continue';
         }
 
-        function mapLoadFailure(message) {
-          var lower = String(message || '').toLowerCase();
-          if (
-            lower.indexOf('invalid') !== -1 &&
-            lower.indexOf('token') !== -1
-          ) {
-            return 'Invalid check-in link.';
-          }
-          if (
-            lower.indexOf('expired') !== -1 &&
-            lower.indexOf('token') !== -1
-          ) {
-            return 'This check-in link is no longer available.';
-          }
-          return message || 'We could not load this check-in link right now.';
-        }
-
-        function mapSubmitFailure(message) {
-          var lower = String(message || '').toLowerCase();
-
-          if (lower.indexOf('invalid') !== -1 && lower.indexOf('code') !== -1) {
-            return 'That check-in code was not recognized.';
-          }
-          if (
-            lower.indexOf('insufficient') !== -1 &&
-            lower.indexOf('credit') !== -1
-          ) {
-            return 'There are not enough credits available for this check-in.';
-          }
-          if (
-            lower.indexOf('already') !== -1 &&
-            lower.indexOf('check') !== -1
-          ) {
-            return 'This code has already been used for check-in.';
-          }
-          if (lower.indexOf('active session') !== -1) {
-            return 'No active session right now.';
-          }
-          if (
-            lower.indexOf('invalid') !== -1 &&
-            lower.indexOf('token') !== -1
-          ) {
-            return 'Invalid check-in link.';
-          }
-
-          return message || 'We could not complete your check-in right now.';
-        }
-
-        function getFriendlyRuntimeError(error, fallback) {
-          if (!error || !error.message) {
-            return fallback;
-          }
-
-          var message = String(error.message).trim();
-          var lower = message.toLowerCase();
-
-          if (
-            lower === 'failed to fetch' ||
-            lower.indexOf('networkerror') !== -1 ||
-            lower.indexOf('network request failed') !== -1 ||
-            lower.indexOf('load failed') !== -1
-          ) {
-            return fallback;
-          }
-
-          return message;
-        }
-
-        function getRemainingCredits(payload) {
-          return firstValue(
-            [payload, payload && payload.data],
-            ['remainingCredits', 'creditsRemaining', 'remaining']
-          );
-        }
-
-        async function readJson(response) {
-          try {
-            return await response.json();
-          } catch (error) {
-            return null;
-          }
+        function setCheckinSubmitting(isSubmitting) {
+          checkinBtnEl.disabled = isSubmitting;
+          checkinBtnEl.textContent = isSubmitting ? 'Checking In...' : 'Check In';
         }
 
         async function loadSession() {
@@ -867,7 +815,6 @@
               'Invalid check-in link.',
               'Open the QR link again to continue.'
             );
-            layoutEl.hidden = true;
             return;
           }
 
@@ -900,6 +847,17 @@
             renderClub(clubData.logoUrl, clubData.name || 'Your Club');
 
             var activeSession = payload && payload.activeSession;
+            if (activeSession) {
+              var sessionName = firstValue(
+                [activeSession, payload],
+                ['sessionName', 'name', 'title']
+              );
+              if (sessionName) {
+                clubSessionEl.textContent = sessionName;
+                clubSessionEl.hidden = false;
+              }
+            }
+
             if (!activeSession) {
               var noSessionMessage = normalizeMessage(
                 payload,
@@ -910,18 +868,11 @@
                 'No active session right now.',
                 noSessionMessage
               );
-              layoutEl.hidden = true;
               return;
             }
 
-            renderSession(activeSession, payload);
-            setStatus(
-              'info',
-              'Ready to check in',
-              'Confirm your recovery code and choose how many people you are checking in.'
-            );
-            layoutEl.hidden = false;
-            clearResult();
+            hideStatus();
+            codeCardEl.hidden = false;
             recoveryCodeEl.focus();
           } catch (error) {
             var loadMessage = getFriendlyRuntimeError(
@@ -937,33 +888,84 @@
                 ? 'Open the QR link again to continue.'
                 : loadMessage
             );
-            layoutEl.hidden = true;
           }
         }
 
-        formEl.addEventListener('submit', async function (event) {
+        codeFormEl.addEventListener('submit', async function (event) {
           event.preventDefault();
-          clearResult();
+          clearCardResult(codeResultEl);
 
-          if (!token) {
-            setStatus(
-              'error',
-              'Invalid check-in link.',
-              'Open the QR link again to continue.'
-            );
-            return;
-          }
-
-          var recoveryCode = recoveryCodeEl.value.trim();
-          var creditsUsed = Number(creditsUsedEl.value || '1');
-
-          if (!recoveryCode) {
-            showResult('error', ['Enter your check-in code to continue.']);
+          var code = recoveryCodeEl.value.trim();
+          if (!code) {
+            showCardResult(codeResultEl, 'error', [
+              'Enter your check-in code to continue.',
+            ]);
             recoveryCodeEl.focus();
             return;
           }
 
-          setSubmitting(true);
+          setLookupSubmitting(true);
+
+          try {
+            var response = await fetch(
+              API_BASE_URL + '/api/public/checkin/validate',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({token: token, recoveryCode: code}),
+              }
+            );
+            var payload = await readJson(response);
+
+            if (!response.ok) {
+              var errMsg = normalizeMessage(
+                payload,
+                'That check-in code was not recognized. Please check your code and try again.'
+              );
+              throw new Error(errMsg);
+            }
+
+            validatedCode = code;
+
+            var memberName = firstValue(
+              [payload, payload && payload.data],
+              ['memberDisplayName', 'displayName', 'name', 'memberName']
+            );
+            var availableCredits = firstValue(
+              [payload, payload && payload.data],
+              ['availableCredits', 'credits', 'creditsAvailable', 'balance']
+            );
+
+            memberGreetingEl.textContent = 'Hi, ' + (memberName || 'Member');
+            memberCreditsEl.textContent =
+              availableCredits !== ''
+                ? 'Available Credits: ' + availableCredits
+                : '';
+
+            codeCardEl.hidden = true;
+            memberCardEl.hidden = false;
+            clearCardResult(checkinResultEl);
+            checkinBtnEl.hidden = false;
+            checkinBtnEl.disabled = false;
+            checkinBtnEl.textContent = 'Check In';
+          } catch (error) {
+            var msg = getFriendlyRuntimeError(
+              error,
+              'We could not validate your code right now. Please try again.'
+            );
+            showCardResult(codeResultEl, 'error', [msg]);
+          } finally {
+            setLookupSubmitting(false);
+          }
+        });
+
+        checkinBtnEl.addEventListener('click', async function () {
+          if (!validatedCode || !token) return;
+          clearCardResult(checkinResultEl);
+          setCheckinSubmitting(true);
 
           try {
             var response = await fetch(API_BASE_URL + '/api/public/checkin', {
@@ -974,54 +976,58 @@
               },
               body: JSON.stringify({
                 token: token,
-                recoveryCode: recoveryCode,
-                creditsUsed: creditsUsed,
+                recoveryCode: validatedCode,
+                creditsUsed: 1,
               }),
             });
             var payload = await readJson(response);
 
             if (!response.ok) {
-              throw new Error(
-                mapSubmitFailure(
-                  normalizeMessage(
-                    payload,
-                    'We could not complete your check-in right now.'
-                  )
-                )
+              var errMsg = normalizeMessage(
+                payload,
+                'We could not complete your check-in right now.'
               );
+              var lower = errMsg.toLowerCase();
+
+              if (
+                lower.indexOf('already') !== -1 &&
+                lower.indexOf('check') !== -1
+              ) {
+                var currentCredits = firstValue(
+                  [payload, payload && payload.data],
+                  ['availableCredits', 'credits', 'creditsAvailable']
+                );
+                var alreadyLines = [
+                  'You have already checked in to this session.',
+                ];
+                if (currentCredits !== '') {
+                  alreadyLines.push('Available Credits: ' + currentCredits);
+                }
+                showCardResult(checkinResultEl, 'info', alreadyLines);
+                checkinBtnEl.hidden = true;
+                validatedCode = null;
+                return;
+              }
+
+              throw new Error(errMsg);
             }
 
-            var backendMessage = normalizeMessage(
-              payload,
-              'Checked in successfully.'
-            );
             var remainingCredits = getRemainingCredits(payload);
-            var lines = [backendMessage || 'Checked in successfully.'];
-
-            if (creditsUsed > 1) {
-              lines.push('You checked in ' + creditsUsed + ' people.');
-            }
-
+            var lines = ['Check-in successful'];
             if (remainingCredits !== '') {
-              lines.push('Remaining credits: ' + remainingCredits);
+              lines.push('Remaining Credits: ' + remainingCredits);
             }
-
-            showResult('success', lines);
-            setStatus(
-              'success',
-              'Checked in successfully.',
-              'Your check-in has been recorded for the active session.'
-            );
-            recoveryCodeEl.value = '';
-            recoveryCodeEl.focus();
+            showCardResult(checkinResultEl, 'success', lines);
+            checkinBtnEl.hidden = true;
+            validatedCode = null;
           } catch (error) {
             var submitMessage = getFriendlyRuntimeError(
               error,
-              'The check-in service is unavailable right now. Please try again later.'
+              'We could not complete your check-in right now. Please try again.'
             );
-            showResult('error', [submitMessage]);
+            showCardResult(checkinResultEl, 'error', [submitMessage]);
           } finally {
-            setSubmitting(false);
+            setCheckinSubmitting(false);
           }
         });
 
