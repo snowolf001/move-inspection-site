@@ -689,6 +689,10 @@
             .replace(/'/g, '&#39;');
         }
 
+        function hasValue(v) {
+          return v !== null && v !== undefined && v !== '';
+        }
+
         function firstValue(sources, keys) {
           for (var i = 0; i < sources.length; i += 1) {
             var source = sources[i];
@@ -940,12 +944,9 @@
             );
 
             memberGreetingEl.textContent = 'Hi, ' + (memberName || 'Member');
-            memberCreditsEl.textContent =
-              availableCredits !== null &&
-              availableCredits !== undefined &&
-              availableCredits !== ''
-                ? 'Available Credits: ' + availableCredits
-                : '';
+            memberCreditsEl.textContent = hasValue(availableCredits)
+              ? 'Available Credits: ' + availableCredits
+              : '';
 
             codeCardEl.hidden = true;
             memberCardEl.hidden = false;
@@ -1002,11 +1003,7 @@
                 var alreadyLines = [
                   'You have already checked in to this session.',
                 ];
-                if (
-                  currentCredits !== null &&
-                  currentCredits !== undefined &&
-                  currentCredits !== ''
-                ) {
+                if (hasValue(currentCredits)) {
                   alreadyLines.push('Available Credits: ' + currentCredits);
                 }
                 showCardResult(checkinResultEl, 'info', alreadyLines);
@@ -1020,11 +1017,7 @@
 
             var remainingCredits = getRemainingCredits(payload);
             var lines = ['Check-in successful'];
-            if (
-              remainingCredits !== null &&
-              remainingCredits !== undefined &&
-              remainingCredits !== ''
-            ) {
+            if (hasValue(remainingCredits)) {
               lines.push('Remaining Credits: ' + remainingCredits);
             }
             showCardResult(checkinResultEl, 'success', lines);
