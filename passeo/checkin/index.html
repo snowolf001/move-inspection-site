@@ -108,6 +108,50 @@
         box-shadow: var(--shadow-sm);
       }
 
+      .club-card {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 14px 16px;
+        margin-bottom: 18px;
+      }
+
+      .club-logo {
+        width: 52px;
+        height: 52px;
+        border-radius: 14px;
+        object-fit: cover;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.06);
+        flex-shrink: 0;
+      }
+
+      .club-logo.is-hidden {
+        display: none;
+      }
+
+      .club-copy {
+        min-width: 0;
+      }
+
+      .club-label {
+        margin: 0 0 2px;
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .club-name {
+        margin: 0;
+        color: #ffffff;
+        font-size: 22px;
+        line-height: 1.2;
+        font-weight: 800;
+        word-break: break-word;
+      }
+
       .status-card {
         padding: 18px;
         margin-bottom: 18px;
@@ -489,6 +533,14 @@
         </p>
       </section>
 
+      <section class="card club-card" id="club-card" hidden>
+        <img id="club-logo" class="club-logo is-hidden" alt="Club logo" />
+        <div class="club-copy">
+          <p class="club-label">Club</p>
+          <h2 class="club-name" id="club-name">Your Club</h2>
+        </div>
+      </section>
+
       <section class="layout" id="checkin-layout" hidden>
         <article class="card session-card" aria-labelledby="session-title">
           <h2 class="section-title" id="session-title">Active session</h2>
@@ -567,6 +619,9 @@
         var statusCopyEl = statusEl.querySelector('.status-copy');
         var layoutEl = document.getElementById('checkin-layout');
         var sessionGridEl = document.getElementById('session-grid');
+        var clubCardEl = document.getElementById('club-card');
+        var clubLogoEl = document.getElementById('club-logo');
+        var clubNameEl = document.getElementById('club-name');
         var formEl = document.getElementById('checkin-form');
         var recoveryCodeEl = document.getElementById('recovery-code');
         var creditsUsedEl = document.getElementById('credits-used');
@@ -649,9 +704,6 @@
         }
 
         function renderSession(activeSession, payload) {
-          var club = payload && payload.club ? payload.club : {};
-
-          var clubName = firstValue([club, payload], ['clubName', 'name']);
           var sessionName = firstValue(
             [activeSession, payload],
             ['sessionName', 'name', 'title']
@@ -669,7 +721,6 @@
             ['endTime', 'endsAt', 'endAt', 'end']
           );
           var items = [
-            { label: 'Club', value: clubName || 'Not available' },
             sessionName ? { label: 'Session', value: sessionName } : null,
             { label: 'Location', value: locationName || 'Not available' },
             { label: 'Starts', value: formatDateTime(startTime) },
@@ -690,6 +741,33 @@
               );
             })
             .join('');
+        }
+
+        function renderClub(logoUrl, clubName) {
+          clubNameEl.textContent = clubName || 'Your Club';
+
+          if (!logoUrl) {
+            clubLogoEl.classList.add('is-hidden');
+            clubLogoEl.removeAttribute('src');
+          } else {
+            clubLogoEl.src = logoUrl;
+            clubLogoEl.alt = clubName ? clubName + ' logo' : 'Club logo';
+            clubLogoEl.classList.remove('is-hidden');
+            clubLogoEl.onerror = function () {
+              clubLogoEl.classList.add('is-hidden');
+              clubLogoEl.removeAttribute('src');
+            };
+          }
+
+          clubCardEl.hidden = false;
+        }
+
+        function getClubData(payload) {
+          var club = payload && payload.club;
+          return {
+            name: firstValue([club], ['name', 'clubName']),
+            logoUrl: firstValue([club], ['logoUrl', 'clubLogoUrl', 'logo']),
+          };
         }
 
         function setSubmitting(isSubmitting) {
@@ -818,12 +896,19 @@
               );
             }
 
+            var clubData = getClubData(payload);
+            renderClub(clubData.logoUrl, clubData.name || 'Your Club');
+
             var activeSession = payload && payload.activeSession;
             if (!activeSession) {
+              var noSessionMessage = normalizeMessage(
+                payload,
+                'No active session right now.'
+              );
               setStatus(
                 'info',
                 'No active session right now.',
-                'Check back when your club has an active session available for web check-in.'
+                noSessionMessage
               );
               layoutEl.hidden = true;
               return;

@@ -582,7 +582,10 @@
         var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
         var CHECKIN_PAGE_URL = 'https://cleanutilityapps.com/passeo/checkin/';
 
-        var token = new URLSearchParams(window.location.search).get('token');
+        var searchParams = new URLSearchParams(window.location.search);
+        var token = searchParams.get('token');
+        var queryClubName = (searchParams.get('clubName') || '').trim();
+        var queryClubLogo = (searchParams.get('clubLogo') || '').trim();
         var posterUrl = token
           ? CHECKIN_PAGE_URL + '?token=' + encodeURIComponent(token)
           : '';
@@ -735,19 +738,12 @@
 
         function getClubData(payload) {
           var club = payload && payload.club;
-          var activeSession = payload && payload.activeSession;
-          var clubName = firstValue(
-            [club, activeSession, payload],
-            ['name', 'clubName']
-          );
-          var logoUrl = firstValue(
-            [club, activeSession, payload],
-            ['logoUrl', 'clubLogoUrl', 'logo']
-          );
+          var clubName = firstValue([club], ['name', 'clubName']);
+          var logoUrl = firstValue([club], ['logoUrl', 'clubLogoUrl', 'logo']);
 
           return {
-            name: clubName,
-            logoUrl: logoUrl,
+            name: clubName || queryClubName || 'Your Club',
+            logoUrl: logoUrl || queryClubLogo,
           };
         }
 
@@ -793,7 +789,7 @@
             var clubName = clubData.name || 'Your Club';
 
             clubNameEl.textContent = clubName;
-            renderLogo(clubData.logoUrl, clubData.name || 'Club');
+            renderLogo(clubData.logoUrl, clubName);
             posterEl.hidden = false;
             toolbarEl.hidden = false;
 
@@ -827,8 +823,8 @@
 
             posterEl.hidden = false;
             toolbarEl.hidden = false;
-            clubNameEl.textContent = 'Your Club';
-            renderLogo('', 'Club');
+            clubNameEl.textContent = queryClubName || 'Your Club';
+            renderLogo(queryClubLogo, queryClubName || 'Club');
             setStatus('error', 'Unable to load club details', loadMessage);
           }
         }
