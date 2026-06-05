@@ -508,14 +508,17 @@
           setSubmitting(true);
 
           try {
-            var response = await fetch(API_BASE_URL + '/api/public/member-credits', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({ recoveryCode: recoveryCode }),
-            });
+            var response = await fetch(
+              API_BASE_URL + '/api/public/member-credits',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({ recoveryCode: recoveryCode }),
+              }
+            );
 
             var payload;
             try {
@@ -542,13 +545,16 @@
             var memberText = displayName || 'Member';
             var clubText = clubName || 'Unknown club';
             var creditsText =
-              typeof remainingCredits === 'number' || typeof remainingCredits === 'string'
+              typeof remainingCredits === 'number' ||
+              typeof remainingCredits === 'string'
                 ? String(remainingCredits)
                 : '0';
 
             showSuccess(memberText, clubText, creditsText);
           } catch (error) {
-            showError('Unable to check credits right now. Please try again later.');
+            showError(
+              'Unable to check credits right now. Please try again later.'
+            );
           } finally {
             setSubmitting(false);
           }
