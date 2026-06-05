@@ -197,6 +197,86 @@
         line-height: 1.7;
       }
 
+      .credits-card {
+        max-width: 680px;
+        margin: 0 auto;
+        text-align: left;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .credits-helper {
+        margin: 0 0 16px;
+        color: var(--soft);
+        line-height: 1.65;
+        font-size: 15px;
+      }
+
+      .credits-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .credits-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: #dbeafe;
+      }
+
+      .credits-input {
+        width: 100%;
+        min-height: 50px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        background: rgba(8, 20, 43, 0.66);
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      .credits-input::placeholder {
+        color: #94a3b8;
+      }
+
+      .credits-input:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+      }
+
+      .credits-btn {
+        width: 100%;
+        min-height: 50px;
+      }
+
+      .credits-btn[disabled] {
+        opacity: 0.72;
+        cursor: wait;
+      }
+
+      .credits-result {
+        margin-top: 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 13px 14px;
+        line-height: 1.65;
+      }
+
+      .credits-result.success {
+        background: rgba(34, 197, 94, 0.14);
+        border-color: rgba(34, 197, 94, 0.34);
+        color: #dcfce7;
+      }
+
+      .credits-result.error {
+        background: rgba(239, 68, 68, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
+        color: #fee2e2;
+      }
+
       .showcase-list {
         display: grid;
         grid-template-columns: 1fr;
@@ -629,6 +709,36 @@
         </div>
       </section>
 
+      <section class="section" id="check-credits">
+        <h2>Check Credits</h2>
+        <div class="credits-card">
+          <p class="credits-helper">
+            Enter your recovery code to see your remaining credits.
+          </p>
+
+          <form class="credits-form" id="credits-form" novalidate>
+            <label class="credits-label" for="credits-recovery-code"
+              >Recovery Code</label
+            >
+            <input
+              class="credits-input"
+              id="credits-recovery-code"
+              name="recoveryCode"
+              type="text"
+              required
+              maxlength="64"
+              placeholder="Enter your recovery code"
+              autocomplete="one-time-code"
+            />
+            <button class="btn credits-btn" id="credits-submit" type="submit">
+              Check Credits
+            </button>
+          </form>
+
+          <div id="credits-result" hidden aria-live="polite"></div>
+        </div>
+      </section>
+
       <section class="section">
         <h2>Passeo Pro for advanced club operations</h2>
         <p class="section-intro">
@@ -734,18 +844,162 @@
 
     <script>
       (function () {
+        var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
+
         var btn = document.getElementById('site-menu-btn');
         var nav = document.getElementById('site-nav');
-        if (!btn || !nav) return;
-        btn.addEventListener('click', function () {
-          var open = nav.classList.toggle('open');
-          btn.setAttribute('aria-expanded', String(open));
-        });
-        nav.querySelectorAll('a').forEach(function (a) {
-          a.addEventListener('click', function () {
-            nav.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
+
+        if (btn && nav) {
+          btn.addEventListener('click', function () {
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(open));
           });
+
+          nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+              nav.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        }
+
+        var creditsFormEl = document.getElementById('credits-form');
+        var creditsCodeEl = document.getElementById('credits-recovery-code');
+        var creditsSubmitEl = document.getElementById('credits-submit');
+        var creditsResultEl = document.getElementById('credits-result');
+
+        if (
+          !creditsFormEl ||
+          !creditsCodeEl ||
+          !creditsSubmitEl ||
+          !creditsResultEl
+        ) {
+          return;
+        }
+
+        function setCreditsSubmitting(isSubmitting) {
+          creditsSubmitEl.disabled = isSubmitting;
+          creditsSubmitEl.textContent = isSubmitting
+            ? 'Checking...'
+            : 'Check Credits';
+        }
+
+        function showCreditsResult(type, message) {
+          creditsResultEl.className = 'credits-result ' + type;
+          creditsResultEl.textContent = message;
+          creditsResultEl.hidden = false;
+        }
+
+        function clearCreditsResult() {
+          creditsResultEl.hidden = true;
+          creditsResultEl.className = '';
+          creditsResultEl.textContent = '';
+        }
+
+        function parseMessage(payload, fallback) {
+          if (!payload || typeof payload !== 'object') {
+            return fallback;
+          }
+
+          var message = payload.message || payload.error || payload.detail;
+          if (typeof message === 'string' && message.trim()) {
+            return message.trim();
+          }
+
+          return fallback;
+        }
+
+        function mapCreditsError(responseStatus, payload) {
+          var backendMessage = parseMessage(payload, '');
+          var lower = backendMessage.toLowerCase();
+
+          if (
+            responseStatus === 404 ||
+            lower.indexOf('not found') !== -1 ||
+            lower.indexOf('invalid') !== -1
+          ) {
+            return 'Member not found. Please check your recovery code.';
+          }
+
+          return 'Unable to check credits right now. Please try again later.';
+        }
+
+        creditsFormEl.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          clearCreditsResult();
+
+          var recoveryCode = creditsCodeEl.value.trim();
+          if (!recoveryCode) {
+            showCreditsResult('error', 'Please enter your recovery code.');
+            creditsCodeEl.focus();
+            return;
+          }
+
+          setCreditsSubmitting(true);
+
+          try {
+            var response = await fetch(
+              API_BASE_URL + '/api/public/member-credits',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({ recoveryCode: recoveryCode }),
+              }
+            );
+
+            var payload;
+            try {
+              payload = await response.json();
+            } catch (error) {
+              payload = null;
+            }
+
+            if (!response.ok) {
+              showCreditsResult(
+                'error',
+                mapCreditsError(response.status, payload)
+              );
+              return;
+            }
+
+            var displayName =
+              payload && typeof payload.displayName === 'string'
+                ? payload.displayName.trim()
+                : '';
+            var clubName =
+              payload && typeof payload.clubName === 'string'
+                ? payload.clubName.trim()
+                : '';
+            var remainingCredits = payload && payload.remainingCredits;
+
+            var memberText = displayName || 'This member';
+            var clubText = clubName || 'your club';
+            var creditsText =
+              typeof remainingCredits === 'number' ||
+              typeof remainingCredits === 'string'
+                ? String(remainingCredits)
+                : '0';
+
+            showCreditsResult(
+              'success',
+              memberText +
+                ' has ' +
+                creditsText +
+                ' credits remaining at ' +
+                clubText +
+                '.'
+            );
+          } catch (error) {
+            showCreditsResult(
+              'error',
+              'Unable to check credits right now. Please try again later.'
+            );
+          } finally {
+            setCreditsSubmitting(false);
+          }
         });
       })();
     </script>
