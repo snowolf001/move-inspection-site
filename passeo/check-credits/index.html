@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Check Credits | Passeo</title>
+    <meta
+      name="description"
+      content="Check your Passeo member credits with your recovery code."
+    />
+    <meta property="og:title" content="Check Credits | Passeo" />
+    <meta
+      property="og:description"
+      content="Use your recovery code to check your remaining Passeo credits anytime."
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://cleanutilityapps.com/passeo/check-credits/"
+    />
+    <meta property="og:image" content="/assets/images/passeo/passeo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Check Credits | Passeo" />
+    <meta
+      name="twitter:description"
+      content="Use your recovery code to check your remaining Passeo credits anytime."
+    />
+    <meta name="twitter:image" content="/assets/images/passeo/passeo.png" />
+
+    <link
+      rel="canonical"
+      href="https://cleanutilityapps.com/passeo/check-credits/"
+    />
+    <link rel="icon" type="image/png" href="/assets/images/passeo/passeo.png" />
+
+    <script>
+      window.pageTracking = {
+        app: 'passeo',
+        page: 'check_credits',
+        pageType: 'utility',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        text-align: left;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 22px 16px 56px;
+      }
+
+      .hero {
+        margin-bottom: 18px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 14px;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.15);
+        border: 1px solid rgba(59, 130, 246, 0.3);
+        color: #dbeafe;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(32px, 9vw, 48px);
+        line-height: 1.06;
+        letter-spacing: -0.03em;
+      }
+
+      .helper-text {
+        margin: 0;
+        color: var(--soft);
+        font-size: 16px;
+        line-height: 1.65;
+      }
+
+      .credits-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow: var(--shadow-sm);
+        padding: 18px;
+      }
+
+      .credits-form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .credits-label {
+        font-size: 14px;
+        font-weight: 700;
+        color: #dbeafe;
+      }
+
+      .credits-input {
+        width: 100%;
+        min-height: 52px;
+        padding: 12px 14px;
+        border-radius: 12px;
+        border: 1px solid rgba(148, 163, 184, 0.3);
+        background: rgba(8, 20, 43, 0.66);
+        color: #ffffff;
+        font-size: 16px;
+        line-height: 1.3;
+      }
+
+      .credits-input::placeholder {
+        color: #94a3b8;
+      }
+
+      .credits-input:focus {
+        outline: none;
+        border-color: #60a5fa;
+        box-shadow: 0 0 0 4px rgba(96, 165, 250, 0.2);
+      }
+
+      .credits-btn {
+        width: 100%;
+        min-height: 52px;
+      }
+
+      .credits-btn[disabled] {
+        opacity: 0.72;
+        cursor: wait;
+      }
+
+      .credits-result {
+        margin-top: 14px;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 13px 14px;
+        line-height: 1.6;
+      }
+
+      .credits-result.success {
+        background: rgba(34, 197, 94, 0.14);
+        border-color: rgba(34, 197, 94, 0.34);
+      }
+
+      .credits-result.error {
+        background: rgba(239, 68, 68, 0.12);
+        border-color: rgba(248, 113, 113, 0.3);
+        color: #fee2e2;
+      }
+
+      .result-name {
+        margin: 0;
+        font-size: 20px;
+        color: #ffffff;
+        font-weight: 800;
+      }
+
+      .result-club {
+        margin: 2px 0 0;
+        font-size: 15px;
+        color: #dbeafe;
+      }
+
+      .result-balance {
+        margin: 10px 0 0;
+        font-size: 17px;
+        color: #dcfce7;
+        font-weight: 700;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 16px;
+        color: #bfdbfe;
+        text-decoration: none;
+        font-size: 14px;
+      }
+
+      .back-link:hover {
+        text-decoration: underline;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        backdrop-filter: blur(14px);
+      }
+
+      .site-header-inner {
+        position: relative;
+      }
+
+      .site-brand {
+        max-width: calc(100% - 64px);
+        min-height: 48px;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        font-weight: 700;
+        text-align: left;
+      }
+
+      .site-brand-logo {
+        width: 28px;
+        height: 28px;
+        border-radius: 8px;
+        flex-shrink: 0;
+      }
+
+      .site-menu-btn {
+        width: 44px;
+        height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 12px;
+      }
+
+      .site-nav {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px;
+        background: rgba(8, 20, 43, 0.96);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+        text-align: left;
+      }
+
+      .site-nav.open {
+        display: flex;
+      }
+
+      .site-nav a {
+        display: flex;
+        width: 100%;
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      .site-footer {
+        margin-top: 56px;
+        padding-top: 24px;
+      }
+
+      .site-footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 14px;
+      }
+
+      .site-footer-links a {
+        color: #94a3b8;
+        text-decoration: none;
+      }
+
+      .site-footer-links a:hover {
+        color: var(--blue-light);
+      }
+
+      @media (min-width: 720px) {
+        .container {
+          padding: 28px 24px 72px;
+        }
+
+        .site-menu-btn {
+          display: none;
+        }
+
+        .site-nav {
+          position: static;
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          padding: 0;
+          background: transparent;
+          border: none;
+          box-shadow: none;
+        }
+
+        .site-nav a {
+          width: auto;
+          padding: 6px 12px;
+          border-radius: 999px;
+        }
+      }
+
+      @media (max-width: 719px) {
+        .site-header-inner {
+          padding: 0 16px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/passeo/passeo.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/" class="active">Passeo</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero" aria-labelledby="page-title">
+        <span class="eyebrow">Public member tool</span>
+        <h1 id="page-title">Check Credits</h1>
+        <p class="helper-text">
+          Enter your recovery code to see your remaining credits.
+        </p>
+      </section>
+
+      <section class="credits-card">
+        <form class="credits-form" id="credits-form" novalidate>
+          <label class="credits-label" for="credits-recovery-code"
+            >Recovery Code</label
+          >
+          <input
+            class="credits-input"
+            id="credits-recovery-code"
+            name="recoveryCode"
+            type="text"
+            required
+            maxlength="64"
+            placeholder="Enter your recovery code"
+            autocomplete="one-time-code"
+          />
+          <button class="btn credits-btn" id="credits-submit" type="submit">
+            Check Credits
+          </button>
+        </form>
+
+        <div id="credits-result" hidden aria-live="polite"></div>
+      </section>
+
+      <a class="back-link" href="/passeo/">← Back to Passeo</a>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Move Inspection</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/passeo/download/">Download</a>
+          <a href="/passeo/privacy/">Privacy</a>
+          <a href="/passeo/terms/">Terms of Use</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
+    </main>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
+
+        var formEl = document.getElementById('credits-form');
+        var codeEl = document.getElementById('credits-recovery-code');
+        var submitEl = document.getElementById('credits-submit');
+        var resultEl = document.getElementById('credits-result');
+
+        function setSubmitting(isSubmitting) {
+          submitEl.disabled = isSubmitting;
+          submitEl.textContent = isSubmitting ? 'Checking...' : 'Check Credits';
+        }
+
+        function clearResult() {
+          resultEl.hidden = true;
+          resultEl.className = '';
+          resultEl.innerHTML = '';
+        }
+
+        function escapeHtml(value) {
+          return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+        }
+
+        function parseMessage(payload, fallback) {
+          if (!payload || typeof payload !== 'object') {
+            return fallback;
+          }
+
+          var message = payload.message || payload.error || payload.detail;
+          if (typeof message === 'string' && message.trim()) {
+            return message.trim();
+          }
+
+          return fallback;
+        }
+
+        function mapError(status, payload) {
+          var backendMessage = parseMessage(payload, '');
+          var lower = backendMessage.toLowerCase();
+
+          if (
+            status === 404 ||
+            lower.indexOf('not found') !== -1 ||
+            lower.indexOf('invalid') !== -1
+          ) {
+            return 'Member not found. Please check your recovery code.';
+          }
+
+          return 'Unable to check credits right now. Please try again later.';
+        }
+
+        function showError(message) {
+          resultEl.className = 'credits-result error';
+          resultEl.textContent = message;
+          resultEl.hidden = false;
+        }
+
+        function showSuccess(memberName, clubName, creditsText) {
+          resultEl.className = 'credits-result success';
+          resultEl.innerHTML =
+            '<p class="result-name">' +
+            escapeHtml(memberName) +
+            '</p>' +
+            '<p class="result-club">' +
+            escapeHtml(clubName) +
+            '</p>' +
+            '<p class="result-balance">Remaining Credits: ' +
+            escapeHtml(creditsText) +
+            '</p>';
+          resultEl.hidden = false;
+        }
+
+        formEl.addEventListener('submit', async function (event) {
+          event.preventDefault();
+          clearResult();
+
+          var recoveryCode = codeEl.value.trim();
+          if (!recoveryCode) {
+            showError('Please enter your recovery code.');
+            codeEl.focus();
+            return;
+          }
+
+          setSubmitting(true);
+
+          try {
+            var response = await fetch(API_BASE_URL + '/api/public/member-credits', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+              },
+              body: JSON.stringify({ recoveryCode: recoveryCode }),
+            });
+
+            var payload;
+            try {
+              payload = await response.json();
+            } catch (error) {
+              payload = null;
+            }
+
+            if (!response.ok) {
+              showError(mapError(response.status, payload));
+              return;
+            }
+
+            var displayName =
+              payload && typeof payload.displayName === 'string'
+                ? payload.displayName.trim()
+                : '';
+            var clubName =
+              payload && typeof payload.clubName === 'string'
+                ? payload.clubName.trim()
+                : '';
+            var remainingCredits = payload && payload.remainingCredits;
+
+            var memberText = displayName || 'Member';
+            var clubText = clubName || 'Unknown club';
+            var creditsText =
+              typeof remainingCredits === 'number' || typeof remainingCredits === 'string'
+                ? String(remainingCredits)
+                : '0';
+
+            showSuccess(memberText, clubText, creditsText);
+          } catch (error) {
+            showError('Unable to check credits right now. Please try again later.');
+          } finally {
+            setSubmitting(false);
+          }
+        });
+
+        (function setupMobileNav() {
+          var btn = document.getElementById('site-menu-btn');
+          var nav = document.getElementById('site-nav');
+          if (!btn || !nav) return;
+
+          btn.addEventListener('click', function () {
+            var open = nav.classList.toggle('open');
+            btn.setAttribute('aria-expanded', String(open));
+          });
+
+          nav.querySelectorAll('a').forEach(function (a) {
+            a.addEventListener('click', function () {
+              nav.classList.remove('open');
+              btn.setAttribute('aria-expanded', 'false');
+            });
+          });
+        })();
+      })();
+    </script>
+  </body>
+</html>

@@ -252,6 +252,11 @@
         min-height: 50px;
       }
 
+      .credits-link-btn {
+        margin-top: 12px;
+        width: 100%;
+      }
+
       .credits-btn[disabled] {
         opacity: 0.72;
         cursor: wait;
@@ -263,6 +268,7 @@
         border: 1px solid var(--border);
         padding: 13px 14px;
         line-height: 1.65;
+        text-align: left;
       }
 
       .credits-result.success {
@@ -275,6 +281,29 @@
         background: rgba(239, 68, 68, 0.12);
         border-color: rgba(248, 113, 113, 0.3);
         color: #fee2e2;
+      }
+
+      .credits-result-name {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 800;
+        color: #ffffff;
+        line-height: 1.35;
+      }
+
+      .credits-result-club {
+        margin: 2px 0 0;
+        font-size: 15px;
+        color: #dbeafe;
+        line-height: 1.4;
+      }
+
+      .credits-result-balance {
+        margin: 10px 0 0;
+        font-size: 16px;
+        color: #dcfce7;
+        line-height: 1.4;
+        font-weight: 700;
       }
 
       .showcase-list {
@@ -735,6 +764,13 @@
             </button>
           </form>
 
+          <a
+            class="btn secondary credits-link-btn"
+            href="/passeo/check-credits/"
+          >
+            Open Check Credits Page
+          </a>
+
           <div id="credits-result" hidden aria-live="polite"></div>
         </div>
       </section>
@@ -788,6 +824,12 @@
           <a class="doc-card" href="/passeo/download/">
             <h3>Download</h3>
             <p>Get Passeo on iOS or Android and join your club.</p>
+          </a>
+          <a class="doc-card" href="/passeo/check-credits/">
+            <h3>Check Credits</h3>
+            <p>
+              Use your recovery code to check your remaining credits anytime.
+            </p>
           </a>
           <a class="doc-card" href="/passeo/how-to-start/">
             <h3>How to Start</h3>
@@ -890,10 +932,35 @@
           creditsResultEl.hidden = false;
         }
 
+        function showCreditsSuccess(memberName, clubName, creditsText) {
+          creditsResultEl.className = 'credits-result success';
+          creditsResultEl.innerHTML =
+            '<p class="credits-result-name">' +
+            escapeHtml(memberName) +
+            '</p>' +
+            '<p class="credits-result-club">' +
+            escapeHtml(clubName) +
+            '</p>' +
+            '<p class="credits-result-balance">Remaining Credits: ' +
+            escapeHtml(creditsText) +
+            '</p>';
+          creditsResultEl.hidden = false;
+        }
+
         function clearCreditsResult() {
           creditsResultEl.hidden = true;
           creditsResultEl.className = '';
           creditsResultEl.textContent = '';
+          creditsResultEl.innerHTML = '';
+        }
+
+        function escapeHtml(value) {
+          return String(value)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/\"/g, '&quot;')
+            .replace(/'/g, '&#39;');
         }
 
         function parseMessage(payload, fallback) {
@@ -983,15 +1050,7 @@
                 ? String(remainingCredits)
                 : '0';
 
-            showCreditsResult(
-              'success',
-              memberText +
-                ' has ' +
-                creditsText +
-                ' credits remaining at ' +
-                clubText +
-                '.'
-            );
+            showCreditsSuccess(memberText, clubText, creditsText);
           } catch (error) {
             showCreditsResult(
               'error',
