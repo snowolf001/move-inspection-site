@@ -776,11 +776,13 @@
             return fallback;
           }
 
+          var errorName =
+            error && typeof error === 'object' ? String(error.name || '') : '';
           var message = String(error.message).trim();
           var lower = message.toLowerCase();
 
           if (
-            error.name === 'AbortError' ||
+            errorName === 'AbortError' ||
             lower === 'failed to fetch' ||
             lower.indexOf('networkerror') !== -1 ||
             lower.indexOf('network request failed') !== -1 ||
