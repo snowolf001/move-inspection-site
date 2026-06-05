@@ -309,6 +309,17 @@
         transform: none;
       }
 
+      .action-row {
+        display: grid;
+        gap: 10px;
+      }
+
+      .action-row .btn.secondary {
+        width: 100%;
+        min-height: 54px;
+        border-radius: 14px;
+      }
+
       .result-card {
         margin-top: 16px;
         padding: 16px;
@@ -472,6 +483,10 @@
           grid-template-columns: 1fr 1fr;
         }
 
+        .action-row {
+          grid-template-columns: 1fr 1fr;
+        }
+
         .site-menu-btn {
           display: none;
         }
@@ -588,25 +603,20 @@
               Enter the code exactly as it was provided to you.
             </p>
           </div>
-          <button class="btn submit-btn" id="lookup-btn" type="submit">
-            Continue
-          </button>
+          <div class="action-row">
+            <button
+              class="btn submit-btn"
+              id="checkin-action-btn"
+              type="submit"
+            >
+              Check In
+            </button>
+            <button class="btn secondary" id="credits-action-btn" type="button">
+              Check Credits
+            </button>
+          </div>
         </form>
         <div id="code-result" hidden aria-live="polite"></div>
-      </section>
-
-      <section
-        class="card member-card"
-        id="member-card"
-        hidden
-        aria-live="polite"
-      >
-        <p class="member-greeting" id="member-greeting"></p>
-        <p class="member-credits" id="member-credits"></p>
-        <button class="btn submit-btn" id="checkin-btn" type="button">
-          Check In
-        </button>
-        <div id="checkin-result" hidden aria-live="polite"></div>
       </section>
 
       <a class="back-link" href="/passeo/">← Back to Passeo</a>
@@ -642,15 +652,11 @@
         var codeCardEl = document.getElementById('code-card');
         var codeFormEl = document.getElementById('code-form');
         var recoveryCodeEl = document.getElementById('recovery-code');
-        var lookupBtnEl = document.getElementById('lookup-btn');
+        var checkinActionBtnEl = document.getElementById('checkin-action-btn');
+        var creditsActionBtnEl = document.getElementById('credits-action-btn');
         var codeResultEl = document.getElementById('code-result');
-        var memberCardEl = document.getElementById('member-card');
-        var memberGreetingEl = document.getElementById('member-greeting');
-        var memberCreditsEl = document.getElementById('member-credits');
-        var checkinBtnEl = document.getElementById('checkin-btn');
-        var checkinResultEl = document.getElementById('checkin-result');
 
-        var validatedCode = null;
+        var hasActiveSession = false;
 
         function setStatus(type, title, copy) {
           statusEl.className = 'card status-card ' + type;
@@ -678,6 +684,18 @@
           containerEl.hidden = true;
           containerEl.className = '';
           containerEl.innerHTML = '';
+        }
+
+        function getRecoveryCodeOrShowError() {
+          var code = recoveryCodeEl.value.trim();
+          if (!code) {
+            showCardResult(codeResultEl, 'error', [
+              'Enter your recovery code to continue.',
+            ]);
+            recoveryCodeEl.focus();
+            return null;
+          }
+          return code;
         }
 
         function escapeHtml(value) {
@@ -802,14 +820,33 @@
           };
         }
 
-        function setLookupSubmitting(isSubmitting) {
-          lookupBtnEl.disabled = isSubmitting;
-          lookupBtnEl.textContent = isSubmitting ? 'Looking up...' : 'Continue';
+        function setCheckinSubmitting(isSubmitting) {
+          checkinActionBtnEl.disabled = isSubmitting;
+          checkinActionBtnEl.textContent = isSubmitting
+            ? 'Checking In...'
+            : 'Check In';
         }
 
-        function setCheckinSubmitting(isSubmitting) {
-          checkinBtnEl.disabled = isSubmitting;
-          checkinBtnEl.textContent = isSubmitting ? 'Checking In...' : 'Check In';
+        function setCreditsSubmitting(isSubmitting) {
+          creditsActionBtnEl.disabled = isSubmitting;
+          creditsActionBtnEl.textContent = isSubmitting
+            ? 'Checking...'
+            : 'Check Credits';
+        }
+
+        function mapCreditsLookupError(status, payload) {
+          var backendMessage = normalizeMessage(payload, '');
+          var lower = String(backendMessage).toLowerCase();
+
+          if (
+            status === 404 ||
+            lower.indexOf('not found') !== -1 ||
+            lower.indexOf('invalid') !== -1
+          ) {
+            return 'Member not found. Please check your recovery code.';
+          }
+
+          return 'Unable to check credits right now. Please try again later.';
         }
 
         async function loadSession() {
@@ -851,6 +888,7 @@
             renderClub(clubData.logoUrl, clubData.name || 'Your Club');
 
             var activeSession = payload && payload.activeSession;
+            hasActiveSession = Boolean(activeSession);
             if (activeSession) {
               var sessionName = firstValue(
                 [activeSession, payload],
@@ -862,6 +900,9 @@
               }
             }
 
+            codeCardEl.hidden = false;
+            creditsActionBtnEl.hidden = false;
+
             if (!activeSession) {
               var noSessionMessage = normalizeMessage(
                 payload,
@@ -872,11 +913,15 @@
                 'No active session right now.',
                 noSessionMessage
               );
+              checkinActionBtnEl.hidden = true;
+              checkinActionBtnEl.disabled = true;
+              recoveryCodeEl.focus();
               return;
             }
 
+            checkinActionBtnEl.hidden = false;
+            checkinActionBtnEl.disabled = false;
             hideStatus();
-            codeCardEl.hidden = false;
             recoveryCodeEl.focus();
           } catch (error) {
             var loadMessage = getFriendlyRuntimeError(
@@ -892,6 +937,7 @@
                 ? 'Open the QR link again to continue.'
                 : loadMessage
             );
+            codeCardEl.hidden = true;
           }
         }
 
@@ -899,75 +945,18 @@
           event.preventDefault();
           clearCardResult(codeResultEl);
 
-          var code = recoveryCodeEl.value.trim();
-          if (!code) {
-            showCardResult(codeResultEl, 'error', [
-              'Enter your check-in code to continue.',
+          if (!hasActiveSession) {
+            showCardResult(codeResultEl, 'info', [
+              'No active session right now. You can still use Check Credits.',
             ]);
-            recoveryCodeEl.focus();
             return;
           }
 
-          setLookupSubmitting(true);
-
-          try {
-            var response = await fetch(
-              API_BASE_URL + '/api/public/checkin/validate',
-              {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  Accept: 'application/json',
-                },
-                body: JSON.stringify({ token: token, recoveryCode: code }),
-              }
-            );
-            var payload = await readJson(response);
-
-            if (!response.ok) {
-              var errMsg = normalizeMessage(
-                payload,
-                'That check-in code was not recognized. Please check your code and try again.'
-              );
-              throw new Error(errMsg);
-            }
-
-            validatedCode = code;
-
-            var memberName = firstValue(
-              [payload, payload && payload.data],
-              ['memberDisplayName', 'displayName', 'name', 'memberName']
-            );
-            var availableCredits = firstValue(
-              [payload, payload && payload.data],
-              ['availableCredits', 'credits', 'creditsAvailable', 'balance']
-            );
-
-            memberGreetingEl.textContent = 'Hi, ' + (memberName || 'Member');
-            memberCreditsEl.textContent = hasValue(availableCredits)
-              ? 'Available Credits: ' + availableCredits
-              : '';
-
-            codeCardEl.hidden = true;
-            memberCardEl.hidden = false;
-            clearCardResult(checkinResultEl);
-            checkinBtnEl.hidden = false;
-            checkinBtnEl.disabled = false;
-            checkinBtnEl.textContent = 'Check In';
-          } catch (error) {
-            var msg = getFriendlyRuntimeError(
-              error,
-              'We could not validate your code right now. Please try again.'
-            );
-            showCardResult(codeResultEl, 'error', [msg]);
-          } finally {
-            setLookupSubmitting(false);
+          var code = getRecoveryCodeOrShowError();
+          if (!code) {
+            return;
           }
-        });
 
-        checkinBtnEl.addEventListener('click', async function () {
-          if (!validatedCode || !token) return;
-          clearCardResult(checkinResultEl);
           setCheckinSubmitting(true);
 
           try {
@@ -979,7 +968,7 @@
               },
               body: JSON.stringify({
                 token: token,
-                recoveryCode: validatedCode,
+                recoveryCode: code,
                 creditsUsed: 1,
               }),
             });
@@ -1006,9 +995,7 @@
                 if (hasValue(currentCredits)) {
                   alreadyLines.push('Available Credits: ' + currentCredits);
                 }
-                showCardResult(checkinResultEl, 'info', alreadyLines);
-                checkinBtnEl.hidden = true;
-                validatedCode = null;
+                showCardResult(codeResultEl, 'info', alreadyLines);
                 return;
               }
 
@@ -1020,17 +1007,60 @@
             if (hasValue(remainingCredits)) {
               lines.push('Remaining Credits: ' + remainingCredits);
             }
-            showCardResult(checkinResultEl, 'success', lines);
-            checkinBtnEl.hidden = true;
-            validatedCode = null;
+            showCardResult(codeResultEl, 'success', lines);
           } catch (error) {
             var submitMessage = getFriendlyRuntimeError(
               error,
               'We could not complete your check-in right now. Please try again.'
             );
-            showCardResult(checkinResultEl, 'error', [submitMessage]);
+            showCardResult(codeResultEl, 'error', [submitMessage]);
           } finally {
             setCheckinSubmitting(false);
+          }
+        });
+
+        creditsActionBtnEl.addEventListener('click', async function () {
+          clearCardResult(codeResultEl);
+
+          var code = getRecoveryCodeOrShowError();
+          if (!code) return;
+
+          setCreditsSubmitting(true);
+
+          try {
+            var response = await fetch(
+              API_BASE_URL + '/api/public/member-credits',
+              {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({ recoveryCode: code }),
+              }
+            );
+            var payload = await readJson(response);
+
+            if (!response.ok) {
+              showCardResult(codeResultEl, 'error', [
+                mapCreditsLookupError(response.status, payload),
+              ]);
+              return;
+            }
+
+            var displayName = firstValue([payload], ['displayName', 'name']);
+            var remainingCredits = firstValue([payload], ['remainingCredits']);
+            showCardResult(codeResultEl, 'success', [
+              displayName || 'Member',
+              'Remaining Credits: ' +
+                (hasValue(remainingCredits) ? remainingCredits : '0'),
+            ]);
+          } catch (error) {
+            showCardResult(codeResultEl, 'error', [
+              'Unable to check credits right now. Please try again later.',
+            ]);
+          } finally {
+            setCreditsSubmitting(false);
           }
         });
 
