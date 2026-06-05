@@ -598,10 +598,10 @@
               autocorrect="off"
               autocapitalize="characters"
               spellcheck="false"
-              placeholder="XXX-XXX-XXX"
+              placeholder="XXXX-XXXX-XXXX"
               required
-              maxlength="11"
-              pattern="[A-Za-z0-9]{3}-[A-Za-z0-9]{3}-[A-Za-z0-9]{3}"
+              maxlength="14"
+              pattern="[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}"
             />
             <p class="field-hint">
               Enter the code exactly as it was provided to you.
@@ -645,12 +645,12 @@
       (function () {
         var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
         var API_REQUEST_TIMEOUT_MS = 30000;
-        var RECOVERY_CODE_SEGMENT_LENGTH = 3;
+        var RECOVERY_CODE_SEGMENT_LENGTH = 4;
         var RECOVERY_CODE_SEGMENT_COUNT = 3;
         var RECOVERY_CODE_TOTAL_LENGTH =
           RECOVERY_CODE_SEGMENT_LENGTH * RECOVERY_CODE_SEGMENT_COUNT;
         var RECOVERY_CODE_PATTERN =
-          /^[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3}$/;
+          /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
 
         var token = new URLSearchParams(window.location.search).get('token');
         var statusEl = document.getElementById('page-status');
@@ -709,7 +709,7 @@
           }
           if (!RECOVERY_CODE_PATTERN.test(code)) {
             showCardResult(codeResultEl, 'error', [
-              'Enter a valid recovery code in the format XXX-XXX-XXX.',
+              'Enter a valid recovery code in the format XXXX-XXXX-XXXX.',
             ]);
             recoveryCodeEl.focus();
             return null;
@@ -724,7 +724,7 @@
             .replace(/\s+/g, '')
             .replace(/[^A-Z0-9]/g, '')
             .slice(0, RECOVERY_CODE_TOTAL_LENGTH);
-          var parts = compact.match(/.{1,3}/g) || [];
+          var parts = compact.match(/.{1,4}/g) || [];
           return parts.join('-');
         }
 
