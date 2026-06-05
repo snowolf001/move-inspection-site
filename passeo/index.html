@@ -755,9 +755,13 @@
               name="recoveryCode"
               type="text"
               required
-              maxlength="64"
-              placeholder="Enter your recovery code"
+              maxlength="11"
+              placeholder="XXX-XXX-XXX"
               autocomplete="one-time-code"
+              autocorrect="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              pattern="[A-Za-z0-9]{3}-[A-Za-z0-9]{3}-[A-Za-z0-9]{3}"
             />
             <button class="btn credits-btn" id="credits-submit" type="submit">
               Check Credits
@@ -887,6 +891,13 @@
     <script>
       (function () {
         var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
+        var API_REQUEST_TIMEOUT_MS = 30000;
+        var RECOVERY_CODE_SEGMENT_LENGTH = 3;
+        var RECOVERY_CODE_SEGMENT_COUNT = 3;
+        var RECOVERY_CODE_TOTAL_LENGTH =
+          RECOVERY_CODE_SEGMENT_LENGTH * RECOVERY_CODE_SEGMENT_COUNT;
+        var RECOVERY_CODE_PATTERN =
+          /^[A-Z0-9]{3}-[A-Z0-9]{3}-[A-Z0-9]{3}$/;
 
         var btn = document.getElementById('site-menu-btn');
         var nav = document.getElementById('site-nav');
@@ -991,13 +1002,48 @@
           return 'Unable to check credits right now. Please try again later.';
         }
 
+        function formatRecoveryCodeInput(value) {
+          var compact = String(value || '')
+            .toUpperCase()
+            .trim()
+            .replace(/\s+/g, '')
+            .replace(/[^A-Z0-9]/g, '')
+            .slice(0, RECOVERY_CODE_TOTAL_LENGTH);
+          var parts = compact.match(/.{1,3}/g) || [];
+          return parts.join('-');
+        }
+
+        async function fetchWithTimeout(url, options) {
+          var controller = new AbortController();
+          var timerId = window.setTimeout(function () {
+            controller.abort();
+          }, API_REQUEST_TIMEOUT_MS);
+          try {
+            return await fetch(
+              url,
+              Object.assign({}, options, { signal: controller.signal })
+            );
+          } finally {
+            window.clearTimeout(timerId);
+          }
+        }
+
         creditsFormEl.addEventListener('submit', async function (event) {
           event.preventDefault();
           clearCreditsResult();
 
-          var recoveryCode = creditsCodeEl.value.trim();
+          var recoveryCode = formatRecoveryCodeInput(creditsCodeEl.value);
+          creditsCodeEl.value = recoveryCode;
           if (!recoveryCode) {
             showCreditsResult('error', 'Please enter your recovery code.');
+            creditsCodeEl.focus();
+            return;
+          }
+          if (!RECOVERY_CODE_PATTERN.test(recoveryCode)) {
+            showCreditsResult(
+              'error',
+              'Please enter a valid recovery code in XXX-XXX-XXX format.'
+            );
             creditsCodeEl.focus();
             return;
           }
@@ -1005,7 +1051,7 @@
           setCreditsSubmitting(true);
 
           try {
-            var response = await fetch(
+            var response = await fetchWithTimeout(
               API_BASE_URL + '/api/public/member-credits',
               {
                 method: 'POST',
@@ -1058,6 +1104,13 @@
             );
           } finally {
             setCreditsSubmitting(false);
+          }
+        });
+
+        creditsCodeEl.addEventListener('input', function () {
+          var formatted = formatRecoveryCodeInput(creditsCodeEl.value);
+          if (creditsCodeEl.value !== formatted) {
+            creditsCodeEl.value = formatted;
           }
         });
       })();
