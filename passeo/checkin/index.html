@@ -711,6 +711,12 @@
           return v !== null && v !== undefined && v !== '';
         }
 
+        function normalizeText(value) {
+          if (value === null || value === undefined) return '';
+          var text = String(value).trim();
+          return text;
+        }
+
         function firstValue(sources, keys) {
           for (var i = 0; i < sources.length; i += 1) {
             var source = sources[i];
@@ -728,6 +734,108 @@
             }
           }
           return '';
+        }
+
+        function firstNonEmptyText(sources, keys) {
+          for (var i = 0; i < sources.length; i += 1) {
+            var source = sources[i];
+            if (!source || typeof source !== 'object') continue;
+
+            for (var j = 0; j < keys.length; j += 1) {
+              var key = keys[j];
+              if (!Object.prototype.hasOwnProperty.call(source, key)) continue;
+
+              var text = normalizeText(source[key]);
+              if (text) {
+                return text;
+              }
+            }
+          }
+
+          return '';
+        }
+
+        function formatSessionDateTime(activeSession) {
+          if (!activeSession || typeof activeSession !== 'object') return '';
+
+          var rawDateTime = firstNonEmptyText(
+            [activeSession],
+            [
+              'startsAt',
+              'startAt',
+              'startDateTime',
+              'sessionDateTime',
+              'dateTime',
+            ]
+          );
+
+          if (rawDateTime) {
+            var parsedDateTime = new Date(rawDateTime);
+            if (!Number.isNaN(parsedDateTime.getTime())) {
+              return parsedDateTime.toLocaleString(undefined, {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+              });
+            }
+          }
+
+          var rawDate = firstNonEmptyText(
+            [activeSession],
+            ['sessionDate', 'date', 'startDate']
+          );
+          var rawTime = firstNonEmptyText(
+            [activeSession],
+            ['startTime', 'time']
+          );
+
+          if (rawDate && rawTime) {
+            var combinedDateTime = new Date(rawDate + 'T' + rawTime);
+            if (!Number.isNaN(combinedDateTime.getTime())) {
+              return combinedDateTime.toLocaleString(undefined, {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+              });
+            }
+            return rawDate + ' ' + rawTime;
+          }
+
+          if (rawDate) return rawDate;
+          if (rawTime) return rawTime;
+
+          return '';
+        }
+
+        function getSessionDisplayValue(payload, activeSession) {
+          var fromDisplayName = firstNonEmptyText(
+            [payload, activeSession],
+            ['sessionDisplayName']
+          );
+          if (fromDisplayName) return fromDisplayName;
+
+          var fromSessionTitleOrName = firstNonEmptyText(
+            [activeSession, payload && payload.session],
+            ['title', 'name']
+          );
+          if (fromSessionTitleOrName) return fromSessionTitleOrName;
+
+          var fromLocationName = firstNonEmptyText(
+            [
+              activeSession && activeSession.location,
+              activeSession,
+              payload && payload.location,
+            ],
+            ['name', 'locationName']
+          );
+          if (fromLocationName) return fromLocationName;
+
+          var fromDateTime = formatSessionDateTime(activeSession);
+          if (fromDateTime) return fromDateTime;
+
+          return 'Active session';
         }
 
         function normalizeMessage(payload, fallback) {
@@ -890,14 +998,12 @@
             var activeSession = payload && payload.activeSession;
             hasActiveSession = Boolean(activeSession);
             if (activeSession) {
-              var sessionName = firstValue(
-                [activeSession, payload],
-                ['sessionName', 'name', 'title']
-              );
-              if (sessionName) {
-                clubSessionEl.textContent = sessionName;
-                clubSessionEl.hidden = false;
-              }
+              var sessionValue = getSessionDisplayValue(payload, activeSession);
+              clubSessionEl.textContent = sessionValue;
+              clubSessionEl.hidden = false;
+            } else {
+              clubSessionEl.textContent = '';
+              clubSessionEl.hidden = true;
             }
 
             codeCardEl.hidden = false;
