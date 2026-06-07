@@ -595,9 +595,13 @@
               type="text"
               inputmode="text"
               autocomplete="one-time-code"
-              placeholder="Enter your code"
+              autocorrect="off"
+              autocapitalize="characters"
+              spellcheck="false"
+              placeholder="XXXX-XXXX-XXXX"
               required
-              maxlength="64"
+              maxlength="14"
+              pattern="[A-Za-z0-9]{4}-[A-Za-z0-9]{4}-[A-Za-z0-9]{4}"
             />
             <p class="field-hint">
               Enter the code exactly as it was provided to you.
@@ -640,6 +644,13 @@
     <script>
       (function () {
         var API_BASE_URL = 'https://club-app-backend-production.up.railway.app';
+        var API_REQUEST_TIMEOUT_MS = 30000;
+        var RECOVERY_CODE_SEGMENT_LENGTH = 4;
+        var RECOVERY_CODE_SEGMENT_COUNT = 3;
+        var RECOVERY_CODE_TOTAL_LENGTH =
+          RECOVERY_CODE_SEGMENT_LENGTH * RECOVERY_CODE_SEGMENT_COUNT;
+        var RECOVERY_CODE_PATTERN =
+          /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
 
         var token = new URLSearchParams(window.location.search).get('token');
         var statusEl = document.getElementById('page-status');
@@ -687,7 +698,8 @@
         }
 
         function getRecoveryCodeOrShowError() {
-          var code = recoveryCodeEl.value.trim();
+          var code = formatRecoveryCodeInput(recoveryCodeEl.value);
+          recoveryCodeEl.value = code;
           if (!code) {
             showCardResult(codeResultEl, 'error', [
               'Enter your recovery code to continue.',
@@ -695,7 +707,25 @@
             recoveryCodeEl.focus();
             return null;
           }
+          if (!RECOVERY_CODE_PATTERN.test(code)) {
+            showCardResult(codeResultEl, 'error', [
+              'Enter a valid recovery code in the format XXXX-XXXX-XXXX.',
+            ]);
+            recoveryCodeEl.focus();
+            return null;
+          }
           return code;
+        }
+
+        function formatRecoveryCodeInput(value) {
+          var compact = String(value || '')
+            .toUpperCase()
+            .trim()
+            .replace(/\s+/g, '')
+            .replace(/[^A-Z0-9]/g, '')
+            .slice(0, RECOVERY_CODE_TOTAL_LENGTH);
+          var parts = compact.match(/.{1,4}/g) || [];
+          return parts.join('-');
         }
 
         function escapeHtml(value) {
@@ -854,10 +884,13 @@
             return fallback;
           }
 
+          var errorName =
+            error && typeof error === 'object' ? String(error.name || '') : '';
           var message = String(error.message).trim();
           var lower = message.toLowerCase();
 
           if (
+            errorName === 'AbortError' ||
             lower === 'failed to fetch' ||
             lower.indexOf('networkerror') !== -1 ||
             lower.indexOf('network request failed') !== -1 ||
@@ -898,6 +931,21 @@
             return await response.json();
           } catch (error) {
             return null;
+          }
+        }
+
+        async function fetchWithTimeout(url, options) {
+          var controller = new AbortController();
+          var timerId = window.setTimeout(function () {
+            controller.abort();
+          }, API_REQUEST_TIMEOUT_MS);
+          try {
+            return await fetch(
+              url,
+              Object.assign({}, options, { signal: controller.signal })
+            );
+          } finally {
+            window.clearTimeout(timerId);
           }
         }
 
@@ -968,7 +1016,7 @@
           }
 
           try {
-            var response = await fetch(
+            var response = await fetchWithTimeout(
               API_BASE_URL +
                 '/api/public/checkin/session?token=' +
                 encodeURIComponent(token),
@@ -1066,7 +1114,9 @@
           setCheckinSubmitting(true);
 
           try {
-            var response = await fetch(API_BASE_URL + '/api/public/checkin', {
+            var response = await fetchWithTimeout(
+              API_BASE_URL + '/api/public/checkin',
+              {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
@@ -1077,7 +1127,8 @@
                 recoveryCode: code,
                 creditsUsed: 1,
               }),
-            });
+              }
+            );
             var payload = await readJson(response);
 
             if (!response.ok) {
@@ -1125,6 +1176,13 @@
           }
         });
 
+        recoveryCodeEl.addEventListener('input', function () {
+          var formatted = formatRecoveryCodeInput(recoveryCodeEl.value);
+          if (recoveryCodeEl.value !== formatted) {
+            recoveryCodeEl.value = formatted;
+          }
+        });
+
         creditsActionBtnEl.addEventListener('click', async function () {
           clearCardResult(codeResultEl);
 
@@ -1134,7 +1192,7 @@
           setCreditsSubmitting(true);
 
           try {
-            var response = await fetch(
+            var response = await fetchWithTimeout(
               API_BASE_URL + '/api/public/member-credits',
               {
                 method: 'POST',
