@@ -159,6 +159,15 @@
         font-weight: 600;
         letter-spacing: 0.02em;
         text-transform: uppercase;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.35;
+        max-width: 100%;
+        overflow-wrap: anywhere;
       }
 
       .status-card {
@@ -649,8 +658,7 @@
         var RECOVERY_CODE_SEGMENT_COUNT = 3;
         var RECOVERY_CODE_TOTAL_LENGTH =
           RECOVERY_CODE_SEGMENT_LENGTH * RECOVERY_CODE_SEGMENT_COUNT;
-        var RECOVERY_CODE_PATTERN =
-          /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
+        var RECOVERY_CODE_PATTERN = /^[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}$/;
 
         var token = new URLSearchParams(window.location.search).get('token');
         var statusEl = document.getElementById('page-status');
@@ -840,12 +848,6 @@
         }
 
         function getSessionDisplayValue(payload, activeSession) {
-          var fromDisplayName = firstNonEmptyText(
-            [payload, activeSession],
-            ['sessionDisplayName']
-          );
-          if (fromDisplayName) return fromDisplayName;
-
           var fromSessionTitleOrName = firstNonEmptyText(
             [activeSession, payload && payload.session],
             ['title', 'name']
@@ -865,7 +867,7 @@
           var fromDateTime = formatSessionDateTime(activeSession);
           if (fromDateTime) return fromDateTime;
 
-          return 'Active session';
+          return 'Session available';
         }
 
         function normalizeMessage(payload, fallback) {
@@ -1048,9 +1050,13 @@
             if (activeSession) {
               var sessionValue = getSessionDisplayValue(payload, activeSession);
               clubSessionEl.textContent = sessionValue;
+              clubSessionEl.setAttribute('title', sessionValue);
+              clubSessionEl.setAttribute('aria-label', sessionValue);
               clubSessionEl.hidden = false;
             } else {
               clubSessionEl.textContent = '';
+              clubSessionEl.removeAttribute('title');
+              clubSessionEl.removeAttribute('aria-label');
               clubSessionEl.hidden = true;
             }
 
@@ -1117,16 +1123,16 @@
             var response = await fetchWithTimeout(
               API_BASE_URL + '/api/public/checkin',
               {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json',
-              },
-              body: JSON.stringify({
-                token: token,
-                recoveryCode: code,
-                creditsUsed: 1,
-              }),
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  Accept: 'application/json',
+                },
+                body: JSON.stringify({
+                  token: token,
+                  recoveryCode: code,
+                  creditsUsed: 1,
+                }),
               }
             );
             var payload = await readJson(response);
