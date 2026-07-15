@@ -3,19 +3,21 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quote Ready - Fast Quotes and Estimates</title>
-    <meta
-      name="description"
-      content="Quote Ready helps service businesses create professional quotes and estimates, generate PDF quote documents, and share them with customers in minutes."
-    />
+
+    <title>
+      Contractor Estimate &amp; Quote | Professional Estimates, Quotes &amp;
+      Invoices
+    </title>
 
     <meta
-      property="og:title"
-      content="Quote Ready - Fast Quotes and Estimates"
+      name="description"
+      content="Create professional contractor estimates, quotes, and invoices. Generate PDF documents, manage customers, use job templates, and share estimates in minutes."
     />
+
+    <meta property="og:title" content="Contractor Estimate &amp; Quote" />
     <meta
       property="og:description"
-      content="Create professional quotes in minutes. Build estimates, generate polished PDF quotes, and share them with customers."
+      content="Create professional estimates, quotes, and invoices with PDF export for contractors and service businesses."
     />
     <meta property="og:type" content="website" />
     <meta
@@ -84,7 +86,8 @@
       }
 
       h1 {
-        margin: 0 0 12px;
+        max-width: 900px;
+        margin: 0 auto 12px;
         font-size: clamp(30px, 9vw, 52px);
         line-height: 1.08;
         letter-spacing: -0.03em;
@@ -98,7 +101,7 @@
       }
 
       .desc {
-        max-width: 760px;
+        max-width: 780px;
         margin: 0 auto 18px;
         color: var(--soft);
         line-height: 1.7;
@@ -115,7 +118,7 @@
       }
 
       .section-intro {
-        max-width: 680px;
+        max-width: 720px;
         margin: 0 auto 20px;
         color: var(--muted);
         font-size: 15px;
@@ -224,6 +227,48 @@
         border-radius: 18px;
       }
 
+      .download-btns {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+        margin: 22px auto 0;
+        max-width: 340px;
+      }
+
+      .download-btns .btn {
+        width: 100%;
+        font-size: 15px;
+        padding: 13px 22px;
+      }
+
+      .btn-coming-soon {
+        opacity: 0.5;
+      }
+
+      .btn-coming-soon:hover {
+        opacity: 0.65;
+      }
+
+      .download-note {
+        margin: 14px 0 0;
+        font-size: 13px;
+        color: var(--muted);
+      }
+
+      @media (min-width: 540px) {
+        .download-btns {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          max-width: none;
+        }
+
+        .download-btns .btn {
+          width: auto;
+        }
+      }
+
       @media (min-width: 640px) {
         .container {
           padding: 32px 20px 68px;
@@ -268,48 +313,6 @@
           box-shadow: 0 8px 36px rgba(0, 0, 0, 0.6);
         }
       }
-
-      .download-btns {
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 12px;
-        margin: 22px auto 0;
-        max-width: 340px;
-      }
-
-      .download-btns .btn {
-        width: 100%;
-        font-size: 15px;
-        padding: 13px 22px;
-      }
-
-      .btn-coming-soon {
-        opacity: 0.5;
-      }
-
-      .btn-coming-soon:hover {
-        opacity: 0.65;
-      }
-
-      .download-note {
-        margin: 14px 0 0;
-        font-size: 13px;
-        color: var(--muted);
-      }
-
-      @media (min-width: 540px) {
-        .download-btns {
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          max-width: none;
-        }
-
-        .download-btns .btn {
-          width: auto;
-        }
-      }
     </style>
   </head>
 
@@ -324,13 +327,15 @@
           />
           Clean Utility Apps
         </a>
+
         <nav class="site-nav" id="site-nav" aria-label="Site navigation">
           <a href="/">Home</a>
           <a href="/move-inspection/">Rental Inspect</a>
           <a href="/passeo/">Passeo</a>
           <a href="/dinner-ready/">DinnerReady</a>
-          <a href="/quote-ready/" class="active">Quote Ready</a>
+          <a href="/quote-ready/" class="active">Contractor Quote</a>
         </nav>
+
         <button
           class="site-menu-btn"
           id="site-menu-btn"
@@ -358,74 +363,102 @@
 
     <main class="container">
       <section class="hero">
-        <div class="app-badge">QUOTE READY</div>
-        <h1>Quote Ready</h1>
-        <p class="tagline">Create professional quotes in minutes.</p>
-        <p class="desc">
-          Quote Ready helps small businesses, contractors, cleaners, movers,
-          handymen, landscapers, and service providers quickly create clean,
-          professional estimates and PDF quotes.
+        <div class="app-badge">CONTRACTOR ESTIMATE &amp; QUOTE</div>
+
+        <h1>Professional Estimates, Quotes &amp; Invoices</h1>
+
+        <p class="tagline">
+          Create professional contractor documents in minutes.
         </p>
+
+        <p class="desc">
+          Contractor Estimate &amp; Quote helps contractors and service
+          businesses create detailed estimates, convert quotes into invoices,
+          generate professional PDF documents, and share them with customers
+          directly from a phone.
+        </p>
+
         <div class="download-btns">
           <a
             class="btn"
             href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.quoteready"
             target="_blank"
             rel="noopener noreferrer"
-            >Get it on Google Play</a
           >
+            Get it on Google Play
+          </a>
+
           <a
             class="btn secondary btn-coming-soon"
             href="https://apps.apple.com/app/id6774484193"
             target="_blank"
             rel="noopener noreferrer"
-            >Coming Soon on the App Store</a
           >
+            Coming Soon on the App Store
+          </a>
         </div>
+
         <p class="download-note">
-          Available on Android. iOS version is coming soon.
+          Available on Android. The updated iPhone version is coming soon.
         </p>
       </section>
 
       <section class="section" aria-labelledby="screenshots-heading">
-        <h2 id="screenshots-heading">See Quote Ready in Action</h2>
+        <h2 id="screenshots-heading">
+          See Contractor Estimate &amp; Quote in Action
+        </h2>
+
         <p class="section-intro">
-          Create quotes, manage customers, generate PDFs, and reuse templates
+          Create estimates, add detailed line items, convert quotes into
+          invoices, manage document status, and generate professional PDFs
           directly from your phone.
         </p>
+
         <div class="screenshots-grid">
           <div class="screenshot-item">
             <img
-              src="/assets/images/quote-ready/home-ios.png"
-              alt="Quote Ready home screen"
+              src="/assets/images/quote-ready/1_home.png"
+              alt="Contractor Estimate and Quote home dashboard with active quotes and invoices"
               loading="lazy"
             />
           </div>
+
           <div class="screenshot-item">
             <img
-              src="/assets/images/quote-ready/details-ios.png"
-              alt="Quote details screen"
+              src="/assets/images/quote-ready/2_newquote.png"
+              alt="Create a new contractor quote using job types and customer information"
               loading="lazy"
             />
           </div>
+
           <div class="screenshot-item">
             <img
-              src="/assets/images/quote-ready/pdf-ios.png"
-              alt="PDF quote preview screen"
+              src="/assets/images/quote-ready/3_lineitems.png"
+              alt="Add and customize contractor estimate line items, quantities, and prices"
               loading="lazy"
             />
           </div>
+
           <div class="screenshot-item">
             <img
-              src="/assets/images/quote-ready/settings-ios.png"
-              alt="Settings screen"
+              src="/assets/images/quote-ready/4_pdf.png"
+              alt="Professional PDF quote preview ready to share with a customer"
               loading="lazy"
             />
           </div>
+
           <div class="screenshot-item">
             <img
-              src="/assets/images/quote-ready/template-ios.png"
-              alt="Template management screen"
+              src="/assets/images/quote-ready/5_invoice.png"
+              alt="Convert a contractor quote into an invoice"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="screenshot-item">
+            <img
+              src="/assets/images/quote-ready/6_managequote.png"
+              alt="Manage contractor quote status, approval, payment, and archive actions"
               loading="lazy"
             />
           </div>
@@ -433,82 +466,130 @@
       </section>
 
       <section class="section" aria-labelledby="features-heading">
-        <h2 id="features-heading">Built for fast quoting workflows</h2>
+        <h2 id="features-heading">Built for contractor workflows</h2>
+
         <p class="section-intro">
-          Keep quoting simple and consistent, from the first estimate to the
-          final PDF document you send to your customer.
+          Move from a new customer request to a professional estimate, quote,
+          invoice, and PDF without complicated accounting software.
         </p>
 
         <div class="features">
           <article class="feature">
-            <h3>Fast quote creation</h3>
-            <p>Create clear, customer-ready quotes in just a few taps.</p>
-          </article>
-
-          <article class="feature">
-            <h3>Multiple job types with default items</h3>
+            <h3>Professional estimates and quotes</h3>
             <p>
-              Start from common job templates and prefilled items to move
-              faster.
+              Create clear, itemized estimates and customer-ready quotes in just
+              a few taps.
             </p>
           </article>
 
           <article class="feature">
-            <h3>Custom line items, quantity, price, and notes</h3>
+            <h3>Quotes and invoices</h3>
             <p>
-              Tailor every quote with your own item details, pricing, and job
-              notes.
+              Convert accepted quotes into invoices and mark completed invoices
+              as paid.
             </p>
           </article>
 
           <article class="feature">
-            <h3>Generate and preview professional PDF quotes</h3>
+            <h3>Job types and suggested items</h3>
             <p>
-              Build polished quote documents that are easy for customers to
-              review.
+              Start with common contractor job types and load suggested items to
+              build estimates faster.
             </p>
           </article>
 
           <article class="feature">
-            <h3>Share quotes directly with customers</h3>
-            <p>Send completed quote PDFs when and how you choose.</p>
+            <h3>Custom line items and pricing</h3>
+            <p>
+              Edit descriptions, quantities, prices, notes, taxes, and totals
+              for each project.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Professional PDF export</h3>
+            <p>
+              Generate polished estimate, quote, and invoice PDFs that are ready
+              to preview and share.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Quote and invoice status</h3>
+            <p>
+              Track drafts, sent quotes, approved work, paid invoices, and
+              archived documents.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Saved customers</h3>
+            <p>
+              Reuse customer contact information to reduce repetitive data
+              entry.
+            </p>
+          </article>
+
+          <article class="feature">
+            <h3>Reusable templates</h3>
+            <p>
+              Save common services and pricing structures for faster quote
+              creation.
+            </p>
           </article>
 
           <article class="feature">
             <h3>Local-first, no account required</h3>
             <p>
-              Start immediately without sign-up and keep your workflow simple.
+              Start immediately without creating an account. App information
+              stays stored locally on your device.
             </p>
           </article>
         </div>
       </section>
 
       <section class="section" aria-labelledby="who-heading">
-        <h2 id="who-heading">Who it is for</h2>
+        <h2 id="who-heading">Made for contractors and service businesses</h2>
+
         <p class="section-intro">
-          Quote Ready is made for busy teams and solo operators who need to send
-          professional estimates quickly.
+          A practical estimate, quote, and invoice app for independent
+          professionals and small teams.
         </p>
 
         <div class="who-list" role="list">
-          <div class="who-item" role="listitem">Cleaners</div>
-          <div class="who-item" role="listitem">Movers</div>
+          <div class="who-item" role="listitem">General Contractors</div>
           <div class="who-item" role="listitem">Handymen</div>
+          <div class="who-item" role="listitem">Remodelers</div>
+          <div class="who-item" role="listitem">Electricians</div>
+          <div class="who-item" role="listitem">Plumbers</div>
+          <div class="who-item" role="listitem">HVAC Technicians</div>
+          <div class="who-item" role="listitem">Painters</div>
           <div class="who-item" role="listitem">Landscapers</div>
-          <div class="who-item" role="listitem">Window cleaners</div>
-          <div class="who-item" role="listitem">Small service businesses</div>
+          <div class="who-item" role="listitem">Roofing Contractors</div>
+          <div class="who-item" role="listitem">Flooring Installers</div>
+          <div class="who-item" role="listitem">Movers</div>
+          <div class="who-item" role="listitem">Cleaning Services</div>
+          <div class="who-item" role="listitem">Property Maintenance</div>
+          <div class="who-item" role="listitem">Window Cleaners</div>
+          <div class="who-item" role="listitem">Small Service Businesses</div>
         </div>
       </section>
 
       <section class="section" aria-labelledby="links-heading">
         <h2 id="links-heading">Links &amp; information</h2>
+
         <p class="section-intro">
-          Review data handling details for Quote Ready.
+          Review privacy and data-handling information for Contractor Estimate
+          &amp; Quote.
         </p>
+
         <div class="links-grid">
           <a class="link-card" href="/quote-ready/privacy/">
             <h3>Privacy Policy</h3>
-            <p>How Quote Ready handles quote and customer information.</p>
+            <p>
+              How Contractor Estimate &amp; Quote handles quote, invoice,
+              customer, and business information.
+            </p>
           </a>
         </div>
       </section>
@@ -519,13 +600,14 @@
           <a href="/move-inspection/">Rental Inspect</a>
           <a href="/passeo/">Passeo</a>
           <a href="/dinner-ready/">DinnerReady</a>
-          <a href="/quote-ready/">Quote Ready</a>
+          <a href="/quote-ready/">Contractor Quote</a>
           <a href="/quote-ready/privacy/">Privacy</a>
         </div>
+
         © 2026 Clean Utility Apps ·
-        <a href="mailto:support@cleanutilityapps.com"
-          >support@cleanutilityapps.com</a
-        >
+        <a href="mailto:support@cleanutilityapps.com">
+          support@cleanutilityapps.com
+        </a>
       </footer>
     </main>
 
@@ -538,11 +620,14 @@
       (function () {
         var btn = document.getElementById('site-menu-btn');
         var nav = document.getElementById('site-nav');
+
         if (!btn || !nav) return;
+
         btn.addEventListener('click', function () {
           var open = nav.classList.toggle('open');
           btn.setAttribute('aria-expanded', String(open));
         });
+
         nav.querySelectorAll('a').forEach(function (a) {
           a.addEventListener('click', function () {
             nav.classList.remove('open');
