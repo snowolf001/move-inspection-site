@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Privacy Policy | LORAN</title>
+
+    <meta
+      name="description"
+      content="Privacy Policy for LORAN by Clean Utility Apps."
+    />
+    <meta name="theme-color" content="#08142b" />
+    <link
+      rel="canonical"
+      href="https://cleanutilityapps.com/loran/privacy/"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      href="/assets/images/move-inspection/icon.png"
+    />
+
+    <script>
+      window.pageTracking = {
+        app: 'loran',
+        page: 'privacy',
+        pageType: 'docs',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .page {
+        flex: 1;
+        width: 100%;
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 20px 16px 56px;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        margin: 0 0 10px;
+        font-size: clamp(26px, 7vw, 36px);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+      }
+
+      h2 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 600;
+        color: #e2e8f0;
+      }
+
+      p {
+        margin: 0 0 12px;
+        color: #94a3b8;
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      .meta {
+        color: #64748b;
+        font-size: 13px;
+        margin-bottom: 0;
+      }
+
+      .contact-link {
+        color: var(--blue-light);
+        text-decoration: none;
+      }
+
+      .contact-link:hover {
+        text-decoration: underline;
+      }
+
+      ul {
+        margin: 8px 0 12px;
+        padding-left: 20px;
+        color: #94a3b8;
+        line-height: 1.8;
+        font-size: 15px;
+      }
+
+      ul li {
+        margin-bottom: 4px;
+      }
+
+      @media (min-width: 640px) {
+        .page {
+          padding: 28px 20px 64px;
+        }
+
+        .card {
+          padding: 22px;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .page {
+          padding: 32px 24px 72px;
+        }
+
+        .card {
+          padding: 26px 28px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/move-inspection/icon.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Rental Inspect</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/dinner-ready/">DinnerReady</a>
+          <a href="/quote-ready/">Contractor Quote</a>
+        </nav>
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="page">
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span class="bc-sep">/</span>
+        <span class="bc-current">LORAN Privacy</span>
+      </nav>
+
+      <section class="card">
+        <h1>Privacy Policy for LORAN</h1>
+        <p>LORAN &mdash; published by Clean Utility Apps</p>
+        <p class="meta">Effective date: August 21, 2026</p>
+      </section>
+
+      <section class="card">
+        <h2>Overview</h2>
+        <p>
+          LORAN is an English-speaking practice app. The current version
+          includes scenario-based speaking practice, conversation practice,
+          speech transcription, AI-generated replies, correction flows, and
+          audio playback for scenario lines and generated responses.
+        </p>
+        <p>
+          This Privacy Policy describes the data flows shown by the current
+          LORAN mobile app and TalkFlow backend code as of August 21, 2026. It
+          does not describe planned features that are not active in the current
+          implementation.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Microphone access and voice recordings</h2>
+        <p>
+          LORAN requests microphone permission so you can speak during practice
+          and conversation exercises.
+        </p>
+        <p>
+          When you record a spoken response, the app creates a local recording
+          on your device and uploads that recording to the LORAN backend for
+          speech-to-text processing. The backend receives the uploaded audio and
+          forwards it to OpenAI for transcription.
+        </p>
+        <p>
+          The reviewed backend transcription path does not write learner audio
+          recordings into LORAN&rsquo;s TalkFlow PostgreSQL tables or Cloudflare
+          R2 audio storage as part of normal transcription handling. However,
+          because the audio is transmitted off device for processing, we do not
+          describe learner recordings as device-only data.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Speech transcription</h2>
+        <p>
+          LORAN uses OpenAI speech transcription services to convert your
+          recorded speech into text. The current backend configuration is
+          English-only and is set up to request an English transcript in Latin
+          script.
+        </p>
+        <p>
+          The transcript is returned to the app and used to continue the active
+          speaking flow, such as submitting a conversation turn or checking a
+          suggested expression against the target sentence.
+        </p>
+        <p>
+          The reviewed TalkFlow backend code logs transcription request
+          metadata such as file size, duration, and transcript length, but it
+          does not show a TalkFlow database write that stores the full learner
+          transcript as practice history.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Conversation text and AI processing</h2>
+        <p>
+          During conversation practice, the app sends your current scenario ID,
+          release version when applicable, and the conversation message history
+          needed for the turn. User messages are sent to the LORAN backend,
+          which then sends the conversation request to OpenAI to generate the
+          next reply.
+        </p>
+        <p>
+          During correction and suggested-expression practice, the app sends the
+          text needed for those features, such as user messages, target
+          sentences, and recognized learner text, to the LORAN backend. The
+          backend uses OpenAI to generate correction or feedback output.
+        </p>
+        <p>
+          Based on the reviewed code, LORAN does not currently create an
+          end-user account-based conversation history database for whole learner
+          chats or whole learner transcripts. The backend does, however, process
+          this text to return AI responses and feedback.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>AI-generated replies, text-to-speech, and audio playback</h2>
+        <p>
+          LORAN plays a mix of authored scenario audio and generated audio.
+          Authored scenario audio is served through the LORAN backend using
+          signed playback URLs.
+        </p>
+        <p>
+          For generated speech, the backend uses OpenAI text-to-speech. The
+          current TTS profile in code uses OpenAI <code>tts-1</code>, voice
+          <code>nova</code>, speed <code>0.9</code>, MP3 format, and English
+          language settings.
+        </p>
+        <p>
+          The current backend implementation also stores TTS cache metadata in
+          PostgreSQL and stores generated or published MP3 audio objects in
+          Cloudflare R2 object storage. TTS cache rows include the generated
+          text and normalized text for the cached phrase, along with cache and
+          audio-asset metadata. This means some AI-generated reply text and its
+          corresponding audio may be persisted on the backend for reuse.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>What is stored on your device</h2>
+        <p>The current mobile app stores several items locally, including:</p>
+        <ul>
+          <li>Voice preference settings</li>
+          <li>Internal release-selection settings used for release testing</li>
+          <li>Cached TTS audio files used for playback reuse</li>
+          <li>Local recording files created while capturing learner speech</li>
+        </ul>
+        <p>
+          The reviewed code explicitly deletes abandoned recording files when a
+          recording session is cancelled. It does not show a general guaranteed
+          deletion pass for every successful recording after transcription.
+        </p>
+        <p>
+          The current History screens use bundled mock sample data rather than a
+          live server-backed LORAN practice-history service.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Backend storage and retention visible in code</h2>
+        <p>
+          The reviewed TalkFlow backend stores published scenario metadata,
+          published scenario audio metadata, TTS profile records, TTS cache
+          metadata, release records, and audio asset metadata in PostgreSQL.
+        </p>
+        <p>
+          The reviewed code also stores published scenario audio and cached or
+          published TTS MP3 objects in Cloudflare R2 object storage.
+        </p>
+        <p>
+          We found explicit logic for deleting stale missing global TTS cache
+          rows when the related object is missing, and for deleting release
+          audio/cache metadata during release-management workflows. We did not
+          find a general user-facing retention schedule for learner recordings,
+          transcripts, or conversation text in the current LORAN implementation.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Technical logs and diagnostic data</h2>
+        <p>
+          The backend logs HTTP request metadata including request ID, endpoint,
+          path, status, elapsed time, query parameters when present, and IP
+          address. TalkFlow-specific backend logs also record technical details
+          such as scenario IDs, message counts, transcript length, cache timing,
+          and TTS timing information.
+        </p>
+        <p>
+          On the mobile side, the current app includes diagnostic logging for
+          recording state, speech processing, and playback. In development or
+          internal testing modes, the code can retain and log details such as
+          the last learner recording URI, transcript text, transcript errors,
+          metering details, and stop reason.
+        </p>
+        <p>
+          We did not find a mobile crash-reporting SDK or a mobile analytics SDK
+          actively integrated into the current LORAN app code reviewed here.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Accounts, authentication, advertising, and payments</h2>
+        <p>
+          The current LORAN mobile app does not show a user login or account
+          creation flow for its TalkFlow speaking features. The current backend
+          protects API routes with a shared API key rather than end-user account
+          authentication.
+        </p>
+        <p>
+          We did not find evidence that the current LORAN mobile implementation
+          serves advertising.
+        </p>
+        <p>
+          The current closed-testing version does not expose active in-app
+          payment processing to users. The mobile code contains placeholder
+          paywall UI and TODO comments, but we did not find an active purchase
+          SDK or active LORAN billing flow in the code reviewed for this policy.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Third-party service providers identified in the current implementation</h2>
+        <ul>
+          <li>
+            OpenAI, for conversation generation, correction and expression
+            feedback generation, speech transcription, and text-to-speech
+          </li>
+          <li>Cloudflare R2, for stored audio objects and signed playback URLs</li>
+          <li>
+            PostgreSQL, for LORAN scenario, release, TTS profile, cache, and
+            audio metadata
+          </li>
+        </ul>
+        <p>
+          We did not identify an active mobile advertising SDK, mobile crash
+          reporter, or mobile product-analytics SDK in the current LORAN app
+          code reviewed for this policy.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Your choices</h2>
+        <p>
+          You can choose whether to grant microphone permission. If you do not
+          grant microphone permission, voice speaking features will not work as
+          intended.
+        </p>
+        <p>
+          You can also stop using the app, delete app data from your device, or
+          uninstall the app. Because some processing happens through the LORAN
+          backend and third-party providers, deleting the app from your device
+          does not by itself guarantee deletion of all server-side technical or
+          cached data that may already exist.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Data deletion requests</h2>
+        <p>
+          If you want to ask about deletion of LORAN-related backend data or
+          have privacy questions, please contact us at the email below. Because
+          the current implementation does not use a normal end-user account
+          system for LORAN, we may need additional information from you to
+          identify any relevant records.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Children&rsquo;s privacy</h2>
+        <p>
+          LORAN is not designed specifically for children. If you believe a
+          child has provided personal information through LORAN, please contact
+          us so we can review the request.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Security</h2>
+        <p>
+          We use backend infrastructure and third-party services to operate
+          LORAN, but no software or transmission method can be guaranteed to be
+          completely secure. This policy describes the current code-level data
+          flows we reviewed; it does not make promises about perfect security or
+          specific encryption practices beyond what can be directly confirmed in
+          the reviewed code.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Changes to this policy</h2>
+        <p>
+          We may update this Privacy Policy as LORAN changes. When we do, we
+          will update the effective date on this page.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Contact</h2>
+        <p>If you have questions about this Privacy Policy, please contact:</p>
+        <p>
+          <a class="contact-link" href="mailto:cleanutilityapps@gmail.com"
+            >cleanutilityapps@gmail.com</a
+          >
+        </p>
+      </section>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Rental Inspect</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/dinner-ready/">DinnerReady</a>
+          <a href="/quote-ready/">Contractor Quote</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
+    </main>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+        if (!btn || !nav) return;
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+      })();
+    </script>
+  </body>
+</html>

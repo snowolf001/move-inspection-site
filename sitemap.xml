@@ -62,4 +62,11 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- LORAN -->
+  <url>
+    <loc>https://cleanutilityapps.com/loran/privacy/</loc>
+    <lastmod>2026-08-21</lastmod>
+    <priority>0.4</priority>
+  </url>
+
 </urlset>
