@@ -206,7 +206,7 @@
           <div>
             <h1>Privacy Policy for LORAN</h1>
             <p>LORAN &mdash; published by Clean Utility Apps</p>
-            <p class="meta">Effective date: August 21, 2026</p>
+            <p class="meta">Effective date: September 7, 2026</p>
           </div>
         </div>
       </section>
@@ -215,9 +215,9 @@
         <h2>Overview</h2>
 
         <p>
-          LORAN is an English-speaking practice app that provides scenario-based
-          speaking practice, AI-powered conversations, speech transcription,
-          language feedback, and audio playback.
+          LORAN is an English-speaking practice app that provides guided
+          speaking practice, real-life conversation exercises, speech
+          transcription, language feedback, and audio playback.
         </p>
 
         <p>
@@ -231,21 +231,20 @@
 
         <p>
           LORAN requests access to your device microphone when you use speaking
-          and conversation features.
+          features.
         </p>
 
         <p>
-          When you record a spoken response, the app creates an audio recording
-          on your device and sends it to the LORAN backend for speech
-          transcription. The audio is then sent to OpenAI for speech-to-text
-          processing.
+          When you record a spoken response, the audio leaves your device so it
+          can be processed for speech transcription. Spoken audio may be sent
+          through the LORAN backend to OpenAI for speech-to-text processing.
         </p>
 
         <p>
-          LORAN does not use its normal transcription process to store learner
-          voice recordings in its application database or Cloudflare R2 audio
-          storage. Audio is nevertheless transmitted off your device so that
-          your speech can be processed.
+          LORAN does not intentionally store learner voice recordings in its
+          normal application database or Cloudflare R2 transcription flow. Audio
+          is nevertheless transmitted off your device so that your speech can be
+          processed.
         </p>
       </section>
 
@@ -310,10 +309,9 @@
 
         <ul>
           <li>App and voice preferences</li>
+          <li>Random installation and session identifiers</li>
           <li>Cached audio used for playback</li>
-          <li>
-            Temporary local recording files created during speaking practice
-          </li>
+          <li>Temporary local recording files used during speaking practice</li>
           <li>Technical settings used by the app</li>
         </ul>
 
@@ -327,22 +325,28 @@
         <h2>Technical and diagnostic information</h2>
 
         <p>
-          LORAN and its backend process limited technical information needed to
-          operate, troubleshoot, secure, and improve the service.
+          LORAN collects limited anonymous or pseudonymous product-usage and
+          technical diagnostic information to operate, troubleshoot, secure, and
+          improve the service.
         </p>
 
         <p>
-          This information may include request identifiers, request paths,
-          status information, response times, IP addresses, scenario
-          identifiers, message counts, transcription metadata, and
-          audio-processing timing information.
+          This may include app version and build, platform, device model,
+          operating-system version, scenario identifiers, event types, timing
+          information, turn counts, setting states, and sanitized error
+          information.
         </p>
 
         <p>
-          The app also contains diagnostic logging related to recording, speech
-          processing, and audio playback. Development and testing versions may
-          log additional diagnostic information while problems are being
-          investigated.
+          LORAN may use a randomly generated installation identifier and session
+          identifier for reliability and usage statistics. These identifiers are
+          not derived from device hardware or an account.
+        </p>
+
+        <p>
+          LORAN does not use production telemetry to store learner audio, speech
+          transcripts, conversation content, prompts, precise location,
+          contacts, or hardware identifiers.
         </p>
       </section>
 
@@ -351,8 +355,8 @@
 
         <p>
           LORAN stores information needed to operate its scenarios, releases,
-          audio assets, and text-to-speech cache. This may include generated
-          text, cached audio, and related technical metadata.
+          generated text-to-speech audio, cache metadata, and limited technical
+          telemetry.
         </p>
 
         <p>
