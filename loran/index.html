@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>LORAN | Practice English by Speaking</title>
+
+    <meta
+      name="description"
+      content="LORAN helps English learners build speaking confidence through guided expression practice and real-life conversations."
+    />
+    <meta
+      name="keywords"
+      content="LORAN, English speaking practice, speaking practice, guided expression practice, real-life conversations, speaking feedback, correction practice"
+    />
+    <meta name="theme-color" content="#08142b" />
+
+    <meta property="og:title" content="LORAN | Practice English by Speaking" />
+    <meta
+      property="og:description"
+      content="Build confidence in everyday English through guided speaking practice and real-life conversations."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/images/loran/loran.png" />
+    <meta property="og:url" content="https://cleanutilityapps.com/loran/" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="LORAN | Practice English by Speaking" />
+    <meta
+      name="twitter:description"
+      content="Build confidence in everyday English through guided speaking practice and real-life conversations."
+    />
+    <meta name="twitter:image" content="/assets/images/loran/loran.png" />
+
+    <link rel="canonical" href="https://cleanutilityapps.com/loran/" />
+    <link rel="icon" type="image/png" href="/assets/images/loran/loran.png" />
+
+    <script>
+      window.pageTracking = {
+        app: 'loran',
+        page: 'index',
+        pageType: 'landing',
+      };
+    </script>
+
+    <link rel="stylesheet" href="/assets/css/site.css" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        overflow-x: hidden;
+      }
+
+      body {
+        text-align: center;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .container {
+        max-width: var(--max-width);
+        margin: 0 auto;
+        padding: 22px 16px 56px;
+      }
+
+      .hero {
+        padding-top: 4px;
+      }
+
+      .app-badge {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 14px;
+        padding: 6px 12px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.14);
+        border: 1px solid rgba(59, 130, 246, 0.25);
+        color: #dbeafe;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: clamp(32px, 8vw, 56px);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+      }
+
+      .tagline {
+        max-width: 760px;
+        margin: 0 auto 12px;
+        color: #bfdbfe;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.55;
+      }
+
+      .desc {
+        max-width: 760px;
+        margin: 0 auto 18px;
+        color: var(--soft);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin: 22px auto 0;
+      }
+
+      .buttons .btn {
+        width: 100%;
+        max-width: 340px;
+      }
+
+      .section {
+        margin-top: 52px;
+      }
+
+      .section > h2 {
+        margin: 0 0 10px;
+        font-size: clamp(22px, 6vw, 30px);
+        line-height: 1.15;
+      }
+
+      .section-intro {
+        max-width: 760px;
+        margin: 0 auto 20px;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 15px;
+      }
+
+      .flow-grid,
+      .features-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        margin-top: 18px;
+        text-align: left;
+      }
+
+      .step-card,
+      .feature-card {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 18px;
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 34px;
+        height: 34px;
+        margin-bottom: 14px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(59, 130, 246, 0.16);
+        color: #dbeafe;
+        font-size: 14px;
+        font-weight: 800;
+      }
+
+      .step-card h3,
+      .feature-card h3 {
+        margin: 0 0 8px;
+        font-size: 17px;
+      }
+
+      .step-card p,
+      .feature-card p {
+        margin: 0;
+        color: var(--soft);
+        line-height: 1.65;
+        font-size: 14px;
+      }
+
+      .feature-note {
+        margin: 18px auto 0;
+        max-width: 760px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.65;
+      }
+
+      .feature-note strong {
+        color: var(--blue-light);
+      }
+
+      @media (min-width: 640px) {
+        .container {
+          padding: 30px 20px 68px;
+        }
+
+        .buttons {
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .buttons .btn {
+          width: auto;
+          min-width: 220px;
+        }
+
+        .flow-grid,
+        .features-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 16px;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .section {
+          margin-top: 68px;
+        }
+
+        .flow-grid {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+          gap: 18px;
+        }
+
+        .features-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 18px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header class="site-header">
+      <div class="site-header-inner">
+        <a class="site-brand" href="/">
+          <img
+            class="site-brand-logo"
+            src="/assets/images/loran/loran.png"
+            alt=""
+          />
+          Clean Utility Apps
+        </a>
+
+        <nav class="site-nav" id="site-nav" aria-label="Site navigation">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Rental Inspect</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/dinner-ready/">DinnerReady</a>
+          <a href="/loran/" class="active">LORAN</a>
+          <a href="/quote-ready/">Contractor Quote</a>
+        </nav>
+
+        <button
+          class="site-menu-btn"
+          id="site-menu-btn"
+          aria-label="Toggle menu"
+          aria-expanded="false"
+          aria-controls="site-nav"
+          type="button"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M3 5h14M3 10h14M3 15h14"
+              stroke="currentColor"
+              stroke-width="1.75"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="app-badge">LORAN</div>
+
+        <h1>Practice English by speaking.</h1>
+
+        <p class="tagline">
+          Build confidence in everyday English through guided speaking practice
+          and real-life conversations.
+        </p>
+
+        <p class="desc">
+          LORAN is built around a simple learning loop: practice useful
+          expressions first, speak in a real conversation, get feedback on what
+          you said, and practice the improved expression again.
+        </p>
+
+        <div class="buttons">
+          <a class="btn" href="#how-it-works">See how it works</a>
+          <a class="btn secondary" href="/loran/privacy/">Privacy Policy</a>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <h2>The learning flow</h2>
+        <p class="section-intro">
+          LORAN keeps practice focused on the sequence that matters most: learn
+          an expression, use it in a conversation, review the feedback, and
+          reinforce the better wording.
+        </p>
+
+        <div class="flow-grid">
+          <article class="step-card">
+            <div class="step-number">1</div>
+            <h3>Practice useful expressions</h3>
+            <p>Learn useful expressions before entering a real conversation.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">2</div>
+            <h3>Have a real conversation</h3>
+            <p>
+              Respond naturally in everyday situations such as a coffee shop,
+              restaurant, pharmacy, or barber shop.
+            </p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">3</div>
+            <h3>Get feedback</h3>
+            <p>See where your spoken English can be improved.</p>
+          </article>
+
+          <article class="step-card">
+            <div class="step-number">4</div>
+            <h3>Practice the improved expression</h3>
+            <p>
+              Practice improved expressions to reinforce more natural English.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Core practice features</h2>
+        <p class="section-intro">
+          The page focuses on the features LORAN actually supports today,
+          without expanding into unrelated product claims.
+        </p>
+
+        <div class="features-grid">
+          <article class="feature-card">
+            <h3>Real-life scenarios</h3>
+            <p>
+              Practice speaking in everyday situations that feel practical and
+              familiar.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Guided expression practice</h3>
+            <p>Review useful expressions before moving into a conversation.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Interactive conversations</h3>
+            <p>
+              Speak through back-and-forth conversations instead of isolated
+              prompts.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Speaking feedback</h3>
+            <p>Review where your spoken English can be improved.</p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Correction practice</h3>
+            <p>
+              Practice the improved expression again to reinforce a more natural
+              response.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <h3>Hands-free practice</h3>
+            <p>
+              Auto Listen and Listening Cue help keep practice flowing without
+              extra tapping between turns.
+            </p>
+          </article>
+        </div>
+
+        <p class="feature-note">
+          LORAN is designed around guided speaking practice, real conversation,
+          and feedback-driven repetition.
+        </p>
+      </section>
+
+      <footer class="site-footer">
+        <div class="site-footer-links">
+          <a href="/">Home</a>
+          <a href="/move-inspection/">Rental Inspect</a>
+          <a href="/passeo/">Passeo</a>
+          <a href="/dinner-ready/">DinnerReady</a>
+          <a href="/loran/">LORAN</a>
+          <a href="/quote-ready/">Contractor Quote</a>
+        </div>
+        © 2026 Clean Utility Apps
+      </footer>
+    </main>
+
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script src="/assets/js/site-tracking.js"></script>
+
+    <script>
+      (function () {
+        var btn = document.getElementById('site-menu-btn');
+        var nav = document.getElementById('site-nav');
+
+        if (!btn || !nav) return;
+
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        document.addEventListener('click', function (e) {
+          if (!nav.classList.contains('open')) return;
+          if (nav.contains(e.target) || btn.contains(e.target)) return;
+          nav.classList.remove('open');
+          btn.setAttribute('aria-expanded', 'false');
+        });
+
+        window.addEventListener('resize', function () {
+          if (window.innerWidth >= 960) {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
