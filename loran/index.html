@@ -97,6 +97,33 @@
         padding-top: 4px;
       }
 
+      .hero-layout {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        display: grid;
+        justify-items: center;
+      }
+
+      .hero-visual {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 12px;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-visual img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 16px;
+      }
+
       .app-badge {
         display: inline-flex;
         align-items: center;
@@ -167,67 +194,68 @@
         font-size: 15px;
       }
 
-      .flow-grid,
-      .features-grid {
+      .story-list {
         display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        margin-top: 18px;
+        gap: 18px;
+        margin-top: 22px;
         text-align: left;
       }
 
-      .step-card,
-      .feature-card {
+      .story-card {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
         background: var(--card);
         border: 1px solid var(--border);
-        border-radius: 18px;
+        border-radius: 20px;
         padding: 18px;
+        box-shadow: var(--shadow-sm);
       }
 
-      .step-number {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 34px;
-        height: 34px;
-        margin-bottom: 14px;
-        padding: 0 10px;
-        border-radius: 999px;
-        background: rgba(59, 130, 246, 0.16);
-        color: #dbeafe;
-        font-size: 14px;
-        font-weight: 800;
+      .story-copy {
+        display: grid;
+        gap: 10px;
+        align-content: center;
       }
 
-      .step-card h3,
-      .feature-card h3 {
+      .story-copy h3 {
         margin: 0 0 8px;
-        font-size: 17px;
+        font-size: 20px;
+        line-height: 1.15;
       }
 
-      .step-card p,
-      .feature-card p {
+      .story-copy p {
         margin: 0;
         color: var(--soft);
         line-height: 1.65;
-        font-size: 14px;
+        font-size: 15px;
       }
 
-      .feature-note {
-        margin: 18px auto 0;
-        max-width: 760px;
-        color: var(--muted);
-        font-size: 14px;
-        line-height: 1.65;
+      .story-media {
+        margin: 0;
       }
 
-      .feature-note strong {
-        color: var(--blue-light);
+      .story-media img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid var(--border);
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .hero-copy .buttons {
+        width: 100%;
       }
 
       @media (min-width: 640px) {
         .container {
           padding: 30px 20px 68px;
+        }
+
+        .hero-layout {
+          gap: 20px;
         }
 
         .buttons {
@@ -242,26 +270,48 @@
           min-width: 220px;
         }
 
-        .flow-grid,
-        .features-grid {
-          grid-template-columns: repeat(2, minmax(0, 1fr));
-          gap: 16px;
+        .story-card {
+          padding: 20px;
         }
       }
 
       @media (min-width: 900px) {
+        .hero-layout {
+          grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+          gap: 28px;
+        }
+
+        .hero-copy {
+          justify-items: start;
+          text-align: left;
+        }
+
+        .hero-copy .buttons {
+          justify-content: flex-start;
+          width: auto;
+        }
+
         .section {
           margin-top: 68px;
         }
 
-        .flow-grid {
-          grid-template-columns: repeat(4, minmax(0, 1fr));
-          gap: 18px;
+        .story-list {
+          gap: 22px;
         }
 
-        .features-grid {
-          grid-template-columns: repeat(3, minmax(0, 1fr));
-          gap: 18px;
+        .story-card {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          gap: 24px;
+          align-items: center;
+          padding: 24px;
+        }
+
+        .story-card.reverse .story-copy {
+          order: 2;
+        }
+
+        .story-card.reverse .story-media {
+          order: 1;
         }
       }
     </style>
@@ -316,115 +366,147 @@
 
     <main class="container">
       <section class="hero">
-        <div class="app-badge">LORAN</div>
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <div class="app-badge">LORAN</div>
 
-        <h1>Practice English by speaking.</h1>
+            <h1>Practice English by speaking.</h1>
 
-        <p class="tagline">
-          Build confidence in everyday English through guided speaking practice
-          and real-life conversations.
-        </p>
+            <p class="tagline">
+              Build confidence in everyday English through guided speaking
+              practice, real-life scenarios, and natural conversations.
+            </p>
 
-        <p class="desc">
-          LORAN is built around a simple learning loop: practice useful
-          expressions first, speak in a real conversation, get feedback on what
-          you said, and practice the improved expression again.
-        </p>
+            <p class="desc">
+              Practice the flow from expressions to conversation to feedback,
+              then keep going with hands-free listening cues.
+            </p>
 
-        <div class="buttons">
-          <a class="btn" href="#how-it-works">See how it works</a>
-          <a class="btn secondary" href="/loran/privacy/">Privacy Policy</a>
+            <div class="buttons">
+              <a class="btn" href="#how-it-works">See how it works</a>
+              <a class="btn secondary" href="/loran/privacy/">
+                Privacy Policy
+              </a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img
+              src="/assets/images/loran/loran_marketing.png"
+              alt="LORAN English speaking practice app"
+              width="1536"
+              height="1024"
+              fetchpriority="high"
+            />
+          </div>
         </div>
       </section>
 
       <section class="section" id="how-it-works">
-        <h2>The learning flow</h2>
+        <h2>How LORAN practice flows</h2>
         <p class="section-intro">
-          LORAN keeps practice focused on the sequence that matters most: learn
-          an expression, use it in a conversation, review the feedback, and
-          reinforce the better wording.
+          Choose a scenario, practice useful expressions, speak in a realistic
+          conversation, receive feedback, and keep practicing with Auto Listen
+          and listening cues.
         </p>
 
-        <div class="flow-grid">
-          <article class="step-card">
-            <div class="step-number">1</div>
-            <h3>Practice useful expressions</h3>
-            <p>Learn useful expressions before entering a real conversation.</p>
+        <div class="story-list">
+          <article class="story-card">
+            <div class="story-copy">
+              <h3>Practice English for Real Life</h3>
+              <p>
+                Build speaking confidence through practical everyday practice.
+              </p>
+            </div>
+            <figure class="story-media">
+              <img
+                src="/assets/images/loran/01_practice_english_for_real_life.png"
+                alt="LORAN home screen for English speaking practice"
+                width="941"
+                height="1672"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </article>
 
-          <article class="step-card">
-            <div class="step-number">2</div>
-            <h3>Have a real conversation</h3>
-            <p>
-              Respond naturally in everyday situations such as a coffee shop,
-              restaurant, pharmacy, or barber shop.
-            </p>
+          <article class="story-card reverse">
+            <div class="story-copy">
+              <h3>Practice Real-Life Scenarios</h3>
+              <p>
+                Practice useful English for everyday situations such as coffee
+                shops, restaurants, pharmacies, and barber shops.
+              </p>
+            </div>
+            <figure class="story-media">
+              <img
+                src="/assets/images/loran/02_real_life_scenarios.png"
+                alt="LORAN real-life English practice scenarios"
+                width="941"
+                height="1672"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </article>
 
-          <article class="step-card">
-            <div class="step-number">3</div>
-            <h3>Get feedback</h3>
-            <p>See where your spoken English can be improved.</p>
+          <article class="story-card">
+            <div class="story-copy">
+              <h3>Learn Useful Expressions</h3>
+              <p>
+                See useful target phrases, listen to them, and practice speaking
+                before starting a conversation.
+              </p>
+            </div>
+            <figure class="story-media">
+              <img
+                src="/assets/images/loran/03_learn_useful_expressions.png"
+                alt="LORAN guided expression speaking practice"
+                width="941"
+                height="1672"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </article>
 
-          <article class="step-card">
-            <div class="step-number">4</div>
-            <h3>Practice the improved expression</h3>
-            <p>
-              Practice improved expressions to reinforce more natural English.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section">
-        <h2>Core practice features</h2>
-        <p class="section-intro">
-          Practice speaking through realistic scenarios, guided expressions,
-          feedback, and hands-free conversation.
-        </p>
-
-        <div class="features-grid">
-          <article class="feature-card">
-            <h3>Real-life scenarios</h3>
-            <p>
-              Practice speaking in everyday situations that feel practical and
-              familiar.
-            </p>
+          <article class="story-card reverse">
+            <div class="story-copy">
+              <h3>Have Natural Conversations</h3>
+              <p>
+                Use what you practiced in realistic conversations and respond
+                naturally in your own words.
+              </p>
+            </div>
+            <figure class="story-media">
+              <img
+                src="/assets/images/loran/04_natural_conversations.png"
+                alt="LORAN real-life English conversation practice"
+                width="941"
+                height="1672"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </article>
 
-          <article class="feature-card">
-            <h3>Guided expression practice</h3>
-            <p>Review useful expressions before moving into a conversation.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Interactive conversations</h3>
-            <p>
-              Speak through back-and-forth conversations instead of isolated
-              prompts.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Speaking feedback</h3>
-            <p>Review where your spoken English can be improved.</p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Correction practice</h3>
-            <p>
-              Practice the improved expression again to reinforce a more natural
-              response.
-            </p>
-          </article>
-
-          <article class="feature-card">
-            <h3>Hands-free practice</h3>
-            <p>
-              Auto Listen and Listening Cue help keep practice flowing without
-              extra tapping between turns.
-            </p>
+          <article class="story-card">
+            <div class="story-copy">
+              <h3>Practice Your Way</h3>
+              <p>
+                Keep the practice flowing with Auto Listen and listening cues.
+              </p>
+            </div>
+            <figure class="story-media">
+              <img
+                src="/assets/images/loran/05_customize_your_practice.png"
+                alt="LORAN Auto Listen and Listening Cue settings"
+                width="941"
+                height="1672"
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
           </article>
         </div>
       </section>
