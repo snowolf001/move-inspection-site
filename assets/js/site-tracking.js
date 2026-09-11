@@ -1,5 +1,45 @@
 (function () {
   var MEASUREMENT_ID = 'G-LBCQ8VL0TB';
+  var NAV_ITEMS = [
+    { href: '/', label: 'Home' },
+    { href: '/move-inspection/', label: 'Rental Inspect' },
+    { href: '/passeo/', label: 'Passeo' },
+    { href: '/dinner-ready/', label: 'DinnerReady' },
+    { href: '/loran/', label: 'LORAN' },
+    { href: '/quote-ready/', label: 'Contractor Quote' },
+  ];
+
+  function getActiveNavHref(pathname) {
+    var path = pathname || '/';
+
+    if (path === '/' || path === '') {
+      return '/';
+    }
+
+    for (var i = 1; i < NAV_ITEMS.length; i++) {
+      if (path.indexOf(NAV_ITEMS[i].href) === 0) {
+        return NAV_ITEMS[i].href;
+      }
+    }
+
+    return '';
+  }
+
+  function buildNavMarkup(activeHref) {
+    return NAV_ITEMS.map(function (item) {
+      var activeClass = item.href === activeHref ? ' class="active"' : '';
+      return (
+        '<a href="' + item.href + '"' + activeClass + '>' + item.label + '</a>'
+      );
+    }).join('');
+  }
+
+  function initializeSharedNavigation() {
+    var nav = document.getElementById('site-nav');
+    if (!nav) return;
+
+    nav.innerHTML = buildNavMarkup(getActiveNavHref(window.location.pathname));
+  }
 
   // Idempotent GA init
   if (!window.__siteTrackingInit) {
@@ -38,6 +78,8 @@
       path: window.location.pathname,
     });
   }
+
+  initializeSharedNavigation();
 
   // Global link-click tracking via querySelectorAll delegation
   document.querySelectorAll('a').forEach(function (link) {
