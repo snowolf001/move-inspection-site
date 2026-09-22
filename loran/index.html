@@ -1,343 +1,574 @@
 <!doctype html>
+
 <html lang="en">
+   
   <head>
+       
     <meta charset="UTF-8" />
+
+       
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+       
     <title>LORAN – English Speaking Practice | Clean Utility Apps</title>
 
+       
     <meta
       name="description"
-      content="Practice English speaking through guided expressions, real-life conversations, feedback, and hands-free practice with LORAN."
+      content="Practice English speaking with real-life scenarios, useful expressions, natural conversations, and personalized feedback with LORAN."
     />
+
+       
     <meta
       name="keywords"
       content="LORAN, English speaking practice, speaking practice, guided expression practice, real-life conversations, speaking feedback, correction practice"
     />
+
+       
     <meta name="theme-color" content="#08142b" />
 
+       
     <meta
       property="og:title"
       content="LORAN – English Speaking Practice | Clean Utility Apps"
     />
+
+       
     <meta
       property="og:description"
-      content="Practice English speaking through guided expressions, real-life conversations, feedback, and hands-free practice with LORAN."
+      content="Practice English speaking with real-life scenarios, useful expressions, natural conversations, and personalized feedback with LORAN."
     />
+
+       
     <meta property="og:type" content="website" />
+
+       
     <meta property="og:image" content="/assets/images/loran/loran.png" />
+
+       
     <meta property="og:url" content="https://cleanutilityapps.com/loran/" />
+
+       
     <meta property="og:site_name" content="Clean Utility Apps" />
 
+       
     <meta name="twitter:card" content="summary_large_image" />
+
+       
     <meta
       name="twitter:title"
       content="LORAN – English Speaking Practice | Clean Utility Apps"
     />
+
+       
     <meta
       name="twitter:description"
-      content="Practice English speaking through guided expressions, real-life conversations, feedback, and hands-free practice with LORAN."
+      content="Practice English speaking with real-life scenarios, useful expressions, natural conversations, and personalized feedback with LORAN."
     />
+
+       
     <meta name="twitter:image" content="/assets/images/loran/loran.png" />
 
+       
     <link rel="canonical" href="https://cleanutilityapps.com/loran/" />
+
+       
     <link rel="icon" type="image/png" href="/assets/images/loran/loran.png" />
 
+       
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
+
         "@type": "SoftwareApplication",
+
         "name": "LORAN",
+
         "applicationCategory": "EducationalApplication",
-        "operatingSystem": "Android",
-        "description": "Practice English speaking through guided expressions, real-life conversations, feedback, and hands-free practice with LORAN.",
+
+        "operatingSystem": "Android, iOS",
+
+        "description": "Practice English speaking with real-life scenarios, useful expressions, natural conversations, and personalized feedback with LORAN.",
+
         "url": "https://cleanutilityapps.com/loran/",
+
         "publisher": {
           "@type": "Organization",
+
           "name": "Clean Utility Apps"
         }
       }
     </script>
 
+       
     <script>
       window.pageTracking = {
         app: 'loran',
+
         page: 'index',
+
         pageType: 'landing',
       };
     </script>
 
+       
     <link rel="stylesheet" href="/assets/css/site.css" />
 
+       
     <style>
-      * {
-        box-sizing: border-box;
-      }
 
-      html,
-      body {
-        overflow-x: hidden;
-      }
+            \* {
 
-      body {
-        text-align: center;
-      }
+              box-sizing: border-box;
 
-      a {
-        color: inherit;
-      }
+            }
 
-      .container {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 22px 16px 56px;
-      }
+            html,
 
-      .hero {
-        padding-top: 4px;
-      }
+            body {
 
-      .hero-layout {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 18px;
-        align-items: center;
-      }
+              overflow-x: hidden;
 
-      .hero-copy {
-        display: grid;
-        justify-items: center;
-      }
+            }
 
-      .hero-visual {
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 12px;
-        box-shadow: var(--shadow);
-      }
+            body {
 
-      .hero-visual img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border-radius: 16px;
-      }
+              text-align: center;
 
-      .app-badge {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 14px;
-        padding: 6px 12px;
-        border-radius: 999px;
-        background: rgba(59, 130, 246, 0.14);
-        border: 1px solid rgba(59, 130, 246, 0.25);
-        color: #dbeafe;
-        font-size: 12px;
-        font-weight: 700;
-        letter-spacing: 0.04em;
-      }
+            }
 
-      h1 {
-        margin: 0 0 12px;
-        font-size: clamp(32px, 8vw, 56px);
-        line-height: 1.08;
-        letter-spacing: -0.03em;
-      }
+            a {
 
-      .tagline {
-        max-width: 760px;
-        margin: 0 auto 12px;
-        color: #bfdbfe;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 1.55;
-      }
+              color: inherit;
 
-      .desc {
-        max-width: 760px;
-        margin: 0 auto 18px;
-        color: var(--soft);
-        line-height: 1.7;
-        font-size: 15px;
-      }
+            }
 
-      .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        margin: 22px auto 0;
-      }
+            .container {
 
-      .buttons .btn {
-        width: 100%;
-        max-width: 340px;
-      }
+              max-width: var(--max-width);
 
-      .section {
-        margin-top: 52px;
-      }
+              margin: 0 auto;
 
-      .section > h2 {
-        margin: 0 0 10px;
-        font-size: clamp(22px, 6vw, 30px);
-        line-height: 1.15;
-      }
+              padding: 22px 16px 56px;
 
-      .section-intro {
-        max-width: 760px;
-        margin: 0 auto 20px;
-        color: var(--muted);
-        line-height: 1.7;
-        font-size: 15px;
-      }
+            }
 
-      .story-list {
-        display: grid;
-        gap: 18px;
-        margin-top: 22px;
-        text-align: left;
-      }
+            .hero {
 
-      .story-card {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 14px;
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 20px;
-        padding: 18px;
-        box-shadow: var(--shadow-sm);
-      }
+              padding-top: 4px;
 
-      .story-copy {
-        display: grid;
-        gap: 10px;
-        align-content: center;
-      }
+            }
 
-      .story-copy h3 {
-        margin: 0 0 8px;
-        font-size: 20px;
-        line-height: 1.15;
-      }
+            .hero-layout {
 
-      .story-copy p {
-        margin: 0;
-        color: var(--soft);
-        line-height: 1.65;
-        font-size: 15px;
-      }
+              display: grid;
 
-      .story-media {
-        margin: 0;
-      }
+              grid-template-columns: 1fr;
 
-      .story-media img {
-        display: block;
-        width: 100%;
-        height: auto;
-        border-radius: 18px;
-        border: 1px solid var(--border);
-        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
-        background: rgba(255, 255, 255, 0.03);
-      }
+              gap: 18px;
 
-      .hero-copy .buttons {
-        width: 100%;
-      }
+              align-items: center;
 
-      @media (min-width: 640px) {
-        .container {
-          padding: 30px 20px 68px;
-        }
+            }
 
-        .hero-layout {
-          gap: 20px;
-        }
+            .hero-copy {
 
-        .buttons {
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
-        }
+              display: grid;
 
-        .buttons .btn {
-          width: auto;
-          min-width: 220px;
-        }
+              justify-items: center;
 
-        .story-card {
-          padding: 20px;
-        }
-      }
+            }
 
-      @media (min-width: 900px) {
-        .hero-layout {
-          grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-          gap: 28px;
-        }
+            .hero-visual {
 
-        .hero-copy {
-          justify-items: start;
-          text-align: left;
-        }
+              background: var(--card);
 
-        .hero-copy .buttons {
-          justify-content: flex-start;
-          width: auto;
-        }
+              border: 1px solid var(--border);
 
-        .section {
-          margin-top: 68px;
-        }
+              border-radius: 24px;
 
-        .story-list {
-          gap: 22px;
-        }
+              padding: 12px;
 
-        .story-card {
-          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-          gap: 24px;
-          align-items: center;
-          padding: 24px;
-        }
+              box-shadow: var(--shadow);
 
-        .story-card.reverse .story-copy {
-          order: 2;
-        }
+            }
 
-        .story-card.reverse .story-media {
-          order: 1;
-        }
-      }
+            .hero-visual img {
+
+              display: block;
+
+              width: 100%;
+
+              height: auto;
+
+              border-radius: 16px;
+
+            }
+
+            .app-badge {
+
+              display: inline-flex;
+
+              align-items: center;
+
+              justify-content: center;
+
+              margin-bottom: 14px;
+
+              padding: 6px 12px;
+
+              border-radius: 999px;
+
+              background: rgba(59, 130, 246, 0.14);
+
+              border: 1px solid rgba(59, 130, 246, 0.25);
+
+              color: #dbeafe;
+
+              font-size: 12px;
+
+              font-weight: 700;
+
+              letter-spacing: 0.04em;
+
+            }
+
+            h1 {
+
+              margin: 0 0 12px;
+
+              font-size: clamp(32px, 8vw, 56px);
+
+              line-height: 1.08;
+
+              letter-spacing: -0.03em;
+
+            }
+
+            .tagline {
+
+              max-width: 760px;
+
+              margin: 0 auto 12px;
+
+              color: #bfdbfe;
+
+              font-size: 18px;
+
+              font-weight: 600;
+
+              line-height: 1.55;
+
+            }
+
+            .desc {
+
+              max-width: 760px;
+
+              margin: 0 auto 18px;
+
+              color: var(--soft);
+
+              line-height: 1.7;
+
+              font-size: 15px;
+
+            }
+
+            .buttons {
+
+              display: flex;
+
+              flex-direction: column;
+
+              align-items: center;
+
+              gap: 12px;
+
+              margin: 22px auto 0;
+
+            }
+
+            .buttons .btn {
+
+              width: 100%;
+
+              max-width: 340px;
+
+            }
+
+            .section {
+
+              margin-top: 52px;
+
+            }
+
+            .section > h2 {
+
+              margin: 0 0 10px;
+
+              font-size: clamp(22px, 6vw, 30px);
+
+              line-height: 1.15;
+
+            }
+
+            .section-intro {
+
+              max-width: 760px;
+
+              margin: 0 auto 20px;
+
+              color: var(--muted);
+
+              line-height: 1.7;
+
+              font-size: 15px;
+
+            }
+
+            .story-list {
+
+              display: grid;
+
+              gap: 18px;
+
+              margin-top: 22px;
+
+              text-align: left;
+
+            }
+
+            .story-card {
+
+              display: grid;
+
+              grid-template-columns: 1fr;
+
+              gap: 14px;
+
+              background: var(--card);
+
+              border: 1px solid var(--border);
+
+              border-radius: 20px;
+
+              padding: 18px;
+
+              box-shadow: var(--shadow-sm);
+
+            }
+
+            .story-copy {
+
+              display: grid;
+
+              gap: 10px;
+
+              align-content: center;
+
+            }
+
+            .story-copy h3 {
+
+              margin: 0 0 8px;
+
+              font-size: 20px;
+
+              line-height: 1.15;
+
+            }
+
+            .story-copy p {
+
+              margin: 0;
+
+              color: var(--soft);
+
+              line-height: 1.65;
+
+              font-size: 15px;
+
+            }
+
+            .story-media {
+
+              margin: 0;
+
+            }
+
+            .story-media img {
+
+              display: block;
+
+              width: 100%;
+
+              height: auto;
+
+              border-radius: 18px;
+
+              border: 1px solid var(--border);
+
+              box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+
+              background: rgba(255, 255, 255, 0.03);
+
+            }
+
+            .hero-copy .buttons {
+
+              width: 100%;
+
+            }
+
+            @media (min-width: 640px) {
+
+              .container {
+
+                padding: 30px 20px 68px;
+
+              }
+
+              .hero-layout {
+
+                gap: 20px;
+
+              }
+
+              .buttons {
+
+                flex-direction: row;
+
+                justify-content: center;
+
+                align-items: center;
+
+                flex-wrap: wrap;
+
+              }
+
+              .buttons .btn {
+
+                width: auto;
+
+                min-width: 220px;
+
+              }
+
+              .story-card {
+
+                padding: 20px;
+
+              }
+
+            }
+
+            @media (min-width: 900px) {
+
+              .hero-layout {
+
+                grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+
+                gap: 28px;
+
+              }
+
+              .hero-copy {
+
+                justify-items: start;
+
+                text-align: left;
+
+              }
+
+              .hero-copy .buttons {
+
+                justify-content: flex-start;
+
+                width: auto;
+
+              }
+
+              .section {
+
+                margin-top: 68px;
+
+              }
+
+              .story-list {
+
+                gap: 22px;
+
+              }
+
+              .story-card {
+
+                grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+
+                gap: 24px;
+
+                align-items: center;
+
+                padding: 24px;
+
+              }
+
+              .story-card.reverse .story-copy {
+
+                order: 2;
+
+              }
+
+              .story-card.reverse .story-media {
+
+                order: 1;
+
+              }
+
+            }
+
+         
     </style>
+
+     
   </head>
 
+   
   <body>
+       
     <header class="site-header">
+           
       <div class="site-header-inner">
+               
         <a class="site-brand" href="/">
+                   
           <img
             class="site-brand-logo"
             src="/assets/images/loran/loran.png"
             alt=""
           />
-          Clean Utility Apps
+
+                    Clean Utility Apps        
         </a>
 
+               
         <nav class="site-nav" id="site-nav" aria-label="Site navigation">
-          <a href="/">Home</a>
-          <a href="/move-inspection/">Rental Inspect</a>
-          <a href="/passeo/">Passeo</a>
-          <a href="/dinner-ready/">DinnerReady</a>
-          <a href="/loran/" class="active">LORAN</a>
-          <a href="/quote-ready/">Contractor Quote</a>
+                    <a href="/">Home</a>
+
+                    <a href="/move-inspection/">Rental Inspect</a>
+
+                    <a href="/passeo/">Passeo</a>
+
+                    <a href="/dinner-ready/">DinnerReady</a>
+
+                    <a href="/loran/" class="active">LORAN</a>
+
+                    <a href="/quote-ready/">Contractor Quote</a>
+
+                 
         </nav>
 
+               
         <button
           class="site-menu-btn"
           id="site-menu-btn"
@@ -346,6 +577,7 @@
           aria-controls="site-nav"
           type="button"
         >
+                   
           <svg
             width="20"
             height="20"
@@ -353,44 +585,81 @@
             fill="none"
             aria-hidden="true"
           >
+                       
             <path
               d="M3 5h14M3 10h14M3 15h14"
               stroke="currentColor"
               stroke-width="1.75"
               stroke-linecap="round"
             />
+
+                     
           </svg>
+
+                 
         </button>
+
+             
       </div>
+
+         
     </header>
 
+       
     <main class="container">
+           
       <section class="hero">
+               
         <div class="hero-layout">
+                   
           <div class="hero-copy">
+                       
             <div class="app-badge">LORAN</div>
 
+                       
             <h1>Practice English by speaking.</h1>
 
+                       
             <p class="tagline">
-              Build confidence in everyday English through guided speaking
-              practice, real-life scenarios, and natural conversations.
+                            Build confidence in everyday English through guided
+              speaking               practice, real-life scenarios, and natural
+              conversations.            
             </p>
 
+                       
             <p class="desc">
-              Practice the flow from expressions to conversation to feedback,
-              then keep going with hands-free listening cues.
+                            Practice the flow from expressions to conversation
+              to feedback,               then keep going with hands-free
+              listening cues.            
             </p>
 
+                       
             <div class="buttons">
-              <a class="btn" href="#how-it-works">See how it works</a>
-              <a class="btn secondary" href="/loran/privacy/">
-                Privacy Policy
+              <a
+                class="btn"
+                href="https://apps.apple.com/us/app/loran-english-practice/id6810451849"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download on the App Store
               </a>
+              <a
+                class="btn"
+                href="https://play.google.com/store/apps/details?id=com.cleanutilityapps.loran"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Get it on Google Play
+              </a>
+              <a class="btn secondary" href="#how-it-works">See how it works</a>
             </div>
+
+                     
           </div>
 
+                   
           <div class="hero-visual">
+                       
             <img
               src="/assets/images/loran/loran_marketing.png"
               alt="LORAN English speaking practice app"
@@ -398,27 +667,49 @@
               height="1024"
               fetchpriority="high"
             />
+
+                     
           </div>
+
+                 
         </div>
+
+             
       </section>
 
+           
       <section class="section" id="how-it-works">
+               
         <h2>How LORAN practice flows</h2>
+
+               
         <p class="section-intro">
-          Choose a scenario, practice useful expressions, speak in a realistic
-          conversation, receive feedback, and keep practicing with Auto Listen
-          and listening cues.
+                    Choose a scenario, practice useful expressions, speak in a
+          realistic           conversation, receive feedback, and keep
+          practicing with Auto Listen           and listening cues.        
         </p>
 
+               
         <div class="story-list">
+                   
           <article class="story-card">
+                       
             <div class="story-copy">
+                           
               <h3>Practice English for Real Life</h3>
+
+                           
               <p>
-                Build speaking confidence through practical everyday practice.
+                                Build speaking confidence through practical
+                everyday practice.              
               </p>
+
+                         
             </div>
+
+                       
             <figure class="story-media">
+                           
               <img
                 src="/assets/images/loran/01_practice_english_for_real_life.png"
                 alt="LORAN home screen for English speaking practice"
@@ -427,18 +718,33 @@
                 loading="lazy"
                 decoding="async"
               />
+
+                         
             </figure>
+
+                     
           </article>
 
+                   
           <article class="story-card reverse">
+                       
             <div class="story-copy">
+                           
               <h3>Practice Real-Life Scenarios</h3>
+
+                           
               <p>
-                Practice useful English for everyday situations such as coffee
-                shops, restaurants, pharmacies, and barber shops.
+                                Practice useful English for everyday situations
+                such as coffee                 shops, restaurants, pharmacies,
+                and barber shops.              
               </p>
+
+                         
             </div>
+
+                       
             <figure class="story-media">
+                           
               <img
                 src="/assets/images/loran/02_real_life_scenarios.png"
                 alt="LORAN real-life English practice scenarios"
@@ -447,18 +753,33 @@
                 loading="lazy"
                 decoding="async"
               />
+
+                         
             </figure>
+
+                     
           </article>
 
+                   
           <article class="story-card">
+                       
             <div class="story-copy">
+                           
               <h3>Learn Useful Expressions</h3>
+
+                           
               <p>
-                See useful target phrases, listen to them, and practice speaking
-                before starting a conversation.
+                                See useful target phrases, listen to them, and
+                practice speaking                 before starting a
+                conversation.              
               </p>
+
+                         
             </div>
+
+                       
             <figure class="story-media">
+                           
               <img
                 src="/assets/images/loran/03_learn_useful_expressions.png"
                 alt="LORAN guided expression speaking practice"
@@ -467,18 +788,33 @@
                 loading="lazy"
                 decoding="async"
               />
+
+                         
             </figure>
+
+                     
           </article>
 
+                   
           <article class="story-card reverse">
+                       
             <div class="story-copy">
+                           
               <h3>Have Natural Conversations</h3>
+
+                           
               <p>
-                Use what you practiced in realistic conversations and respond
-                naturally in your own words.
+                                Use what you practiced in realistic
+                conversations and respond                 naturally in your own
+                words.              
               </p>
+
+                         
             </div>
+
+                       
             <figure class="story-media">
+                           
               <img
                 src="/assets/images/loran/04_natural_conversations.png"
                 alt="LORAN real-life English conversation practice"
@@ -487,17 +823,32 @@
                 loading="lazy"
                 decoding="async"
               />
+
+                         
             </figure>
+
+                     
           </article>
 
+                   
           <article class="story-card">
+                       
             <div class="story-copy">
+                           
               <h3>Practice Your Way</h3>
+
+                           
               <p>
-                Keep the practice flowing with Auto Listen and listening cues.
+                                Keep the practice flowing with Auto Listen and
+                listening cues.              
               </p>
+
+                         
             </div>
+
+                       
             <figure class="story-media">
+                           
               <img
                 src="/assets/images/loran/05_customize_your_practice.png"
                 alt="LORAN Auto Listen and Listening Cue settings"
@@ -506,60 +857,111 @@
                 loading="lazy"
                 decoding="async"
               />
+
+                         
             </figure>
+
+                     
           </article>
+
+                 
         </div>
+
+             
       </section>
 
+           
       <footer class="site-footer">
+               
         <div class="site-footer-links">
-          <a href="/">Home</a>
-          <a href="/move-inspection/">Rental Inspect</a>
-          <a href="/passeo/">Passeo</a>
-          <a href="/dinner-ready/">DinnerReady</a>
-          <a href="/loran/">LORAN</a>
-          <a href="/quote-ready/">Contractor Quote</a>
+                    <a href="/">Home</a>
+
+                    <a href="/move-inspection/">Rental Inspect</a>
+
+                    <a href="/passeo/">Passeo</a>
+
+                    <a href="/dinner-ready/">DinnerReady</a>
+
+                    <a href="/loran/">LORAN</a>
+          <a href="/loran/privacy/">LORAN Privacy</a>
+
+                    <a href="/quote-ready/">Contractor Quote</a>
+
+                 
         </div>
-        © 2026 Clean Utility Apps
+
+                © 2026 Clean Utility Apps      
       </footer>
+
+         
     </main>
 
+       
     <script defer src="/_vercel/insights/script.js"></script>
+
+       
     <script src="/assets/js/site-tracking.js"></script>
 
+       
     <script>
-      (function () {
-        var btn = document.getElementById('site-menu-btn');
-        var nav = document.getElementById('site-nav');
 
-        if (!btn || !nav) return;
+            (function () {
 
-        btn.addEventListener('click', function () {
-          var open = nav.classList.toggle('open');
-          btn.setAttribute('aria-expanded', String(open));
-        });
+              var btn = document.getElementById('site-menu-btn');
 
-        nav.querySelectorAll('a').forEach(function (a) {
-          a.addEventListener('click', function () {
-            nav.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-          });
-        });
+              var nav = document.getElementById('site-nav');
 
-        document.addEventListener('click', function (e) {
-          if (!nav.classList.contains('open')) return;
-          if (nav.contains(e.target) || btn.contains(e.target)) return;
-          nav.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        });
+              if (!btn || !nav) return;
 
-        window.addEventListener('resize', function () {
-          if (window.innerWidth >= 960) {
-            nav.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-          }
-        });
-      })();
+              btn.addEventListener('click', function () {
+
+                var open = nav.classList.toggle('open');
+
+                btn.setAttribute('aria-expanded', String(open));
+
+              });
+
+              nav.querySelectorAll('a').forEach(function (*a*) {
+
+                a.addEventListener('click', function () {
+
+                  nav.classList.remove('open');
+
+                  btn.setAttribute('aria-expanded', 'false');
+
+                });
+
+              });
+
+              document.addEventListener('click', function (*e*) {
+
+                if (!nav.classList.contains('open')) return;
+
+                if (nav.contains(e.target) || btn.contains(e.target)) return;
+
+                nav.classList.remove('open');
+
+                btn.setAttribute('aria-expanded', 'false');
+
+              });
+
+              window.addEventListener('resize', function () {
+
+                if (window.innerWidth >= 960) {
+
+                  nav.classList.remove('open');
+
+                  btn.setAttribute('aria-expanded', 'false');
+
+                }
+
+              });
+
+            })();
+
+         
     </script>
+
+     
   </body>
 </html>
