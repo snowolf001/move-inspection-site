@@ -62,6 +62,23 @@
     <priority>0.4</priority>
   </url>
 
+  <!-- Contractor Estimate & Quote -->
+  <url>
+    <loc>https://cleanutilityapps.com/quote-ready/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cleanutilityapps.com/quote-ready/handyman-estimate-app/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cleanutilityapps.com/quote-ready/privacy/</loc>
+    <lastmod>2026-09-23</lastmod>
+    <priority>0.4</priority>
+  </url>
+
   <!-- LORAN -->
   <url>
     <loc>https://cleanutilityapps.com/loran/</loc>
