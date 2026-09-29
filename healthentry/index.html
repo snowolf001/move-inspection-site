@@ -6,20 +6,31 @@
   <title>Health Entry — Quick Health Logging for Android</title>
   <meta name="description" content="Health Entry makes it fast to log water, caffeine, weight, blood pressure, and exercise to Android Health Connect, with Home Screen widgets and simple trends.">
   <style>
-    *{box-sizing:border-box}body{margin:0;background:#f7f8fa;color:#172033;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
-    a{color:inherit}.wrap{max-width:1080px;margin:auto;padding:0 24px}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:1.2rem;font-weight:750}.nav a{text-decoration:none;color:#566074}
-    .hero{padding:72px 0 60px;text-align:center}.eyebrow{font-weight:700;color:#2877a8}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em;margin:16px auto 22px;max-width:900px}.hero p{max-width:680px;margin:0 auto;color:#5b6474;font-size:1.18rem;line-height:1.65}
-    .pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}.pill{background:#fff;border:1px solid #e3e7ed;border-radius:999px;padding:10px 15px;font-weight:650}
-    .section{padding:64px 0}.section h2{text-align:center;font-size:2rem;margin:0 0 12px}.sub{text-align:center;color:#667085;margin:0 auto 34px;max-width:650px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #e3e7ed;border-radius:20px;padding:26px}.card h3{margin:0 0 8px;font-size:1.15rem}.card p{margin:0;color:#667085;line-height:1.6}.icon{font-size:1.6rem;margin-bottom:15px}
-    .privacy{background:#eef6fa;border-radius:24px;padding:38px;margin:24px 0 64px}.privacy h2{text-align:left}.privacy p{color:#566074;line-height:1.65;max-width:780px}.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}.links a{font-weight:700;color:#256f9d}
-    footer{border-top:1px solid #e3e7ed;padding:28px 0 40px;color:#7a8494;font-size:.92rem}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot a{color:#596579}
-    @media(max-width:760px){.hero{padding:45px 0}.grid{grid-template-columns:1fr}.section{padding:42px 0}.privacy{padding:26px}.nav{height:62px}}
+    *{box-sizing:border-box}body{margin:0;background:#08142b;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+    a{color:inherit}.wrap{max-width:1080px;margin:auto;padding:0 24px}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:1.2rem;font-weight:750;white-space:nowrap}.navlinks{display:flex;align-items:center;justify-content:flex-end;gap:18px;flex-wrap:wrap}.nav a{text-decoration:none;color:#dbeafe;font-weight:600;font-size:.92rem}.nav a:hover{color:#fff}
+    .hero{padding:72px 0 60px;text-align:center}.eyebrow{font-weight:700;color:#60a5fa}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em;margin:16px auto 22px;max-width:900px}.hero p{max-width:680px;margin:0 auto;color:#b8c6dc;font-size:1.18rem;line-height:1.65}
+    .pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}.pill{background:#12213d;border:1px solid #294264;border-radius:999px;padding:10px 15px;font-weight:650}
+    .section{padding:64px 0}.section h2{text-align:center;font-size:2rem;margin:0 0 12px}.sub{text-align:center;color:#9fb0c9;margin:0 auto 34px;max-width:650px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#12213d;border:1px solid #263b5b;border-radius:20px;padding:26px}.card h3{margin:0 0 8px;font-size:1.15rem}.card p{margin:0;color:#b8c6dc;line-height:1.6}.icon{font-size:1.6rem;margin-bottom:15px}
+    .privacy{background:#10213d;border:1px solid #263b5b;border-radius:24px;padding:38px;margin:24px 0 64px}.privacy h2{text-align:left}.privacy p{color:#b8c6dc;line-height:1.65;max-width:780px}.links{display:flex;gap:18px;flex-wrap:wrap;margin-top:20px}.links a{font-weight:700;color:#60a5fa}
+    footer{border-top:1px solid #263b5b;padding:28px 0 40px;color:#9fb0c9;font-size:.92rem}.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}.foot a{color:#dbeafe}
+    @media(max-width:900px){.nav{align-items:flex-start;padding:16px 0}.navlinks{gap:10px 14px}}@media(max-width:760px){.hero{padding:45px 0}.grid{grid-template-columns:1fr}.section{padding:42px 0}.privacy{padding:26px}.nav{height:62px}}
   </style>
 </head>
 <body>
 <div class="wrap">
-  <nav class="nav"><div class="brand">Health Entry</div><a href="/healthentry/privacy/">Privacy</a></nav>
+  <nav class="nav">
+    <a class="brand" href="/">Clean Utility Apps</a>
+    <div class="navlinks">
+      <a href="/">Home</a>
+      <a href="/move-inspection/">Rental Inspect</a>
+      <a href="/passeo/">Passeo</a>
+      <a href="/dinner-ready/">DinnerReady</a>
+      <a href="/loran/">LORAN</a>
+      <a href="/quote-ready/">Contractor Quote</a>
+      <a href="/healthentry/" aria-current="page">Health Entry</a>
+    </div>
+  </nav>
   <main>
     <section class="hero">
       <div class="eyebrow">Fast health logging for Android</div>
@@ -44,7 +55,7 @@
       <div class="links"><a href="/healthentry/privacy/">Read Privacy Policy →</a><a href="/healthentry/widgets/">How to add widgets →</a></div>
     </section>
   </main>
-  <footer><div class="foot"><span>© 2026 Clean Utility Apps</span><span><a href="/healthentry/privacy/">Privacy Policy</a></span></div></footer>
+  <footer><div class="foot"><span>© 2026 Clean Utility Apps</span><span><a href="/">All Apps</a> · <a href="/healthentry/privacy/">Privacy Policy</a> · <a href="/healthentry/widgets/">Widgets</a></span></div></footer>
 </div>
 </body>
 </html>
