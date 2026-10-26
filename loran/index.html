@@ -498,7 +498,8 @@
           padding: 24px;
         }
       }
-      .loran-language { margin-left:auto; padding:7px 10px; border:1px solid var(--border); border-radius:10px; background:#101a30; color:#fff; max-width:160px; } 
+      @media (max-width: 560px) { .site-header-inner { flex-wrap: wrap; } .loran-language { order: 3; flex: 1 1 100%; max-width: none !important; margin: 0 0 8px; } }
+  .loran-language { margin-left:auto; padding:7px 10px; border:1px solid var(--border); border-radius:10px; background:#101a30; color:#fff; max-width:160px; } 
 </style>
   </head>
   <body>
@@ -776,7 +777,7 @@
           <a href="/passeo/">Passeo</a>
           <a href="/dinner-ready/">DinnerReady</a>
           <a href="/loran/">LORAN</a>
-          <a href="/loran/privacy/">LORAN Privacy</a>
+          <a id="loran-privacy-link" href="/loran/privacy/">LORAN Privacy</a>
           <a href="/quote-ready/">Contractor Quote</a>
         </div>
         © 2026 Clean Utility Apps
@@ -800,6 +801,8 @@
   selectors.forEach((s,i)=>{const el=document.querySelector(s);if(el)el.textContent=words[i];});
   stores.forEach((el,i)=>{el.textContent=extras[lang]?.[i%2]||originalStores[i];});
   if(navHome)navHome.textContent=extras[lang]?.[2]||originalHome;
+  const privacyLink=document.getElementById('loran-privacy-link');
+  if(privacyLink)privacyLink.href='/loran/privacy/'+(lang==='en'?'':'?lang='+encodeURIComponent(lang));
   document.documentElement.lang=lang;
   document.title=lang==='en'?'LORAN – English & Chinese Speaking Practice | Clean Utility Apps':'LORAN – '+words[0];
   const description=lang==='en'?'Practice English and Chinese speaking with real-life scenarios, useful expressions, natural conversations, and personalized feedback with LORAN.':descriptions[lang];
