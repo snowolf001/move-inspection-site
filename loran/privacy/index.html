@@ -1,4 +1,3 @@
-```html
 <!doctype html>
 
 <html lang="en">
@@ -195,6 +194,14 @@
         <span class="bc-current">Privacy</span>
       </nav>
 
+      <section class="card" style="margin-bottom:16px">
+        <label for="policy-language" style="display:block;margin-bottom:8px;color:#e2e8f0">Language / 语言</label>
+        <select id="policy-language" aria-label="Privacy policy language" style="width:100%;max-width:260px;padding:10px;border-radius:8px;background:#17233b;color:white;border:1px solid #64748b">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
+        <p id="policy-language-note" class="meta" style="margin-top:10px">Other app languages will be added after their policy translations are reviewed.</p>
+      </section>
       <section class="card">
         <div class="privacy-header">
           <img
@@ -516,6 +523,39 @@
       </footer>
     </main>
 
+<script>
+      (function () {
+        const translations = [["LORAN 隐私政策","LORAN — 由 Clean Utility Apps 发布","生效日期：2026 年 9 月 7 日"],["概述","LORAN 是一款口语练习应用，提供引导式口语练习、真实场景对话、语音转写、语言反馈及音频播放。","本隐私政策说明 LORAN 处理哪些信息、处理原因以及提供这些功能所使用的服务。"],["麦克风权限和语音录音","使用口语功能时，LORAN 会请求设备麦克风权限。","录制口语回答后，音频会离开您的设备以进行语音转写；音频可能通过 LORAN 后端发送给 OpenAI 进行语音转文字处理。","LORAN 不会有意在常规应用数据库或 Cloudflare R2 转写流程中保存学习者的语音录音，但音频仍会传输到设备之外以完成处理。"],["语音转写和对话内容","LORAN 使用 OpenAI 语音转写服务将录制的语音转换为文字。转写结果返回应用，用于继续口语练习或对话。","使用 AI 对话和语言反馈功能时，LORAN 会向后端发送当前交互所需的文字，包括转写内容、对话消息、目标表达、场景信息以及生成纠正或反馈所需的其他文字。","后端会将必要内容发送给 OpenAI，以生成对话回复、纠正和其他语言学习反馈。","LORAN 目前不提供终端用户账号系统，也不维护按账号存储的完整学习者对话历史数据库。"],["文本转语音和音频播放","LORAN 使用预录制和生成的音频提供场景语音内容及 AI 生成的回复。","需要时会使用 OpenAI 生成文本转语音音频。部分生成文字及对应音频可能缓存在 LORAN 后端，以便重复使用而不必重新生成。","缓存音频对象可能存储在 Cloudflare R2 中，相关缓存和音频元数据可能存储在 LORAN 后端数据库中。"],["存储在设备上的信息","LORAN 可能在您的设备本地存储运行应用所需的信息，包括：","应用和语音偏好设置；随机安装标识符和会话标识符；用于播放的缓存音频；口语练习期间使用的临时本地录音文件；应用所需的技术设置。","清除应用数据或卸载 LORAN 可以删除部分本地数据。"],["技术和诊断信息","LORAN 收集有限的匿名或假名化产品使用信息及技术诊断信息，用于运行、排查故障、保护和改进服务。","这些信息可能包括应用版本和构建号、平台、设备型号、操作系统版本、场景标识符、事件类型、时间信息、轮次、设置状态和经过清理的错误信息。","LORAN 可能使用随机生成的安装标识符和会话标识符进行可靠性分析和使用统计。这些标识符并非从设备硬件或账号派生。","LORAN 不使用生产环境遥测来存储学习者音频、语音转写内容、对话内容、提示词、精确位置、联系人或硬件标识符。"],["数据存储和保留","LORAN 存储运行场景、发布版本、生成的文本转语音音频、缓存元数据和有限技术遥测所需的信息。","LORAN 目前未对所有技术数据、缓存数据或处理数据规定统一的固定保留期限。相关信息可能在合理必要的范围内保留，用于运营、维护、故障排查及服务安全。","由于部分处理由第三方服务提供商完成，其数据处理和保留也可能受各自政策和服务条款约束。"],["第三方服务提供商","LORAN 使用第三方服务提供部分功能，目前包括：","OpenAI：语音转写、AI 生成的对话回复、语言纠正与反馈以及文本转语音。","Cloudflare R2：存储和交付部分音频资源。","提供这些功能所需的信息可能传输给上述服务提供商并由其处理。"],["账号、广告和付款","当前版本的 LORAN 不要求用户创建账号或登录即可使用口语功能。","LORAN 目前不展示第三方广告。","本政策英文原文写明当前版本未启用应用内付款或订阅处理；请在发布新版政策前核对这一描述是否仍准确。"],["您的选择","您可以自行决定是否授予 LORAN 麦克风权限。未授予权限时，基于语音的口语功能将无法使用。","您可以随时通过设备设置撤销麦克风权限、清除本地应用数据或卸载应用。","从设备中卸载应用不一定会删除后端或第三方服务已处理或存储的技术信息或缓存信息。"],["数据删除请求","如果您对 LORAN 处理的信息有疑问，或希望请求删除我们能够合理识别为与您使用服务相关的信息，请通过下方电子邮件联系我们。","由于 LORAN 目前没有终端用户账号系统，我们可能需要您提供额外信息，以判断是否能够识别相关后端记录。"],["儿童隐私","LORAN 并非面向 13 岁以下儿童。我们不会有意收集 13 岁以下儿童的个人信息。","如果您认为有儿童通过 LORAN 提供了个人信息，请联系我们，以便审查请求并采取适当措施。"],["安全","我们采取合理的技术和运营措施，旨在保护通过 LORAN 处理的信息。但是，任何电子传输或存储方式都无法保证绝对安全。"],["政策变更","我们可能随着 LORAN 的变化更新本隐私政策。变更时，我们会更新页面顶部显示的生效日期。"],["联系方式","如果您对本隐私政策或 LORAN 的隐私做法有疑问，请联系：","Clean Utility Apps — cleanutilityapps@gmail.com"]];
+        const sections = Array.from(document.querySelectorAll('main.page > section.card')).slice(1);
+        const originals = sections.map(section => section.innerHTML);
+        const select = document.getElementById('policy-language');
+        const note = document.getElementById('policy-language-note');
+        function escapeHtml(s) { return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+        function render(language) {
+          document.documentElement.lang = language;
+          document.title = (language === 'zh' ? '隐私政策' : 'Privacy Policy') + ' | LORAN';
+          sections.forEach((section, i) => {
+            if (language !== 'zh') { section.innerHTML = originals[i]; return; }
+            const lines = translations[i];
+            if (i === 0) {
+              section.innerHTML = '<div class="privacy-header"><img class="privacy-app-icon" src="/assets/images/loran/loran.png" alt="LORAN app icon"><div><h1>'+escapeHtml(lines[0])+'</h1><p>'+escapeHtml(lines[1])+'</p><p class="meta">'+escapeHtml(lines[2])+'</p></div></div>';
+            } else {
+              section.innerHTML = '<h2>'+escapeHtml(lines[0])+'</h2>'+lines.slice(1).map(line => '<p>'+escapeHtml(line)+'</p>').join('')+(i === 15 ? '<p><a class="contact-link" href="mailto:cleanutilityapps@gmail.com">cleanutilityapps@gmail.com</a></p>' : '');
+            }
+          });
+          note.textContent = language === 'zh' ? '其他应用语言的隐私政策译文仍在准备中；英文原文为当前参考版本。' : 'Other app languages will be added after their policy translations are reviewed.';
+          const url = new URL(location.href);
+          if (language === 'zh') url.searchParams.set('lang', 'zh'); else url.searchParams.delete('lang');
+          history.replaceState(null, '', url);
+        }
+        const requested = new URLSearchParams(location.search).get('lang');
+        const browser = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+        const initial = requested === 'en' || requested === 'zh' ? requested : (browser.toLowerCase().startsWith('zh') ? 'zh' : 'en');
+        select.value = initial;
+        select.addEventListener('change', () => render(select.value));
+        render(initial);
+      })();
+    </script>
     <script defer src="/_vercel/insights/script.js"></script>
     <script src="/assets/js/site-tracking.js"></script>
 
