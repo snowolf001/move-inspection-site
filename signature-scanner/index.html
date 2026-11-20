@@ -11,7 +11,7 @@ body{margin:0;background:#08142b;color:#f2f5fc;font:16px/1.7 system-ui,sans-seri
 main{max-width:980px;margin:36px auto;padding:clamp(20px,4vw,40px);background:#13223c;border-radius:20px}
 a{color:#8cc9ff}nav{display:flex;gap:16px;flex-wrap:wrap;font-size:14px}
 h1{font-size:clamp(32px,5vw,52px);line-height:1.15;margin:36px 0 16px}
-h2{font-size:25px;margin:32px 0 12px}.lead{font-size:clamp(18px,2.5vw,23px);max-width:740px;color:#d5e4f9}
+.hero-image{display:block;width:100%;height:auto;border-radius:18px;margin:25px 0 32px;box-shadow:0 14px 45px #0005}.gallery{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;margin:18px 0 30px}.gallery figure{margin:0}.gallery img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 6px 18px #0005}.gallery figcaption{font-size:13px;text-align:center;margin-top:9px;color:#d5e4f9}@media(max-width:720px){.gallery{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}.gallery figure{flex:0 0 min(65vw,230px);scroll-snap-align:start}}h2{font-size:25px;margin:32px 0 12px}.lead{font-size:clamp(18px,2.5vw,23px);max-width:740px;color:#d5e4f9}
 .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin:30px 0}
 .feature{border:1px solid #354764;border-radius:16px;padding:22px;background:#192b47}
 .feature h3{margin:0 0 8px;font-size:18px}.feature p{margin:0;color:#c4d2e7}
@@ -23,11 +23,20 @@ footer{max-width:980px;margin:25px auto;padding:0 30px;color:#d1d9e8}
 <nav><a href="/">Clean Utility Apps</a><a href="/signature-scanner/">Signature Scanner</a><a href="/signature-scanner/privacy/">Privacy</a><a href="/signature-scanner/data-safety/">Data Safety</a><a href="/signature-scanner/terms/">Terms of Use</a></nav>
 <h1>Sign PDFs with your own signature.</h1>
 <p class="lead">Turn a handwritten signature into a clean, transparent image. Save it once, reuse it whenever you need, and add it to PDFs—all from your Android device.</p>
+<img class="hero-image" src="/assets/images/signature-scanner/feature_graphic.png" alt="Signature Scanner: extract signatures, sign PDFs, and manage reusable signatures" width="1728" height="864" fetchpriority="high">
 <section class="features" aria-label="Signature Scanner features">
 <div class="feature"><h3>Extract a clean signature</h3><p>Take a photo or choose an image, remove the paper background, and fine-tune the result.</p></div>
 <div class="feature"><h3>Save multiple signatures</h3><p>Name, manage, and reuse signatures without recreating them each time.</p></div>
 <div class="feature"><h3>Place signatures on PDFs</h3><p>Import a PDF, move and resize your signature, and preview its placement.</p></div>
 <div class="feature"><h3>Save or share signed PDFs</h3><p>Export a signed copy to your chosen location or share it using Android's system share sheet.</p></div>
+</section>
+<h2>See Signature Scanner in action</h2>
+<section class="gallery" aria-label="App screenshots">
+<figure><img src="/assets/images/signature-scanner/01_sign_pdf.png" alt="Choose a PDF and add your signature" loading="lazy"><figcaption>Sign a PDF</figcaption></figure>
+<figure><img src="/assets/images/signature-scanner/02_extract.png" alt="Extract a clean transparent signature from a photo" loading="lazy"><figcaption>Extract</figcaption></figure>
+<figure><img src="/assets/images/signature-scanner/03_saved.png" alt="Manage saved reusable signatures" loading="lazy"><figcaption>Save signatures</figcaption></figure>
+<figure><img src="/assets/images/signature-scanner/04_move_resize.png" alt="Move and resize a signature on a PDF" loading="lazy"><figcaption>Move &amp; resize</figcaption></figure>
+<figure><img src="/assets/images/signature-scanner/05_save_share.png" alt="Save or share your signed PDF" loading="lazy"><figcaption>Save &amp; share</figcaption></figure>
 </section>
 <h2>Documents stay on your device</h2>
 <p>Your signature images, saved signature names, and PDF contents are processed locally and are not uploaded to our servers. The app sends limited pseudonymous usage analytics over HTTPS; see our <a href="/signature-scanner/privacy/">Privacy Policy</a> for details.</p>
