@@ -9,6 +9,7 @@
     *{box-sizing:border-box}body{margin:0;background:#08142b;color:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
     a{color:inherit}.wrap{max-width:1080px;margin:auto;padding:0 24px}.nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:18px}.brand{font-size:1.2rem;font-weight:750;white-space:nowrap}.navlinks{display:flex;align-items:center;justify-content:flex-end;gap:18px;flex-wrap:wrap}.nav a{text-decoration:none;color:#dbeafe;font-weight:600;font-size:.92rem}.nav a:hover{color:#fff}
     .hero{padding:72px 0 60px;text-align:center}.eyebrow{font-weight:700;color:#60a5fa}.hero h1{font-size:clamp(2.5rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em;margin:16px auto 22px;max-width:900px}.hero p{max-width:680px;margin:0 auto;color:#b8c6dc;font-size:1.18rem;line-height:1.65}
+    .app-icon{width:96px;height:96px;border-radius:22px;display:block;margin:0 auto 24px;box-shadow:0 12px 30px #0005}.screenshots{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}.screenshots figure{margin:0}.screenshots img{display:block;width:100%;height:auto;border-radius:14px;box-shadow:0 8px 24px #0004}.screenshots figcaption{text-align:center;color:#b8c6dc;font-size:.85rem;margin-top:10px}@media(max-width:760px){.screenshots{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:12px}.screenshots figure{flex:0 0 min(65vw,230px);scroll-snap-align:start}}
     .pills{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:30px}.pill{background:#12213d;border:1px solid #294264;border-radius:999px;padding:10px 15px;font-weight:650}
     .section{padding:64px 0}.section h2{text-align:center;font-size:2rem;margin:0 0 12px}.sub{text-align:center;color:#9fb0c9;margin:0 auto 34px;max-width:650px}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#12213d;border:1px solid #263b5b;border-radius:20px;padding:26px}.card h3{margin:0 0 8px;font-size:1.15rem}.card p{margin:0;color:#b8c6dc;line-height:1.6}.icon{font-size:1.6rem;margin-bottom:15px}
@@ -33,6 +34,7 @@
   </nav>
   <main>
     <section class="hero">
+      <img class="app-icon" src="/assets/images/health-entry/healthentry_icon_1024x1024_large.png" alt="Health Entry app icon" width="96" height="96">
       <div class="eyebrow">Fast health logging for Android</div>
       <h1>Log it quickly.<br>Keep it in Health Connect.</h1>
       <p>Health Entry gives you a simple way to record everyday health data without digging through menus. Add entries in the app or use compact Home Screen widgets.</p>
@@ -46,6 +48,18 @@
         <div class="card"><div class="icon">＋</div><h3>Simple logging</h3><p>Record hydration, caffeine, weight, blood pressure, and exercise with straightforward controls.</p></div>
         <div class="card"><div class="icon">▦</div><h3>Home Screen widgets</h3><p>Use dedicated Water, Coffee, Weight, and Exercise widgets for faster access from your Android Home Screen.</p></div>
         <div class="card"><div class="icon">↗</div><h3>Useful trends</h3><p>See simple trends based on health data you choose to make available through Health Connect.</p></div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="screenshots-heading">
+      <h2 id="screenshots-heading">See Health Entry in action</h2>
+      <p class="sub">Quick logging, simple trends, and handy Home Screen widgets.</p>
+      <div class="screenshots">
+        <figure><img src="/assets/images/health-entry/03-simple-input.png" alt="Quick health data entry" loading="lazy"><figcaption>Simple input</figcaption></figure>
+        <figure><img src="/assets/images/health-entry/01-blood-pressure.png" alt="Blood pressure logging screen" loading="lazy"><figcaption>Blood pressure</figcaption></figure>
+        <figure><img src="/assets/images/health-entry/02-key-metrics.png" alt="Health Connect key metrics" loading="lazy"><figcaption>Key metrics</figcaption></figure>
+        <figure><img src="/assets/images/health-entry/04-today-trends.png" alt="Today health trends" loading="lazy"><figcaption>Today's trends</figcaption></figure>
+        <figure><img src="/assets/images/health-entry/05-widgets.png" alt="Health Entry Home Screen widgets" loading="lazy"><figcaption>Widgets</figcaption></figure>
       </div>
     </section>
 
